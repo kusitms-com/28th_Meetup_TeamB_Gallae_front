@@ -1,24 +1,7 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import Main from './pages/main/Main';
-import Map from './pages/map/Map';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-const route = createBrowserRouter([
-  {
-    path: '/',
-    element: <Outlet />,
-    children: [
-      {
-        index: true,
-        element: <Main />,
-      },
-      {
-        path: 'map',
-        element: <Map />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter([]);
 
-const App = () => <RouterProvider router={route} />;
+const App = () => <RouterProvider router={router} />;
 
 export default App;
