@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Main from './pages/main/Main';
 import Map from './pages/map/Map';
+import { GlobalStyle } from './style/GlobalStyle';
 
 const route = createBrowserRouter([
   {
@@ -19,6 +20,11 @@ const route = createBrowserRouter([
   },
 ]);
 
-const App = () => <RouterProvider router={route} />;
+const App = () => (
+  <>
+    <GlobalStyle />
+    <RouterProvider router={route} />
+  </>
+);
 
 export default App;

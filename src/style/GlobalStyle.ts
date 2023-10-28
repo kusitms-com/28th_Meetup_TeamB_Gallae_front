@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import '../assets/fonts/SUIT.css';
+import './color.css';
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -18,7 +20,6 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
-  background: #EAF2FF;
 }
 
 ol, ul, li {
