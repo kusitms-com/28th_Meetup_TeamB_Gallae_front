@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import './assets/fonts/SUIT.css';
+import './color.css';
 
 export const GlobalStyle = createGlobalStyle`
 * {
