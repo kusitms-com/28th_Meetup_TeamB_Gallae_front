@@ -1,6 +1,6 @@
 import { Map, MarkerClusterer } from 'react-kakao-maps-sdk';
 import CustomMarker from './components/CustomMarker';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import MapCard from './components/MapCard';
 import styled from 'styled-components';
 import SearchBar from '@/components/SearchBar/SearchBar';
@@ -51,6 +51,13 @@ const MapPage = () => {
     setSelected(-1);
   });
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return (): void => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   const handleClickSearch = () => {
     // 검색 후 페이지 이동
     setSearchInput('');
@@ -76,8 +83,8 @@ const MapPage = () => {
       </SearchBarWrapper>
       <Map
         center={{ lat: 37.566566, lng: 126.979192 }}
-        style={{ width: '100%', height: '100vh' }}
-        level={10}
+        style={{ width: '100%', height: '133.3333vh', zoom: '1.33333' }}
+        level={11}
       >
         <MarkerClusterer>
           {markerData.map(({ lat, lng }, idx) => (
@@ -101,8 +108,7 @@ export default MapPage;
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
-  zoom: 1.33333;
+  height: 100%;
   position: relative;
 `;
 

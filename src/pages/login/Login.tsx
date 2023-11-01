@@ -90,8 +90,6 @@ const Container = styled.div`
   width: 440px;
   gap: 40px;
 
-  margin-top: 268px;
-
   zoom: 1.33333;
 `;
 
@@ -100,6 +98,7 @@ const Title = styled.div`
   flex-direction: column;
   align-items: center;
 
+  margin-top: 268px;
   gap: 8px;
 `;
 
