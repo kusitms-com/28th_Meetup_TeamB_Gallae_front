@@ -19,9 +19,10 @@ const ProgramCard = ({
 const Container = styled.div`
   width: inherit;
   display: flex;
-  flex-drection: row;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 64px 36px;
+  /* gap: 64px 36px; */
   padding-bottom: 36px;
 `;
 

@@ -39,7 +39,7 @@ const MapCard: React.FC<Props> = ({
         </LikeButton>
       </BottomContainer>
       <CloseButton onClick={handleClose}>
-        <img src="/src/assets/map/close.svg" alt="close" />
+        <img src="/src/assets/icons/icon-close.svg" alt="close" />
       </CloseButton>
     </Container>
   );
@@ -88,6 +88,8 @@ const CloseButton = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
+
+  cursor: pointer;
 
   img {
     width: 32px;
