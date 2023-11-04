@@ -58,4 +58,8 @@ textarea:focus{
 	outline: none;
 }
 
+svg, path {
+  color: inherit;
+}
+
 `;
