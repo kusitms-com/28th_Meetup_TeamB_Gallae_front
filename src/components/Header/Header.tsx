@@ -44,6 +44,7 @@ const Container = styled.div`
   background-color: #fff;
 
   position: fixed;
+  top: 0;
   z-index: 4;
 `;
 

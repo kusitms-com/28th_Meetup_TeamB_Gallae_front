@@ -18,3 +18,7 @@
   font-weight: 800;
   src: url('./SUIT-ExtraBold.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'RecipeKorea';
+  src: url('./Recipekorea-Medium.woff') format('woff');
+}
