@@ -8,6 +8,14 @@ export interface ProgramMainInfoType {
   like: number;
 }
 
+export interface PostingType {
+  boardName: string;
+  title: string;
+  id: number;
+  nickName: string;
+  registerDate: string;
+}
+
 export interface ProgramDetailInfoType extends ProgramMainInfoType {
   location: string;
   recruitStartDate: string;

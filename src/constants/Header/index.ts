@@ -31,19 +31,19 @@ export const HeaderData: HeaderDataProps[] = [
     dropDowns: [
       {
         title: '전체',
-        link: '전체',
+        link: '/review',
       },
       {
         title: '여행 지원사업 후기',
-        link: '전체',
+        link: '/review',
       },
       {
         title: '여행 공모전 후기',
-        link: '전체',
+        link: '/review',
       },
       {
         title: '여행 대외활동 후기',
-        link: '전체',
+        link: '/review',
       },
     ],
   },

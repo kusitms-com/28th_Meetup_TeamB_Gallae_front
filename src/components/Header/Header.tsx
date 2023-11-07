@@ -14,7 +14,7 @@ const Header = () => {
               <Dropdown>
                 {dropDowns.map(({ title, link }, index) => (
                   <li key={index}>
-                    <Link to={link}>
+                    <Link to={link} state={{ filter: title }}>
                       <B1 $fontColor="#15191D">{title}</B1>
                     </Link>
                   </li>
