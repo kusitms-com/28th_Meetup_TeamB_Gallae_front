@@ -1,12 +1,16 @@
-import { HeaderData } from '@/constants/Header';
+import { HeaderData, UserDropdown } from '@/constants/Header';
 import { B1, H3 } from '@/style/fonts/StyledFonts';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Header = () => {
+  const handleLogout = () => {
+    // logout
+  };
   return (
     <Container>
       <InnerContainer>
+        {/* 헤더 좌측 */}
         <NavBarContainer>
           {HeaderData.map(({ main, dropDowns }) => (
             <NavBar key={main}>
@@ -23,7 +27,26 @@ const Header = () => {
             </NavBar>
           ))}
         </NavBarContainer>
-        <img src="/src/assets/icons/user-icon.svg" alt="user" />
+
+        {/* 헤더 우측 (유저 아이콘) */}
+        <NavBarContainer>
+          <NavBar>
+            <img src="/src/assets/icons/user-icon.svg" alt="user" />
+            <Dropdown>
+              {UserDropdown.map(({ title, link }, index) => (
+                <li key={index} className={`${title}`}>
+                  <Link to={link} state={{ filter: title }}>
+                    <B1 $fontColor="#15191D">{title}</B1>
+                  </Link>
+                </li>
+              ))}
+              <Seperator />
+              <li onClick={handleLogout}>
+                <B1 $fontColor="#15191D">{'로그아웃'}</B1>
+              </li>
+            </Dropdown>
+          </NavBar>
+        </NavBarContainer>
       </InnerContainer>
     </Container>
   );
@@ -37,11 +60,12 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 80px;
-  padding: 16px 312px;
+  padding: 0px 312px;
   flex-direction: column;
   gap: 8px;
   flex-shrink: 0;
   background-color: #fff;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
 
   position: fixed;
   top: 0;
@@ -53,6 +77,7 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
 
   img {
     width: 49px;
@@ -67,6 +92,8 @@ const NavBarContainer = styled.ul`
   align-items: center;
   justify-content: center;
 
+  height: 100%;
+
   position: relative;
 
   &:after {
@@ -77,6 +104,10 @@ const NavBarContainer = styled.ul`
 `;
 
 const NavBar = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   position: relative;
   width: 140px;
   height: 100%;
@@ -87,7 +118,9 @@ const NavBar = styled.li`
 
   &:hover {
     > ul {
-      display: block;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
   }
 `;
@@ -98,10 +131,10 @@ const Dropdown = styled.ul`
 
   border-radius: 20px;
   background: var(--main_1, #fff);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.15));
 
   position: absolute;
-  top: 36px;
+  top: 80px;
   left: -30px;
 
   width: 200px;
@@ -115,4 +148,10 @@ const Dropdown = styled.ul`
       color: #0e86f4;
     }
   }
+`;
+
+const Seperator = styled.div`
+  width: 180px;
+  height: 0.5px;
+  background: #e3e7ed;
 `;

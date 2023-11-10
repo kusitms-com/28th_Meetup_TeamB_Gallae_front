@@ -52,16 +52,39 @@ export const HeaderData: HeaderDataProps[] = [
     dropDowns: [
       {
         title: '전체',
-        link: '전체',
+        link: '/archive',
       },
       {
-        title: '전체',
-        link: '전체',
+        title: '지원서 예시자료',
+        link: '/archive',
       },
       {
-        title: '전체',
-        link: '전체',
+        title: '보고서 예시자료',
+        link: '/archive',
+      },
+      {
+        title: '꿀팁',
+        link: '/archive',
       },
     ],
+  },
+];
+
+export const UserDropdown: DropDown[] = [
+  {
+    title: '갈래 말래',
+    link: '',
+  },
+  {
+    title: '내가 쓴 글',
+    link: '/user/posting',
+  },
+  {
+    title: '내 포인트',
+    link: '',
+  },
+  {
+    title: '회원정보',
+    link: '',
   },
 ];

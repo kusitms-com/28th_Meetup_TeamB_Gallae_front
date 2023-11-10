@@ -13,7 +13,7 @@ const Posting: React.FC<PostingType> = ({
   const navigate = useNavigate();
 
   const handleClick = (): void => {
-    navigate(`detail/${id}`);
+    navigate(`${id}`);
   };
 
   return (

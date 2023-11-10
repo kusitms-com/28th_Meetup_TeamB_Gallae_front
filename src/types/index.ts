@@ -14,6 +14,7 @@ export interface PostingType {
   id: number;
   nickName: string;
   registerDate: string;
+  type: string;
 }
 
 export interface ProgramDetailInfoType extends ProgramMainInfoType {

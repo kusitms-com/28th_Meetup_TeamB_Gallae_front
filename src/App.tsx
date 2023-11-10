@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Main from './pages/main/Main';
 import Map from './pages/map/Map';
 import { GlobalStyle } from './style/GlobalStyle';
@@ -8,6 +8,7 @@ import Layout from './components/Header/Layout';
 import Search from './pages/Search';
 import Board from './pages/board/Board';
 import DetailProgram from './pages/DetailProgram';
+import MyPosting from './pages/user/MyPosting';
 
 const route = createBrowserRouter([
   {
@@ -44,6 +45,16 @@ const route = createBrowserRouter([
       {
         path: 'detailProgram/:_programName/:_programId',
         element: <DetailProgram />,
+      },
+      {
+        path: 'user',
+        element: <Outlet />,
+        children: [
+          {
+            path: 'posting',
+            element: <MyPosting />,
+          },
+        ],
       },
     ],
   },

@@ -1,6 +1,4 @@
-import SearchBar from '@/components/SearchBar/SearchBar';
 import { B2Bold, B3Bold } from '@/style/fonts/StyledFonts';
-import { useState } from 'react';
 import styled from 'styled-components';
 import Posting from './components/Posting';
 import { PostingType } from '@/types';
@@ -11,18 +9,8 @@ interface Props {
 }
 
 const PostingList: React.FC<Props> = ({ filter, postingList }) => {
-  const [searchInput, setSearchInput] = useState<string>('');
   return (
     <Container>
-      <SearchBarWrapper>
-        <SearchBar
-          placeHolder={'검색어를 입력해 주세요'}
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          handleClick={() => {}}
-        />
-      </SearchBarWrapper>
-
       <TopBarContainer>
         <B2Bold $fontColor="#15191D" className="board_name">
           {'게시판명'}
@@ -39,9 +27,13 @@ const PostingList: React.FC<Props> = ({ filter, postingList }) => {
       </TopBarContainer>
 
       <PostingContainer>
-        {postingList.map(data => (
-          <Posting {...data} key={data.id} />
-        ))}
+        {postingList
+          .filter(data => {
+            if (filter === '전체' || data.type === filter) return data;
+          })
+          .map(data => (
+            <Posting {...data} key={data.id} />
+          ))}
       </PostingContainer>
 
       <WritingButton>
@@ -60,14 +52,6 @@ const Container = styled.div`
   align-self: flex-start;
 
   width: 100%;
-`;
-
-const SearchBarWrapper = styled.div`
-  width: 543px;
-  flex-shrink: 0;
-  margin-bottom: 32px;
-
-  align-self: flex-start;
 `;
 
 const TopBarContainer = styled.div`
