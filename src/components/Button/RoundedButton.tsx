@@ -2,6 +2,7 @@ import { ButtonStyleType } from '@/types';
 import styled from 'styled-components';
 
 interface ButtonProps extends ButtonStyleType {
+  onClick?: () => void;
   children: React.ReactNode;
 }
 
@@ -9,6 +10,7 @@ const RoundedButton = ({
   $buttonColor,
   $buttonWidth,
   $buttonHeight,
+  onClick,
   children,
 }: ButtonProps) => {
   return (
@@ -16,6 +18,7 @@ const RoundedButton = ({
       $buttonColor={$buttonColor}
       $buttonWidth={$buttonWidth}
       $buttonHeight={$buttonHeight}
+      onClick={onClick}
     >
       <div className="button-text">{children}</div>
     </StyledButton>

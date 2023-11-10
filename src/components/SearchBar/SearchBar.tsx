@@ -5,37 +5,40 @@ interface Props {
   placeHolder: string;
   searchInput: string;
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;
-  handleClick: () => void;
+  handleSubmit: () => void;
 }
 
 const SearchBar: React.FC<Props> = ({
   placeHolder,
   searchInput, // input을 저장하는 state
   setSearchInput, // state를 변경하는 setter
-  handleClick, // 돋보기 버튼을 눌렀을 때 수행할 함수
+  handleSubmit, // 돋보기 버튼을 눌렀을 때 수행할 함수
 }) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
   return (
-    <Container>
+    <Container
+      onSubmit={e => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
       <Input
         value={searchInput}
         placeholder={placeHolder}
         onChange={onChange}
       />
-      <img
-        src="/src/assets/icons/icon-search.svg"
-        alt="search"
-        onClick={handleClick}
-      />
+      <button type="submit">
+        <img src="/src/assets/icons/icon-search.svg" alt="search" />
+      </button>
     </Container>
   );
 };
 
 export default SearchBar;
 
-const Container = styled.div`
+const Container = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,9 +55,13 @@ const Container = styled.div`
   /* 검색창 그림자 */
   box-shadow: 0px 40px 80px 0px rgba(238, 238, 238, 0.4);
 
-  img {
-    &:hover {
-      cursor: pointer;
+  button {
+    display: flex;
+
+    img {
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;

@@ -78,7 +78,7 @@ const MapPage = () => {
           searchInput={searchInput}
           setSearchInput={setSearchInput}
           placeHolder="관심있는 여행지가 있으신가요?"
-          handleClick={handleClickSearch}
+          handleSubmit={handleClickSearch}
         />
       </SearchBarWrapper>
       <Map

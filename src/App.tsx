@@ -5,6 +5,7 @@ import { GlobalStyle } from './style/GlobalStyle';
 import Login from './pages/login/Login';
 import KakaoRedir from './pages/login/KakaoRedir';
 import Layout from './components/Header/Layout';
+import Search from './pages/Search';
 import Board from './pages/board/Board';
 import DetailProgram from './pages/DetailProgram';
 
@@ -29,6 +30,7 @@ const route = createBrowserRouter([
         path: 'kakao/login',
         element: <KakaoRedir />,
       },
+      { path: 'search', element: <Search /> },
       {
         path: 'review',
         element: (

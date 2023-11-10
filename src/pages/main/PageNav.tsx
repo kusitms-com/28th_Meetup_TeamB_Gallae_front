@@ -3,10 +3,16 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import NavCard from './components/NavCard';
 import { NavData } from '@/constants/main';
+import { useNavigate } from 'react-router-dom';
 
 const PageNav = () => {
   const [searchInput, setSearchInput] = useState('');
-  const handleSearch = () => {};
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/search?keyword=${searchInput}`);
+  };
+
   return (
     <Container>
       <SearchBarWrapper>
@@ -14,7 +20,7 @@ const PageNav = () => {
           placeHolder="어디로 떠나고 싶으신가요?"
           searchInput={searchInput}
           setSearchInput={setSearchInput}
-          handleClick={handleSearch}
+          handleSubmit={handleSearch}
         />
       </SearchBarWrapper>
       <NavContainer>
