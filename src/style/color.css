@@ -1,0 +1,21 @@
+:root {
+  /* Grey Color */
+  --color_gray10: #fdfdfd;
+  --color_gray100: #fafbfd;
+  --color_gray200: #f7f8f9;
+  --color_gray300: #e9ebee;
+  --color_gray400: #c6c8cd;
+  --color_gray500: #9aa1ab;
+  --color_gray600: #666f7b;
+  --color_gray700: #3a4552;
+  --color_gray800: #2a323b;
+  --color_gray900: #171d23;
+  --color_gray990: #191919;
+
+  /* Sub Color */
+  --color_main1: #3ea2ff;
+  --color_sub1: #0e86f4;
+  --color_sub2: #ffa63e;
+  --color_sub3: #ff7d2c;
+  --color_background: #f6f6f6;
+}
