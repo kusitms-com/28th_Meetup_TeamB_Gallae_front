@@ -60,6 +60,17 @@ export interface ButtonStyleType {
   $buttonHeight: string;
 }
 
+export interface InputType {
+  [key: string]: string | null;
+}
+
+export interface SignUpProps {
+  inputData: InputType;
+  setInputData: React.Dispatch<React.SetStateAction<InputType>>;
+  profile: File | null;
+  setProfile: React.Dispatch<React.SetStateAction<File | null>>;
+}
+
 /* 포스팅 상세 관련 타입 */
 export interface PostingDetailType {
   type: string;
