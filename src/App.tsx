@@ -8,6 +8,7 @@ import Layout from './components/Header/Layout';
 import Search from './pages/Search';
 import Board from './pages/board/Board';
 import DetailProgram from './pages/DetailProgram';
+import RegisterProgram from './pages/RegisterProgram';
 import SignUp from './pages/signup';
 import DetailPosting from './pages/DetailPosting';
 import MyPosting from './pages/user/MyPosting';
@@ -50,6 +51,7 @@ const route = createBrowserRouter([
         path: 'detailProgram/:_programName/:_programId',
         element: <DetailProgram />,
       },
+      { path: 'register', element: <RegisterProgram /> },
       {
         path: 'signup',
         element: <SignUp />,
@@ -65,10 +67,6 @@ const route = createBrowserRouter([
       {
         path: 'detailProgram/:_programName/:_programId',
         element: <DetailProgram />,
-      },
-      {
-        path: 'signup',
-        element: <SignUp />,
       },
       {
         path: 'user',

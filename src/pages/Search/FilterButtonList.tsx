@@ -3,7 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import { DETAILED_CATEGORY_LIST } from '@/constants/Search';
 import FilterButtonItem from './FilterButtonItem';
 import FilterItem from './FilterItem';
-import { CustomCalendar } from './CustomCalendar';
+import moment from 'moment';
+import { CustomRangeCalendar } from '@/components/Calendar/CustomCalendar';
 
 interface FilterButtonListProps {
   filterList: FilterListType[];
@@ -87,6 +88,24 @@ const FilterButtonList = ({
     };
   }, [isOpenFilterItem]);
 
+  const handleCalendarChange = (value: [Date, Date]) => {
+    if (value) {
+      const fieldDate = filterItem.enTitle.includes('recruit')
+        ? ['recruitStartDate', 'recruitEndDate']
+        : ['tripStartDate', 'tripEndDate'];
+      const dateValue = value as [Date, Date];
+      setDate(dateValue);
+      setFilterInput({
+        ...filterInput,
+        [fieldDate[0]]: moment(dateValue[0]).format('YYYY-MM-DD'),
+        [fieldDate[1]]: moment(dateValue[1]).format('YYYY-MM-DD'),
+      });
+      setTimeout(() => {
+        setIsOpenFilterItem(false);
+      }, 150);
+    }
+  };
+
   return (
     <div style={{ height: 'min-content' }} ref={filterRef}>
       <FilterButtonItem
@@ -106,17 +125,9 @@ const FilterButtonList = ({
         />
       )}
       {isOpenFilterItem && filterItem.calendar && (
-        <CustomCalendar
+        <CustomRangeCalendar
           date={date}
-          setDate={setDate}
-          filterInput={filterInput}
-          setFilterInput={setFilterInput}
-          setIsOpenFilterItem={setIsOpenFilterItem}
-          fieldDate={
-            filterItem.enTitle.includes('recruit')
-              ? ['recruitStartDate', 'recruitEndDate']
-              : ['tripStartDate', 'tripEndDate']
-          }
+          handleCalendarChange={handleCalendarChange}
         />
       )}
     </div>

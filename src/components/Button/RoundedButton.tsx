@@ -1,3 +1,4 @@
+import { B1Bold } from '@/style/fonts/StyledFonts';
 import { ButtonStyleType } from '@/types';
 import styled from 'styled-components';
 
@@ -10,6 +11,7 @@ const RoundedButton = ({
   $buttonColor,
   $buttonWidth,
   $buttonHeight,
+  $hoverTextColor,
   onClick,
   children,
 }: ButtonProps) => {
@@ -18,6 +20,7 @@ const RoundedButton = ({
       $buttonColor={$buttonColor}
       $buttonWidth={$buttonWidth}
       $buttonHeight={$buttonHeight}
+      $hoverTextColor={$hoverTextColor}
       onClick={onClick}
     >
       <div className="button-text">{children}</div>
@@ -31,6 +34,12 @@ const StyledButton = styled.button<ButtonStyleType>`
   width: ${({ $buttonWidth }) => $buttonWidth};
   height: ${({ $buttonHeight }) => $buttonHeight};
   position: relative;
+
+  &:hover {
+    ${B1Bold} {
+      color: ${({ $hoverTextColor }) => $hoverTextColor};
+    }
+  }
 
   .button-text {
     display: flex;

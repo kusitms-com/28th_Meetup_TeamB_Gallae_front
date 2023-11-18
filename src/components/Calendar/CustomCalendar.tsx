@@ -2,44 +2,31 @@ import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
-import { FilterInputType } from '@/types';
 
-interface CustomCalendarProps {
-  //date: Value;
+interface CustomRangeCalendarProps {
   date: [Date, Date];
-  setDate: React.Dispatch<React.SetStateAction<[Date, Date]>>;
-  filterInput: FilterInputType;
-  setFilterInput: (input: FilterInputType) => void;
-  setIsOpenFilterItem: (isOpen: boolean) => void;
-  fieldDate: [string, string];
+  handleCalendarChange: (value: [Date, Date]) => void;
+  setIsOpen?: (isOpen: boolean) => void;
 }
 
-export const CustomCalendar = ({
+interface CustomPickCalendarProps {
+  date: Date;
+  handleCalendarChange: (value: Date) => void;
+  setIsOpen?: (isOpen: boolean) => void;
+}
+
+export const CustomRangeCalendar = ({
   date,
-  setDate,
-  filterInput,
-  setFilterInput,
-  setIsOpenFilterItem,
-  fieldDate,
-}: CustomCalendarProps) => {
+  handleCalendarChange,
+}: CustomRangeCalendarProps) => {
   return (
-    <Container>
+    <Container $position={false}>
       {
         <Calendar
           defaultValue={date}
           onChange={value => {
-            if (value) {
-              const dateValue = value as [Date, Date];
-              setDate(dateValue);
-              setFilterInput({
-                ...filterInput,
-                [fieldDate[0]]: moment(dateValue[0]).format('YYYY-MM-DD'),
-                [fieldDate[1]]: moment(dateValue[1]).format('YYYY-MM-DD'),
-              });
-              setTimeout(() => {
-                setIsOpenFilterItem(false);
-              }, 150);
-            }
+            const dateValue = value as [Date, Date];
+            handleCalendarChange(dateValue);
           }}
           formatDay={(_, date) => moment(date).format('D')}
           prevLabel={'◀'}
@@ -55,11 +42,41 @@ export const CustomCalendar = ({
   );
 };
 
-const Container = styled.div`
+export const CustomPickCalendar = ({
+  date,
+  handleCalendarChange,
+  setIsOpen,
+}: CustomPickCalendarProps) => {
+  return (
+    <Container $position={true}>
+      {
+        <Calendar
+          value={date}
+          onChange={value => {
+            const dateValue = value as Date;
+            handleCalendarChange(dateValue);
+            setTimeout(() => {
+              setIsOpen && setIsOpen(false);
+            }, 150);
+          }}
+          formatDay={(_, date) => moment(date).format('D')}
+          prevLabel={'◀'}
+          prev2Label={null}
+          nextLabel={'▶'}
+          next2Label={null}
+        />
+      }
+    </Container>
+  );
+};
+
+const Container = styled.div<{ $position: boolean }>`
   border-radius: 20px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
   margin-top: 12px;
   position: absolute;
+  z-index: 10;
+  ${props => props.$position && `top: 67px; right: 0;`}
 
   .react-calendar {
     width: 320px;
@@ -138,7 +155,7 @@ const Container = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0;
+        ${props => (props.$position ? `padding: 2px;` : `padding: 0;`)}
 
         abbr {
           /* B4Bold */
@@ -169,13 +186,22 @@ const Container = styled.div`
         }
       }
 
-      .react-calendar__tile--rangeEnd abbr {
-        border-radius: 0% 50% 50% 0%;
-      }
+      ${props =>
+        props.$position
+          ? `
+          .react-calendar__tile--rangeEnd abbr {
+            border-radius: 50%;
+          }
+          `
+          : `
+            .react-calendar__tile--rangeEnd abbr {
+              border-radius: 0% 50% 50% 0%;
+            }
 
-      .react-calendar__tile--rangeStart abbr {
-        border-radius: 50% 0% 0% 50%;
-      }
+            .react-calendar__tile--rangeStart abbr {
+              border-radius: 50% 0% 0% 50%;
+            }
+          `}
     }
   }
 `;
