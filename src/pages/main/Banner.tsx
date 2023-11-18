@@ -1,18 +1,20 @@
 import { B2 } from '@/style/fonts/StyledFonts';
 import styled from 'styled-components';
+import BannerText from '@/assets/main/banner_text.svg';
+import BannerImage from '@/assets/main/banner_image.svg';
 
 const Banner = () => {
   return (
     <Container>
       <InnerContainer>
         <LeftBox>
-          <img src="/src/assets/main/banner_text.svg" alt="갈래?" />
+          <img src={BannerText} alt="갈래?" />
           <Button>
             <B2 $fontColor="#fff">자세히보기</B2>
           </Button>
         </LeftBox>
         <RightBox>
-          <img src="/src/assets/main/banner_image.svg" alt="banner" />
+          <img src={BannerImage} alt="banner" />
         </RightBox>
       </InnerContainer>
     </Container>

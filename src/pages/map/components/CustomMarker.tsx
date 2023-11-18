@@ -1,5 +1,7 @@
 import React from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
+import ActiveMarker from '@/assets/map/marker_active.svg';
+import InActiveMarker from '@/assets/map/marker_inactive.svg';
 
 interface Props {
   lat: number;
@@ -31,9 +33,7 @@ const CustomMarker: React.FC<Props> = ({
         lng,
       }}
       image={{
-        src: isSelected
-          ? '/src/assets/map/marker_active.svg'
-          : '/src/assets/map/marker_inactive.svg', // 마커이미지의 주소입니다
+        src: isSelected ? ActiveMarker : InActiveMarker, // 마커이미지의 주소입니다
         size: {
           width: 64,
           height: 69,

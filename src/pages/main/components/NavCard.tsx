@@ -1,6 +1,7 @@
 import { B2, H3 } from '@/style/fonts/StyledFonts';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import ArrowIcon from '@/assets/icons/icon-arrow.svg';
 
 interface Props {
   description: string;
@@ -27,7 +28,7 @@ const NavCard: React.FC<Props> = ({
           <B2 $fontColor="#fff">{description}</B2>
           <Title>
             <H3 $fontColor="#fff">{title}</H3>
-            <img src="/src/assets/icons/icon-arrow.svg" alt="arrow" />
+            <img src={ArrowIcon} alt="arrow" />
           </Title>
         </TextContainer>
       </InnerContainer>

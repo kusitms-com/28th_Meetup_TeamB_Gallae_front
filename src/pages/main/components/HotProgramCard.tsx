@@ -1,6 +1,8 @@
+import styled from 'styled-components';
+
 import { B1Bold, B3, B3Bold, H3 } from '@/style/fonts/StyledFonts';
 import { ProgramMainInfoType } from '@/types';
-import styled from 'styled-components';
+import HeartIcon from '@/assets/icons/icon-heart.svg';
 
 const HotProgramCard: React.FC<ProgramMainInfoType> = ({
   photoUrl,
@@ -20,7 +22,7 @@ const HotProgramCard: React.FC<ProgramMainInfoType> = ({
           ))}
         </FlexContainer>
         <FlexContainer gap={4}>
-          <img src="/src/assets/icons/icon-heart.svg" alt="heart" />
+          <img src={HeartIcon} alt="heart" />
           <B3Bold $fontColor="#fff">{like}</B3Bold>
         </FlexContainer>
       </TextContainer>

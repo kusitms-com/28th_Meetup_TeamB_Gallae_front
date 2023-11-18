@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import UserIcon from '/src/assets/icons/user-icon.svg';
+import UserIcon from '@/assets/icons/user-icon.svg';
 import LikeButton from '@/components/Button/LikeButton';
 
 import { B1, B1Bold, B3, B3Bold, H2 } from '@/style/fonts/StyledFonts';
