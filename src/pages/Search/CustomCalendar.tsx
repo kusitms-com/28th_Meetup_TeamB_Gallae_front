@@ -2,11 +2,12 @@ import Calendar from 'react-calendar';
 import styled from 'styled-components';
 import 'react-calendar/dist/Calendar.css';
 import moment from 'moment';
-import { FilterInputType, Value } from '@/types';
+import { FilterInputType } from '@/types';
 
 interface CustomCalendarProps {
-  date: Value;
-  setDate: React.Dispatch<React.SetStateAction<Value>>;
+  //date: Value;
+  date: [Date, Date];
+  setDate: React.Dispatch<React.SetStateAction<[Date, Date]>>;
   filterInput: FilterInputType;
   setFilterInput: (input: FilterInputType) => void;
   setIsOpenFilterItem: (isOpen: boolean) => void;
@@ -40,7 +41,7 @@ export const CustomCalendar = ({
               }, 150);
             }
           }}
-          formatDay={(locale, date) => moment(date).format('D')}
+          formatDay={(_, date) => moment(date).format('D')}
           prevLabel={'◀'}
           prev2Label={null}
           nextLabel={'▶'}
