@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import LikeIcon from '/src/assets/icons/favorite_button2_icon.svg';
-import UnLikeIcon from '/src/assets/icons/unfavorite_button2_icon.svg';
+import LikeIcon from '@/assets/icons/favorite_button2_icon.svg';
+import UnLikeIcon from '@/assets/icons/unfavorite_button2_icon.svg';
 import { useCallback } from 'react';
 
 interface Props {

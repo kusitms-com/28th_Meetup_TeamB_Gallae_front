@@ -1,6 +1,9 @@
 import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
 import { useState } from 'react';
 import styled from 'styled-components';
+import Naver from '@/assets/icons/icon-naver.svg';
+import Kakao from '@/assets/icons/icon-kakao.svg';
+import Google from '@/assets/icons/icon-google.svg';
 
 interface UserInputType {
   id: string;
@@ -63,15 +66,15 @@ const Login = () => {
       <SocialLoginContainer>
         {/* 네이버 로그인 */}
         <SocialLoginButton>
-          <img src="/src/assets/icons/icon-naver.svg" alt="naver" />
+          <img src={Naver} alt="naver" />
         </SocialLoginButton>
         {/* 카카오 로그인 */}
         <SocialLoginButton onClick={handleKakaoLogin}>
-          <img src="/src/assets/icons/icon-kakao.svg" alt="kakao" />
+          <img src={Kakao} alt="kakao" />
         </SocialLoginButton>
         {/* 구글 로그인 */}
         <SocialLoginButton>
-          <img src="/src/assets/icons/icon-google.svg" alt="google" />
+          <img src={Google} alt="google" />
         </SocialLoginButton>
       </SocialLoginContainer>
     </Container>

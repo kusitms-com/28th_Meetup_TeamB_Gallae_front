@@ -1,7 +1,9 @@
-import { HeaderData, UserDropdown } from '@/constants/Header';
-import { B1, H3 } from '@/style/fonts/StyledFonts';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { HeaderData, UserDropdown } from '@/constants/Header';
+import { B1, H3 } from '@/style/fonts/StyledFonts';
+import UserIcon from '@/assets/icons/user-icon.svg';
 
 const Header = () => {
   const handleLogout = () => {
@@ -31,7 +33,7 @@ const Header = () => {
         {/* 헤더 우측 (유저 아이콘) */}
         <NavBarContainer>
           <NavBar>
-            <img src="/src/assets/icons/user-icon.svg" alt="user" />
+            <img src={UserIcon} alt="user" />
             <Dropdown>
               {UserDropdown.map(({ title, link }, index) => (
                 <li key={index} className={`${title}`}>

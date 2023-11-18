@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { B1Bold, B3 } from '../../../style/fonts/StyledFonts';
 
+import CloseIcon from '@/assets/icons/icon-close.svg';
+
 interface Props {
   imageSrc: string;
   title: string;
@@ -39,7 +41,7 @@ const MapCard: React.FC<Props> = ({
         </LikeButton>
       </BottomContainer>
       <CloseButton onClick={handleClose}>
-        <img src="/src/assets/icons/icon-close.svg" alt="close" />
+        <img src={CloseIcon} alt="close" />
       </CloseButton>
     </Container>
   );

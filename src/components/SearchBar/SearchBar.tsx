@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import styled from 'styled-components';
+import SearchImage from '@/assets/icons/icon-search.svg';
 
 interface Props {
   placeHolder: string;
@@ -30,7 +31,7 @@ const SearchBar: React.FC<Props> = ({
         onChange={onChange}
       />
       <button type="submit">
-        <img src="/src/assets/icons/icon-search.svg" alt="search" />
+        <img src={SearchImage} alt="search" />
       </button>
     </Container>
   );
