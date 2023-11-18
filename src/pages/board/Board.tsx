@@ -153,7 +153,7 @@ const Board: React.FC<BoardProps> = ({ title, description, imageSrc }) => {
           placeHolder={'검색어를 입력해 주세요'}
           searchInput={searchInput}
           setSearchInput={setSearchInput}
-          handleClick={() => {}}
+          handleSubmit={() => {}}
         />
       </SearchBarWrapper>
       <PostingList filter={filter} postingList={tempData} />

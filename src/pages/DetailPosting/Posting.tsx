@@ -5,9 +5,9 @@ import UserIcon from '/src/assets/icons/user-icon.svg';
 import LikeButton from '@/components/Button/LikeButton';
 
 import { B1, B1Bold, B3, B3Bold, H2 } from '@/style/fonts/StyledFonts';
-import { PostingType } from '@/types';
+import { PostingDetailType } from '@/types';
 
-const Posting: React.FC<PostingType> = ({
+const Posting: React.FC<PostingDetailType> = ({
   type,
   title,
   nickName,

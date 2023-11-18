@@ -75,7 +75,7 @@ const historyData: MileageHistoryType[] = [
 
 // 내 마일리지 페이지
 const Mileage = () => {
-  const [point, setPoint] = useState<number>(40); // 현재 마일리지
+  const [point] = useState<number>(40); // 현재 마일리지
   const [page, setPage] = useState<number>(1); // 페이지네이션
   const [filter, setFilter] = useState<string>('전체');
   const [term, setTerm] = useState<string>(''); // 조회 기간

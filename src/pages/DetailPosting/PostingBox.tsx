@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Attatchment from './Attatchment';
@@ -21,7 +21,7 @@ const tempData: PostingDataType = {
 };
 
 const PostingBox = () => {
-  const { id: postingId } = useParams();
+  // const { id: postingId } = useParams();
   const [isLike, setIsLike] = useState(false);
 
   return (

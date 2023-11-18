@@ -61,7 +61,7 @@ export interface ButtonStyleType {
 }
 
 /* 포스팅 상세 관련 타입 */
-export interface PostingType {
+export interface PostingDetailType {
   type: string;
   title: string;
   nickName: string;
