@@ -82,3 +82,17 @@ export interface PostingDataType {
   registeredDate: string;
   attatchment: string;
 }
+
+export interface MileageHistoryType {
+  id: number;
+  date: string;
+  time: string;
+  type: string;
+  detail: string;
+  usage: number;
+}
+
+export interface TipDataType {
+  title: string;
+  content: string[];
+}
