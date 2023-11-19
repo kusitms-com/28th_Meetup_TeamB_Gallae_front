@@ -41,9 +41,8 @@ const Container = styled.div`
 
   position: relative;
 
-  width: 100%;
-  padding: 0 360px;
-  margin-top: 44px;
+  width: 1440px;
+  margin: 44px auto 0;
 
   gap: 64px;
 `;

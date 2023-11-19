@@ -1,4 +1,4 @@
-import { B2, H1 } from '@/style/fonts/StyledFonts';
+import { B2 } from '@/style/fonts/StyledFonts';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -15,7 +15,7 @@ const Introduction: React.FC<Props> = ({ title, imageSrc, description }) => {
         <img src={imageSrc} alt="" />
       </ImageWrapper>
       <TextContainer>
-        <H1 $fontColor="var(--gray-900, #15191D)">{title}</H1>
+        <Title>{title}</Title>
         <B2 $fontColor="var(--gray-600, #666B6F)">{description}</B2>
       </TextContainer>
     </Container>
@@ -32,6 +32,15 @@ const Container = styled.div`
   margin-top: 163px;
 
   gap: 55px;
+`;
+
+const Title = styled.pre`
+  color: var(--gray-900, #15191d);
+  font-family: 'Recipekorea';
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 54px */
 `;
 
 const ImageWrapper = styled.div`

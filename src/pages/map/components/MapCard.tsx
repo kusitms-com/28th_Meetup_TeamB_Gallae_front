@@ -1,44 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+
 import { B1Bold, B3 } from '../../../style/fonts/StyledFonts';
+import LikeButton from '@/components/Button/LikeButton';
 
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
 interface Props {
-  imageSrc: string;
-  title: string;
+  id: number;
+  photoUrl: string;
+  programName: string;
   period: string;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelected: React.Dispatch<React.SetStateAction<number>>;
   cardRef: React.RefObject<HTMLDivElement>;
+  isLiked: boolean;
 }
 
 const MapCard: React.FC<Props> = ({
-  imageSrc,
-  title,
+  id,
+  photoUrl,
+  programName,
   period,
   setIsModalOpen,
   setSelected,
   cardRef,
+  isLiked,
 }) => {
-  const handleClose = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/detailProgram/${programName}/${id}`);
+  };
+
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsModalOpen(false);
     setSelected(-1);
   };
 
+  const [isLike, setIsLike] = useState<boolean>(isLiked);
+
   return (
-    <Container ref={cardRef}>
+    <Container ref={cardRef} onClick={handleClick}>
       <ImageWrapper>
-        <img src={imageSrc} alt="thumbNail" />
+        <img src={photoUrl} alt="thumbNail" />
       </ImageWrapper>
       <BottomContainer>
         <TextContainer>
-          <B1Bold $fontColor="#15191D">{title}</B1Bold>
+          <B1Bold $fontColor="#15191D">{programName}</B1Bold>
           <B3 $fontColor="#8E9398">{period}</B3>
         </TextContainer>
-        <LikeButton>
-          <img src="/src/assets/map/heart_inactive.svg" alt="" />
-        </LikeButton>
+        <LikeButton isLike={isLike} setIsLike={setIsLike} type="program" />
       </BottomContainer>
       <CloseButton onClick={handleClose}>
         <img src={CloseIcon} alt="close" />
@@ -57,6 +70,8 @@ const Container = styled.div`
   width: 480px;
   height: 360px;
   flex-shrink: 0;
+
+  cursor: pointer;
 
   padding: 20px;
 
@@ -91,6 +106,7 @@ const CloseButton = styled.div`
   top: 10px;
   right: 10px;
 
+  z-index: 3;
   cursor: pointer;
 
   img {
@@ -105,15 +121,4 @@ const TextContainer = styled.div`
   align-items: flex-start;
   gap: 4px;
   margin: 0;
-`;
-
-const LikeButton = styled.div`
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-
-  fill: var(--main_1, #fff);
-  stroke-width: 1px;
-  stroke: var(--grey-300, #d2d7dc);
-  backdrop-filter: blur(2.5px);
 `;

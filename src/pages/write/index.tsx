@@ -4,11 +4,11 @@ import ReactQuill, { Quill } from 'react-quill';
 import styled from 'styled-components';
 import ImageResize from 'quill-image-resize-module-react';
 
+import '@/style/quill.snow.css';
 import DropDown from '@/components/DropDown/DropDown';
 import InputTags from './components/InputTags';
 import RoundedButton from '@/components/Button/RoundedButton';
 import { B3 } from '@/style/fonts/StyledFonts';
-import 'react-quill/dist/quill.snow.css';
 import { imageHandler, isOkToPost } from './functions';
 import { DropDownData } from '@/constants/write';
 import InputFile from './components/InputFile';

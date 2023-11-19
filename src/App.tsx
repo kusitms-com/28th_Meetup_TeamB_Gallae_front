@@ -3,7 +3,7 @@ import Main from './pages/main/Main';
 import Map from './pages/map/Map';
 import { GlobalStyle } from './style/GlobalStyle';
 import Login from './pages/login/Login';
-import KakaoRedir from './pages/login/KakaoRedir';
+import KakaoRedir from './pages/login/redir/KakaoRedir';
 import Layout from './components/Header/Layout';
 import Search from './pages/Search';
 import Board from './pages/board/Board';

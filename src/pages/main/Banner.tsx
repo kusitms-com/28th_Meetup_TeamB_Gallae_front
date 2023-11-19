@@ -38,8 +38,8 @@ const InnerContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  width: 100%;
-  padding: 0 360px;
+  width: 1440px;
+  margin: auto;
 `;
 
 const LeftBox = styled.div`

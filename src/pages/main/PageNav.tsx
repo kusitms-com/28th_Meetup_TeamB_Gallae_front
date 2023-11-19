@@ -3,15 +3,12 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import NavCard from './components/NavCard';
 import { NavData } from '@/constants/main';
+import { handleClickSearchProgram } from '@/functions';
 import { useNavigate } from 'react-router-dom';
 
 const PageNav = () => {
   const [searchInput, setSearchInput] = useState('');
   const navigate = useNavigate();
-
-  const handleSearch = () => {
-    navigate(`/search?keyword=${searchInput}`);
-  };
 
   return (
     <Container>
@@ -20,7 +17,9 @@ const PageNav = () => {
           placeHolder="어디로 떠나고 싶으신가요?"
           searchInput={searchInput}
           setSearchInput={setSearchInput}
-          handleSubmit={handleSearch}
+          handleSubmit={() =>
+            handleClickSearchProgram(searchInput, setSearchInput, navigate)
+          }
         />
       </SearchBarWrapper>
       <NavContainer>
@@ -39,9 +38,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  width: 100%;
-  padding: 0 360px;
-
+  width: 1440px;
+  margin: auto;
   gap: 120px;
 `;
 
