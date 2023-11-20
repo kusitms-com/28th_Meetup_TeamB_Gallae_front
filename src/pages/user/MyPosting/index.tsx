@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import PostingList from '../../board/PostingList';
-import { tempData } from '../../board/Board';
+// import PostingList from '../../board/PostingList';
 import { useState } from 'react';
 import PageBar from '@/components/PageBar/PageBar';
 
@@ -10,7 +9,7 @@ const MyPosting = () => {
   return (
     <Container>
       <Title>{'내가 쓴 글'}</Title>
-      <PostingList filter={'전체'} postingList={tempData} />
+      {/* <PostingList filter={'전체'} postingList={tempData} /> */}
       <PageBar page={page} setPage={setPage} maxPage={20} />
     </Container>
   );

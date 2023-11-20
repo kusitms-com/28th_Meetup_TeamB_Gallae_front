@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
-import Axios from '@/apis';
 import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
 import SocialLogin from './SocialLogin';
 import LoginNavLink from './LoginNavLink';
-import { onLoginSuccess } from './functions';
+import { userLogin } from './functions';
+import { UserAtom } from '@/recoil/LoginAtom';
 
 interface UserInputType {
   id: string;
@@ -19,25 +20,13 @@ const Login = () => {
     password: '',
   });
   const [isError, setIsError] = useState<boolean>(false);
+  const setUserInfo = useSetRecoilState(UserAtom);
+
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const res = await Axios.post('/auth/login', null, {
-        params: { loginId: userInput.id, loginPassword: userInput.password },
-      });
-      onLoginSuccess(res);
-      navigate('/');
-    } catch (e) {
-      // 비밀번호 불일치시 메시지
-      setIsError(true);
-      setTimeout(() => {
-        setIsError(false);
-      }, 4000);
-      console.error(e);
-    } finally {
-      setUserInput(prev => ({ ...prev, password: '' }));
-    }
+  const handleLogin = () => {
+    // 로그인 함수 호출
+    userLogin(userInput, setUserInput, setIsError, navigate, setUserInfo);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {

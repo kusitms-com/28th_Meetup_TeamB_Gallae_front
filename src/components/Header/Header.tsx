@@ -1,14 +1,44 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 
 import { HeaderData, UserDropdown } from '@/constants/Header';
 import { B1, H3 } from '@/style/fonts/StyledFonts';
 import UserIcon from '@/assets/icons/user-icon.svg';
+import RoundedButton from '../Button/RoundedButton';
+import { UserAtom } from '@/recoil/LoginAtom';
 
 const Header = () => {
+  const [isLogined, setIsLogined] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useRecoilState(UserAtom);
+
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     // logout
+    // 저장하고 있던 사용자 정보 초기화
+    console.log(userInfo);
+    setUserInfo({
+      id: -1,
+      email: '',
+      phoneNumber: '',
+      name: '',
+      nickName: '',
+    });
+    setTimeout(() => {
+      setIsLogined(false);
+    }, 1000);
   };
+
+  const handleToLogin = () => {
+    navigate('/login');
+  };
+
+  useEffect(() => {
+    if (userInfo?.id != -1) setIsLogined(true);
+  }, [userInfo]);
+
   return (
     <Container>
       <InnerContainer>
@@ -32,22 +62,33 @@ const Header = () => {
 
         {/* 헤더 우측 (유저 아이콘) */}
         <NavBarContainer>
-          <NavBar>
-            <img src={UserIcon} alt="user" />
-            <Dropdown>
-              {UserDropdown.map(({ title, link }, index) => (
-                <li key={index} className={`${title}`}>
-                  <Link to={link} state={{ filter: title }}>
-                    <B1 $fontColor="#15191D">{title}</B1>
-                  </Link>
+          {isLogined ? (
+            <NavBar>
+              <img src={UserIcon} alt="user" />
+              <Dropdown>
+                {UserDropdown.map(({ title, link }, index) => (
+                  <li key={index} className={`${title}`}>
+                    <Link to={link} state={{ filter: title }}>
+                      <B1 $fontColor="#15191D">{title}</B1>
+                    </Link>
+                  </li>
+                ))}
+                <Seperator />
+                <li onClick={handleLogout}>
+                  <B1 $fontColor="#15191D">{'로그아웃'}</B1>
                 </li>
-              ))}
-              <Seperator />
-              <li onClick={handleLogout}>
-                <B1 $fontColor="#15191D">{'로그아웃'}</B1>
-              </li>
-            </Dropdown>
-          </NavBar>
+              </Dropdown>
+            </NavBar>
+          ) : (
+            <RoundedButton
+              $buttonColor="#35393D"
+              $buttonWidth="109px"
+              $buttonHeight="40px"
+              $hoverTextColor="#fff"
+              onClick={handleToLogin}
+              children={<B1 $fontColor="#fff">로그인</B1>}
+            />
+          )}
         </NavBarContainer>
       </InnerContainer>
     </Container>

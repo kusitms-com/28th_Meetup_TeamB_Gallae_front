@@ -1,14 +1,16 @@
+import { useCallback } from 'react';
+
 import { B2Bold } from '@/style/fonts/StyledFonts';
 import { PostingType } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Posting: React.FC<PostingType> = ({
-  boardName,
+  category,
   title,
   id,
-  nickName,
-  registerDate,
+  writer,
+  createdDate,
 }) => {
   const navigate = useNavigate();
 
@@ -16,18 +18,25 @@ const Posting: React.FC<PostingType> = ({
     navigate(`${id}`);
   };
 
+  const truncDate = useCallback(() => {
+    const newDate = new Date(createdDate);
+    return `${newDate.getFullYear()}-${
+      newDate.getMonth() + 1
+    }-${newDate.getDate()}`;
+  }, [createdDate]);
+
   return (
     <Container>
       <B2Bold $fontColor="#53575C" className="board_name">
-        {boardName}
+        {category}
       </B2Bold>
       <B2Bold $fontColor="#53575C" className="title" onClick={handleClick}>
         {title}
       </B2Bold>
       <B2Bold $fontColor="#53575C" className="writer">
-        {nickName}
+        {writer}
       </B2Bold>
-      <B2Bold $fontColor="#53575C">{registerDate}</B2Bold>
+      <B2Bold $fontColor="#53575C">{truncDate()}</B2Bold>
     </Container>
   );
 };
