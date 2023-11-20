@@ -13,16 +13,12 @@ export const HeaderData: HeaderDataProps[] = [
     main: '갈래 소개',
     dropDowns: [
       {
-        title: '전체',
-        link: '전체',
+        title: "'갈래' 소개",
+        link: '/about/gallae',
       },
       {
-        title: '전체',
-        link: '전체',
-      },
-      {
-        title: '전체',
-        link: '전체',
+        title: "'갈래'와 함께하는 사람들",
+        link: '/about/maker',
       },
     ],
   },
