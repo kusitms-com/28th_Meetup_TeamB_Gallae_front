@@ -3,16 +3,23 @@ import styled from 'styled-components';
 import { B1Bold, B3, B3Bold, H3 } from '@/style/fonts/StyledFonts';
 import { ProgramMainInfoType } from '@/types';
 import HeartIcon from '@/assets/icons/icon-heart.svg';
+import { useNavigate } from 'react-router-dom';
 
 const HotProgramCard: React.FC<ProgramMainInfoType> = ({
+  id,
   photoUrl,
   remainDay,
   programName,
   hashTag,
   like,
 }) => {
+  const naviate = useNavigate();
+  const handleClick = () => {
+    naviate(`/detailProgram/${programName}/${id}`);
+  };
+
   return (
-    <Container imagesrc={photoUrl}>
+    <Container imagesrc={photoUrl} onClick={handleClick}>
       <TextContainer>
         <B1Bold $fontColor="#FF7D2C">{remainDay}</B1Bold>
         <H3 $fontColor="#fff">{programName}</H3>

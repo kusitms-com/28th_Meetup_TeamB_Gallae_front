@@ -37,7 +37,7 @@ const InputText: React.FC<Props> = ({
       <FlexBox>
         <StyledInput
           type={
-            keyName === 'password' || keyName === 'repassword'
+            keyName === 'loginPw' || keyName === 'repassword'
               ? 'password'
               : 'text'
           }

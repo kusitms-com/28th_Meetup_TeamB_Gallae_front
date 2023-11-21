@@ -19,6 +19,7 @@ interface markerDataType {
   programName: string;
   recruitStartDate: string;
   recruitEndDate: string;
+  userLikeCheck: boolean;
 }
 
 const MapPage = () => {
@@ -48,8 +49,10 @@ const MapPage = () => {
   if (isLoading) return <Loading />;
 
   const markerData: markerDataType[] = data?.data?.result
-    ? data?.data?.result
+    ? data?.data?.result?.programs
     : [];
+
+  console.log(markerData);
 
   return (
     <Container>
@@ -57,10 +60,10 @@ const MapPage = () => {
         <MapCard
           cardRef={cardRef}
           {...markerData[selected]}
-          period={`${markerData[selected].recruitStartDate} - ${markerData[selected].recruitEndDate}`}
+          period={`${markerData[selected].recruitStartDate}-${markerData[selected].recruitEndDate}`}
           setIsModalOpen={setIsModalOpen}
           setSelected={setSelected}
-          isLiked={false}
+          isLiked={markerData[selected].userLikeCheck}
         />
       )}
       <SearchBarWrapper>

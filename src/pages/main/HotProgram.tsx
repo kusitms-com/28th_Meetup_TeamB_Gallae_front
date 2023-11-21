@@ -13,7 +13,7 @@ const HotProgram = () => {
     staleTime: 500005,
   });
 
-  const hotPrograms: ProgramMainInfoType[] = data?.data?.result;
+  const hotPrograms: ProgramMainInfoType[] = data?.data?.result?.programs;
 
   return (
     <Container>

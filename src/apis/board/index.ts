@@ -1,22 +1,23 @@
 import Axios from '..';
 
 export const fetchBoardData =
-  (boardType: string, filter: string, page: number, size: number) => () => {
-    if (boardType === 'review') {
-      return Axios.get('/reviews/category', {
+  (boardType: string, filter: string, page: number, size: number) => () =>
+    Axios.get(`/${boardType}/category`, {
+      params: {
+        category: filter === '전체' ? null : filter,
+        page: page - 1,
+        size,
+      },
+    });
+
+export const fetchMyBoardData =
+  (filter: string, page: number, size: number) => () =>
+    Axios.get(
+      `users/myPosts/${filter === '지원 후기' ? 'review' : 'archive'}`,
+      {
         params: {
-          category: filter === '전체' ? null : filter,
           page: page - 1,
           size,
         },
-      });
-    } else if (boardType === 'archive') {
-      return Axios.get('/archives/category', {
-        params: {
-          category: filter,
-          page: page - 1,
-          size,
-        },
-      });
-    }
-  };
+      },
+    );

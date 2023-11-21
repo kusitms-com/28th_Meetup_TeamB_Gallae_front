@@ -33,7 +33,7 @@ const PostingList: React.FC<Props> = ({ postingList }) => {
 
       <WritingButton
         onClick={() => {
-          navigate('/write');
+          navigate('write');
         }}
       >
         <B3Bold $fontColor="#fff">글쓰기</B3Bold>

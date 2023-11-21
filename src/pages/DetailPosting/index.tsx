@@ -7,11 +7,15 @@ interface Props {
 }
 
 const DetailPosting: React.FC<Props> = ({ title }) => {
+  const postingType: string = window.location.pathname.includes('review')
+    ? 'reviews'
+    : 'archives';
+
   return (
     <Container>
       <Title>{title}</Title>
-      <PostingBox />
-      <OtherPostings />
+      <PostingBox postingType={postingType} />
+      <OtherPostings postingType={postingType} />
     </Container>
   );
 };

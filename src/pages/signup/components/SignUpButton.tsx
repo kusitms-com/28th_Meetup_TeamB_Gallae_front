@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { B2Bold } from '@/style/fonts/StyledFonts';
 
-const SignUpButton: React.FC<{ isOkToSubmit: boolean }> = ({
-  isOkToSubmit,
-}) => {
+const SignUpButton: React.FC<{
+  isOkToSubmit: boolean;
+  handleClick: () => void;
+}> = ({ isOkToSubmit, handleClick }) => {
   return (
-    <Button isOkToSubmit={isOkToSubmit} disabled={!isOkToSubmit}>
+    <Button
+      isOkToSubmit={isOkToSubmit}
+      disabled={!isOkToSubmit}
+      onClick={handleClick}
+    >
       <B2Bold $fontColor="#fff">회원가입</B2Bold>
     </Button>
   );

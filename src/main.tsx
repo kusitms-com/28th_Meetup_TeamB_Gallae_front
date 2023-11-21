@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import App from './App.tsx';
+import '@/style/minreset.css';
 
 const queryClient = new QueryClient();
 

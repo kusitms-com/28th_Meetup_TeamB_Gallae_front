@@ -1,16 +1,41 @@
 import styled from 'styled-components';
-// import PostingList from '../../board/PostingList';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
+
+import PostingList from '../../board/PostingList';
 import PageBar from '@/components/PageBar/PageBar';
+import Filter from '@/pages/board/Filter';
+import { fetchMyBoardData } from '@/apis/board';
+import Loading from '@/components/Loading/Loading';
+
+const filterList: string[] = ['지원 후기', '자료실'];
 
 const MyPosting = () => {
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState<string>('지원 후기'); // 지원 후기 or 자료실
 
+  const { isLoading, data } = useQuery(
+    ['MyPosting', filter, page],
+    fetchMyBoardData(filter, page, 10),
+    {
+      cacheTime: 500005,
+      staleTime: 500000,
+    },
+  );
+
+  if (isLoading) return <Loading />;
+
+  const myPostingData = data?.data.result;
   return (
     <Container>
       <Title>{'내가 쓴 글'}</Title>
-      {/* <PostingList filter={'전체'} postingList={tempData} /> */}
-      <PageBar page={page} setPage={setPage} maxPage={20} />
+      <Filter filter={filter} setFilter={setFilter} filterList={filterList} />
+      <PostingList postingList={myPostingData?.userPosts} />
+      <PageBar
+        page={page}
+        setPage={setPage}
+        maxPage={myPostingData?.totalpages}
+      />
     </Container>
   );
 };

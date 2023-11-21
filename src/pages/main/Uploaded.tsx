@@ -17,7 +17,7 @@ const Uploaded = () => {
     },
   );
 
-  const programs: ProgramMainInfoType[] = data?.data?.result;
+  const programs: ProgramMainInfoType[] = data?.data?.result?.programs;
 
   return (
     <Container>

@@ -12,6 +12,9 @@ import { B3 } from '@/style/fonts/StyledFonts';
 import { imageHandler, isOkToPost } from './functions';
 import { DropDownData } from '@/constants/write';
 import InputFile from './components/InputFile';
+import { postBoardData, setEditData } from '@/apis/write';
+import { useRecoilValue } from 'recoil';
+import { UserAtom } from '@/recoil/LoginAtom';
 
 Quill.register('modules/imageResize', ImageResize); // 이미지 사이즈 변경 모듈 등록
 
@@ -22,7 +25,30 @@ const Write = () => {
   const [content, setContent] = useState<string>(''); // 내용 <HTML>
   const [inputTag, setInputTag] = useState<string>(''); //입력중인 태그
   const [tags, setTags] = useState<string[]>(); // 현재까지 입력된 태그 리스트
-  const [inputFile, setInputFile] = useState<File>();
+  const [inputFile, setInputFile] = useState<File | undefined>();
+  const userInfo = useRecoilValue(UserAtom);
+
+  const currentPath = window.location.pathname;
+  const writeType = currentPath.includes('review') ? 'reviews' : 'archives';
+  const isEdit = currentPath.includes('edit');
+
+  useEffect(() => {
+    if (isEdit) {
+      // 수정 페이지라면
+      const splitPath = currentPath.split('/');
+      const id = splitPath[splitPath.length - 1];
+      // 데이터 미리 불러와서 세팅하기
+      setEditData(
+        writeType,
+        id,
+        setInputFile,
+        setSelected,
+        setContent,
+        setTags,
+        setTitle,
+      );
+    }
+  }, []);
 
   const navigate = useNavigate();
 
@@ -39,8 +65,20 @@ const Write = () => {
       window.alert('입력되지 않은 내용이 있습니다.');
       return;
     }
-    // Todo: 서버에 요청
-  }, []);
+    const splitPath = currentPath.split('/');
+    const id = isEdit ? splitPath[splitPath.length - 1] : null;
+    postBoardData(
+      id,
+      isEdit,
+      writeType,
+      selected,
+      title,
+      content,
+      tags,
+      inputFile,
+      userInfo?.nickName,
+    );
+  }, [selected, title, content, tags, inputFile]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -73,7 +111,7 @@ const Write = () => {
       <Title>글쓰기</Title>
       <MainContainer>
         <DropDown
-          {...DropDownData}
+          {...DropDownData[`${writeType === 'reviews' ? 0 : 1}`]}
           selected={selected}
           setSelected={setSelected}
           position="relative"
@@ -124,7 +162,9 @@ const Write = () => {
             $buttonWidth="140px"
             $buttonHeight="46px"
             onClick={handleSubmit}
-            children={<B3 $fontColor="#fff">등록</B3>}
+            children={
+              <B3 $fontColor="#fff">{`${isEdit ? '수정' : '등록'}`}</B3>
+            }
           />
         </ButtonContainer>
       </MainContainer>

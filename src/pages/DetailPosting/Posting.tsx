@@ -4,44 +4,66 @@ import styled from 'styled-components';
 import UserIcon from '@/assets/icons/user-icon.svg';
 import LikeButton from '@/components/Button/LikeButton';
 
-import { B1, B1Bold, B3, B3Bold, H2 } from '@/style/fonts/StyledFonts';
+import './styles/posting.module.css';
+import { B1Bold, B3, B3Bold, H2 } from '@/style/fonts/StyledFonts';
 import { PostingDetailType } from '@/types';
+import { useRecoilValue } from 'recoil';
+import { UserAtom } from '@/recoil/LoginAtom';
+import EditDelete from '../write/components/EditDelete';
 
 const Posting: React.FC<PostingDetailType> = ({
-  type,
+  id,
+  category,
   title,
-  nickName,
-  content,
-  hashTags,
-  registeredDate,
+  writer,
+  body,
+  hashtag,
+  createdDate,
   isLike,
   setIsLike,
 }) => {
+  const userInfo = useRecoilValue(UserAtom);
+  const currentPath = window.location.pathname;
+  const writeType = currentPath.includes('review') ? 'review' : 'archive';
+
   return (
     <TextContainer>
       <PostingInfoContainer>
         <LeftBox>
-          <B3Bold $fontColor="#FF7D2C">{type}</B3Bold>
+          <B3Bold $fontColor="#FF7D2C">{category}</B3Bold>
           <H2 $fontColor="#100f0f">{title}</H2>
           <UserInfo>
             <img src={UserIcon} />
-            <B3 $fontColor="#15191D">{nickName}</B3>
+            <B3 $fontColor="#15191D">{writer}</B3>
           </UserInfo>
         </LeftBox>
-        <LikeButtonWrapper>
-          <LikeButton isLike={isLike} setIsLike={setIsLike} type="posting" />
-        </LikeButtonWrapper>
+        <RightBox>
+          {userInfo.nickName === writer && (
+            <EditDelete writeType={writeType} id={id} />
+          )}
+          <LikeButtonWrapper>
+            <LikeButton
+              isLike={isLike}
+              setIsLike={setIsLike}
+              type={writeType}
+              id={id}
+            />
+          </LikeButtonWrapper>
+        </RightBox>
       </PostingInfoContainer>
       <Seperator />
       <MainContent>
-        <B1 $fontColor="#15191D">{content}</B1>
+        <div
+          className=".ql-body"
+          dangerouslySetInnerHTML={{ __html: body }}
+        ></div>
         <TagContainer>
-          {hashTags.map(tag => (
-            <B1Bold $fontColor="#AEB3B8">{`#${tag}`}</B1Bold>
-          ))}
+          {hashtag
+            ?.split(',')
+            ?.map(tag => <B1Bold $fontColor="#AEB3B8">{`${tag}`}</B1Bold>)}
         </TagContainer>
         <RegisterData>
-          <B3Bold $fontColor="#15191D">{`등록일 : ${registeredDate}`}</B3Bold>
+          <B3Bold $fontColor="#15191D">{`등록일 : ${createdDate}`}</B3Bold>
         </RegisterData>
       </MainContent>
     </TextContainer>
@@ -55,6 +77,7 @@ const TextContainer = styled.div`
   flex-direction: column;
 
   width: 100%;
+  height: 100%;
   padding: 44px 40px 36px;
   margin-top: 80px;
 
@@ -67,6 +90,7 @@ const PostingInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
 `;
 
 const LeftBox = styled.div`
@@ -76,10 +100,18 @@ const LeftBox = styled.div`
   gap: 8px;
 `;
 
+const RightBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
+
 const LikeButtonWrapper = styled.div`
   width: 48px;
   height: 48px;
 
+  position: absolute;
+  bottom: 0;
   align-self: flex-end;
 `;
 

@@ -49,7 +49,10 @@ const ImageWrapper = styled.div`
   height: 180px;
   flex-shrink: 0;
 
-  border: 1px solid var(--grey-900, #15191d);
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const TextContainer = styled.div`

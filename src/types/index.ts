@@ -97,34 +97,46 @@ export interface InputType {
   [key: string]: string | null;
 }
 
+export interface DupCheckType {
+  loginId: boolean;
+  nickName: boolean;
+}
+
 export interface SignUpProps {
   inputData: InputType;
   setInputData: React.Dispatch<React.SetStateAction<InputType>>;
   profile: File | null;
   setProfile: React.Dispatch<React.SetStateAction<File | null>>;
+  setIsDuplicated: React.Dispatch<React.SetStateAction<DupCheckType>>;
 }
 
 /* 포스팅 상세 관련 타입 */
 export interface PostingDetailType {
-  type: string;
+  id: number;
+  category: string;
   title: string;
-  nickName: string;
-  content: string;
-  hashTags: string[];
-  registeredDate: string;
-  attatchment: string;
+  writer: string;
+  body: string;
+  hashtag: string;
+  createdDate: string;
+  fileName: string | null;
+  fileUrl: string | null;
   isLike: boolean;
   setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PostingDataType {
-  type: string;
+  id: number;
+  category: string;
   title: string;
-  nickName: string;
-  content: string;
-  hashTags: string[];
-  registeredDate: string;
-  attatchment: string;
+  writer: string;
+  body: string;
+  hashtag: string;
+  createdDate: string;
+  fileName: string | null;
+  fileUrl: string | null;
+  previousId: number;
+  nextId: number;
 }
 
 export interface MileageHistoryType {
@@ -132,8 +144,8 @@ export interface MileageHistoryType {
   date: string;
   time: string;
   type: string;
-  detail: string;
-  usage: number;
+  activityDetails: string;
+  pointScore: number;
 }
 
 export interface TipDataType {
@@ -160,4 +172,17 @@ export interface UserInfoType {
   name: string;
   imageUrl: string;
   phoneNumber: string;
+}
+
+// 수정시 데이터 미리 불러오는 함수 관련 타입
+export interface setEditDataFunctionType {
+  (
+    writeType: string,
+    id: string,
+    setInputFile: React.Dispatch<React.SetStateAction<File | undefined>>,
+    setSelected: React.Dispatch<React.SetStateAction<string>>,
+    setContent: React.Dispatch<React.SetStateAction<string>>,
+    setTags: React.Dispatch<React.SetStateAction<string[] | undefined>>,
+    setTitle: React.Dispatch<React.SetStateAction<string>>,
+  ): void;
 }

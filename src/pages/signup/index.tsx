@@ -5,17 +5,24 @@ import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
 import GeneralUser from './GeneralUser';
 import Corporation from './Corporation';
 
-import { InputType } from '@/types';
+import { DupCheckType, InputType } from '@/types';
 import Checked from '../../assets/icons/icon-checked.svg';
 import Unchecked from '../../assets/icons/icon-unchecked.svg';
 import SignUpButton from './components/SignUpButton';
 import { checkIsOkToSignUp } from './functions';
+import { postSignup } from '@/apis/signup';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [isGeneralUser, setIsGeneralUser] = useState<boolean>(true); // 일반회원 vs 기업회원
   const [isOk, setIsOk] = useState<boolean>(false); // 회원가입 입력 형식에 맞게 입력했는지 확인하는 state (해당 state를 이용해서 회원가입 버튼 disabled)
   const [inputData, setInputData] = useState<InputType>({}); // 입력 데이터를 모두 저장하는 state
   const [profile, setProfile] = useState<File | null>(null); // 프로필 이미지 File을 저장하는 state
+  const [isDuplicated, setIsDuplicated] = useState<DupCheckType>({
+    loginId: true,
+    nickName: true,
+  }); // 중복된 아이디 또는 닉네임을 사용했는지
+  const navigate = useNavigate();
 
   const handleClickCheckBox = useCallback((val: boolean) => {
     setIsGeneralUser(val);
@@ -23,13 +30,17 @@ const SignUp = () => {
     setProfile(null);
   }, []);
 
+  const handleClick = () => {
+    postSignup(isGeneralUser, inputData, profile, navigate);
+  };
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [isGeneralUser]);
 
   useEffect(() => {
-    setIsOk(checkIsOkToSignUp(isGeneralUser, inputData));
-  }, [inputData]);
+    setIsOk(checkIsOkToSignUp(isGeneralUser, inputData, isDuplicated));
+  }, [inputData, isDuplicated]);
 
   return (
     <Container>
@@ -67,6 +78,7 @@ const SignUp = () => {
             setInputData={setInputData}
             profile={profile}
             setProfile={setProfile}
+            setIsDuplicated={setIsDuplicated}
           />
         ) : (
           <Corporation
@@ -74,12 +86,13 @@ const SignUp = () => {
             setInputData={setInputData}
             profile={profile}
             setProfile={setProfile}
+            setIsDuplicated={setIsDuplicated}
           />
         )}
       </InputContainer>
 
       {/* 회원가입 버튼 */}
-      <SignUpButton isOkToSubmit={isOk} />
+      <SignUpButton isOkToSubmit={isOk} handleClick={handleClick} />
     </Container>
   );
 };

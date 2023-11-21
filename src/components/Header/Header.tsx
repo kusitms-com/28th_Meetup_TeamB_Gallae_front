@@ -8,6 +8,9 @@ import { B1, H3 } from '@/style/fonts/StyledFonts';
 import UserIcon from '@/assets/icons/user-icon.svg';
 import RoundedButton from '../Button/RoundedButton';
 import { UserAtom } from '@/recoil/LoginAtom';
+import Cookies from 'js-cookie';
+import Axios from '@/apis';
+import { QueryCache } from 'react-query';
 
 const Header = () => {
   const [isLogined, setIsLogined] = useState<boolean>(false);
@@ -18,7 +21,8 @@ const Header = () => {
   const handleLogout = () => {
     // logout
     // 저장하고 있던 사용자 정보 초기화
-    console.log(userInfo);
+    Cookies.remove('refreshToken');
+    localStorage.removeItem('expireToken');
     setUserInfo({
       id: -1,
       loginId: '',
@@ -28,8 +32,14 @@ const Header = () => {
       nickName: '',
       imageUrl: '',
     });
+    Axios.defaults.headers.common['Authorization'] = '';
+    // 캐싱한 쿼리 모두 삭제
+    const queryCache = new QueryCache();
+    queryCache.clear();
+
     setTimeout(() => {
       setIsLogined(false);
+      navigate('/');
     }, 1000);
   };
 

@@ -51,7 +51,12 @@ const MapCard: React.FC<Props> = ({
           <B1Bold $fontColor="#15191D">{programName}</B1Bold>
           <B3 $fontColor="#8E9398">{period}</B3>
         </TextContainer>
-        <LikeButton isLike={isLike} setIsLike={setIsLike} type="program" />
+        <LikeButton
+          isLike={isLike}
+          setIsLike={setIsLike}
+          type="program"
+          id={id}
+        />
       </BottomContainer>
       <CloseButton onClick={handleClose}>
         <img src={CloseIcon} alt="close" />
