@@ -31,8 +31,8 @@ const HotProgram = () => {
       </TextContainer>
       <ProgramCardContainer>
         {hotPrograms &&
-          hotPrograms.map(program => (
-            <HotProgramCard key={program.id} {...program} />
+          hotPrograms.map((program, index) => (
+            <HotProgramCard key={`${program.id}-${index}`} {...program} />
           ))}
       </ProgramCardContainer>
     </Container>

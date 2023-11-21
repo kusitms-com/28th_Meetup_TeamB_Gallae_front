@@ -22,7 +22,7 @@ export const ManagerAPI = {
         size: SIZE,
       },
     });
-    return response.data;
+    return response.data.result;
   },
 
   getFinishPrograms: async ({
@@ -40,6 +40,11 @@ export const ManagerAPI = {
         size: SIZE,
       },
     });
+    return response.data.result;
+  },
+
+  getExistingProgram: async (programId: number) => {
+    const response = await Axios.get(`/manager/program?id=${programId}`);
     return response.data;
   },
 
@@ -54,6 +59,15 @@ export const ManagerAPI = {
 
   postSaveProgram: async (formData: FormData) => {
     const response = await Axios.post('/manager/save', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data.result;
+  },
+
+  postEditProgram: async (formData: FormData) => {
+    const response = await Axios.post('/manager/editSave', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -121,6 +135,21 @@ export const useGetFinishPrograms = ({
       cacheTime: 500000,
       staleTime: 500005,
       onSuccess: () => {},
+      onError: () => {},
+    },
+  );
+};
+
+export const useGetExistingProgram = (programId: number) => {
+  return useQuery(
+    ['getExistingProgram', programId],
+    () => ManagerAPI.getExistingProgram(programId),
+    {
+      cacheTime: 500000,
+      staleTime: 500005,
+      onSuccess: data => {
+        console.log(data);
+      },
       onError: () => {},
     },
   );

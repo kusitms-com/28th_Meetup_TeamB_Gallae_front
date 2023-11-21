@@ -1,15 +1,15 @@
 import { CommonInner } from '@/style/common';
 import styled from 'styled-components';
-import { USER_INFO_TAG } from '@/constants/User/profile';
 import { B1, B1Bold, B3Bold } from '@/style/fonts/StyledFonts';
 import MainButton from '@/components/Button/MainButton';
 import UserTitle from '@/components/Title/UserTitle';
 import { useRecoilValue } from 'recoil';
 import { UserAtom } from '@/recoil/LoginAtom';
 import AuthBadge from '@/components/Badge/AuthBadge';
+import { ADMIN_INFO_TAG } from '@/constants/Admin';
 
-const UserProfile = () => {
-  const userInfo = useRecoilValue(UserAtom);
+const AdminProfile = () => {
+  const adminInfo = useRecoilValue(UserAtom);
 
   return (
     <CommonInner>
@@ -24,13 +24,15 @@ const UserProfile = () => {
             <B3Bold $fontColor="white">수정</B3Bold>
           </MainButton>
           <InfoContainer>
-            {Object.keys(USER_INFO_TAG).map(key => (
+            {Object.keys(ADMIN_INFO_TAG).map(key => (
               <Information key={key}>
                 <B1Bold $fontColor="var(--color_gray900)" className="title">
-                  {USER_INFO_TAG[key]}
+                  {ADMIN_INFO_TAG[key]}
                 </B1Bold>
                 <div className="content">
-                  <B1 $fontColor="var(--color_gray900)">{userInfo[key]}</B1>
+                  <B1 $fontColor="var(--color_gray900)">
+                    {adminInfo[key] === null ? '' : adminInfo[key]}
+                  </B1>
                   {key === 'email' && <AuthBadge />}
                 </div>
               </Information>
@@ -73,7 +75,7 @@ const Information = styled.div`
   flex-direction: row;
 
   .title {
-    width: 170px;
+    width: 190px;
   }
 
   .content {
@@ -84,4 +86,4 @@ const Information = styled.div`
   }
 `;
 
-export default UserProfile;
+export default AdminProfile;

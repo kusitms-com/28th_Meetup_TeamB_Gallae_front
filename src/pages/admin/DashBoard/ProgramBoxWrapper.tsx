@@ -1,7 +1,7 @@
 import FilterButton from '@/components/Button/FilterButton';
 import styled from 'styled-components';
-import Pagination from './Pagination';
 import { DASHBOARD_FILTER } from '@/constants/Admin';
+import PageBar from '@/components/PageBar/PageBar';
 
 interface ProgramBoxProps {
   title: string;
@@ -9,6 +9,7 @@ interface ProgramBoxProps {
   setSelectedFilter: (filter: string) => void;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPage: number;
   children: React.ReactNode;
 }
 
@@ -19,6 +20,7 @@ const ProgramBoxWrapper = ({
   children,
   page,
   setPage,
+  totalPage,
 }: ProgramBoxProps) => {
   return (
     <ProgramContainer>
@@ -35,7 +37,7 @@ const ProgramBoxWrapper = ({
         ))}
       </ButtonContainer>
       {children}
-      <Pagination currentPage={page} setPage={setPage} maxPage={5} />
+      <PageBar page={page} setPage={setPage} maxPage={totalPage} />
     </ProgramContainer>
   );
 };

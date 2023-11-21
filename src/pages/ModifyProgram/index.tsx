@@ -1,18 +1,19 @@
-import { useState, useRef, useEffect } from 'react';
-import DetailInfo from './DetailInfo';
-import RequiredInfo from './RequiredInfo';
-import UploadImage from './UploadImage';
 import { CommonInner } from '@/style/common';
-import ButtonList from './ButtonList';
 import styled from 'styled-components';
+import UploadImage from '../RegisterProgram/UploadImage';
+import RequiredInfo from '../RegisterProgram/RequiredInfo';
+import DetailInfo from '../RegisterProgram/DetailInfo';
 import { ALERT_MESSAGE, DEFAULT_REQUIRED_CONTENT } from '@/constants/Register';
-import { useNavigate } from 'react-router-dom';
-import { ManagerAPI, useFindTempProgram } from '@/apis/manager';
+import { ManagerAPI, useGetExistingProgram } from '@/apis/manager';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import ButtonList from './ButtonList';
 
-const RegisterProgram = () => {
+const EditProgram = () => {
+  const { _programId } = useParams();
+  const programId = Number(_programId);
   const [photoFile, setPhotoFile] = useState('');
   const [photoName, setPhotoName] = useState<File | null>(null);
-  const [programId, setProgramId] = useState<number | null>(null);
   const [programContent, setProgramContent] = useState(
     JSON.parse(JSON.stringify(DEFAULT_REQUIRED_CONTENT)),
   );
@@ -20,39 +21,29 @@ const RegisterProgram = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
   const formData = new FormData();
-  const { data: tempData } = useFindTempProgram(programId);
+  const { data: programData } = useGetExistingProgram(
+    programId ? programId : -1,
+  );
 
   useEffect(() => {
-    if (tempData) {
-      if (tempData.programId === null) setProgramId(-1);
-      else setProgramId(tempData.programId);
-
-      let isTemp = false;
+    if (programData) {
       let insertData = JSON.parse(JSON.stringify(DEFAULT_REQUIRED_CONTENT));
 
-      Object.keys(tempData).map(data => {
-        if (tempData[data] !== null) {
-          isTemp = true;
-          if (insertData[data] !== undefined) insertData[data] = tempData[data];
-        }
+      Object.keys(programData.result).map(data => {
+        if (insertData[data] !== undefined)
+          insertData[data] = programData.result[data];
       });
 
-      if (isTemp) {
-        if (window.confirm(ALERT_MESSAGE.getDraft)) {
-          setPhotoFile(tempData.photoUrl);
+      setProgramContent(insertData);
+      setPhotoFile(programData.result.photo);
 
-          const ext = tempData.photoUrl.split('.').pop();
-          const filename = tempData.photoUrl.split('/').pop();
-          const metadata = { type: `image/${ext}` };
-          const newPhotoName = new File([filename], filename!, metadata);
-          setPhotoName(newPhotoName);
-          setProgramContent(insertData);
-        } else {
-          ManagerAPI.deleteTempProgram(tempData.programId);
-        }
-      }
+      const ext = programData.result.photo.split('.').pop();
+      const filename = programData.result.photo.split('/').pop();
+      const metadata = { type: `image/${ext}` };
+      const newPhotoName = new File([filename], filename!, metadata);
+      setPhotoName(newPhotoName);
     }
-  }, [tempData]);
+  }, [programData]);
 
   const handleChangeUploadImage = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -109,6 +100,7 @@ const RegisterProgram = () => {
 
     if (result) {
       if (window.confirm(ALERT_MESSAGE.register)) {
+        programId && formData.append('id', String(programId));
         photoName && formData.append('photo', photoName);
 
         Object.keys(programContent).map(key => {
@@ -119,27 +111,12 @@ const RegisterProgram = () => {
             return formData.append(key, programContent[key]);
         });
 
-        ManagerAPI.postSaveProgram(formData).then(data =>
+        ManagerAPI.postEditProgram(formData).then(data =>
           navigate(`/detailProgram/${programContent['programName']}/${data}`),
         );
       }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
-  const handleDraft = () => {
-    if (window.confirm(ALERT_MESSAGE.draft)) {
-      photoName && formData.append('photo', photoName);
-
-      Object.keys(programContent).map(key => {
-        if (programContent[key] !== '')
-          return formData.append(key, programContent[key]);
-      });
-
-      Object.keys(programContent).map(key => console.log(formData.get(key)));
-
-      ManagerAPI.postTempSaveProgram(formData);
     }
   };
 
@@ -163,14 +140,13 @@ const RegisterProgram = () => {
         <ButtonList
           handleCancel={handleCancel}
           handleRegister={handleRegister}
-          handleDraft={handleDraft}
         />
       </CommonInner>
     </Container>
   );
 };
 
-export default RegisterProgram;
+export default EditProgram;
 
 const Container = styled.div`
   padding-top: 15px;

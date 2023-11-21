@@ -1,25 +1,36 @@
 import { ProgramDetailInfoType } from '@/types';
 import styled from 'styled-components';
-import FavoriteButtonIcon from '@/assets/icons/favorite_button2_icon.svg';
-import UnfavoriteButtonIcon from '@/assets/icons/unfavorite_button2_icon.svg';
-import { useState } from 'react';
 import MainButton from '@/components/Button/MainButton';
 import { B1Bold, H1, H3 } from '@/style/fonts/StyledFonts';
+import DefaultProgram from '@/components/Default/DefaultProgram';
+import LikeButton from '@/components/Button/LikeButton';
 
-const ProgramHead = ({ program }: { program: ProgramDetailInfoType }) => {
-  // 임시방편
-  const [favorite, setFavorite] = useState<boolean>(true);
-
-  const handleChange = () => {
-    setFavorite(!favorite);
-  };
-
+interface ProgramHeadProps {
+  program: ProgramDetailInfoType;
+  isLike: boolean;
+  setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
+  writer: boolean | null;
+}
+const ProgramHead = ({
+  program,
+  isLike,
+  setIsLike,
+  writer,
+}: ProgramHeadProps) => {
   return (
     <Container>
-      <img alt="program-image" src={program.photoUrl} />
+      {program.photoUrl === null || program.photoUrl === '' ? (
+        <DefaultProgram />
+      ) : (
+        <img alt="program-poster" src={program.photoUrl} />
+      )}
       <DescriptionContainer>
         <InfoContainer>
-          <H1 $fontColor="var(--color_sub3)">{program.remainDay}</H1>
+          <H1 $fontColor="var(--color_sub3)">
+            {program.remainDay === '마감'
+              ? program.remainDay
+              : `D-${program.remainDay}`}
+          </H1>
           <div className="program-name">{program.programName}</div>
           <SubInfo>
             <div className="title-container">
@@ -32,27 +43,28 @@ const ProgramHead = ({ program }: { program: ProgramDetailInfoType }) => {
             <div className="description-container">
               <span>{program.location}</span>
               <span>{`${program.recruitStartDate} - ${program.recruitEndDate}`}</span>
-              <span>{`${program.tripStartDate} - ${program.tripEndDate}`}</span>
+              <span>{`${program.activeStartDate} - ${program.activeEndDate}`}</span>
               <span>{program.contact}</span>
               <span>{program.contactNumber}</span>
             </div>
           </SubInfo>
         </InfoContainer>
         <BtnContainer>
-          {!favorite ? (
-            <img
-              alt="favorite-button-icon"
-              src={FavoriteButtonIcon}
-              onClick={handleChange}
-            />
-          ) : (
-            <img
-              alt="unfavorite-button-icon"
-              src={UnfavoriteButtonIcon}
-              onClick={handleChange}
+          {writer !== null && !writer && (
+            <LikeButton
+              id={program.id}
+              isLike={isLike}
+              setIsLike={setIsLike}
+              type="program"
             />
           )}
-          <a href={program.programLink}>
+          <a
+            href={
+              program.programLink.includes('https://')
+                ? program.programLink
+                : `https://${program.programLink}`
+            }
+          >
             <MainButton
               $buttonColor="var(--color_sub3)"
               $buttonWidth="182px"
@@ -78,6 +90,7 @@ const Container = styled.div`
     width: 503px;
     height: 720px;
     border-radius: 20px;
+    object-fit: cover;
   }
 `;
 

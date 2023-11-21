@@ -8,6 +8,7 @@ interface ProgramBoxProps {
   programList: ProgramManagingType[];
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPage: number;
   filter: string;
   setFilter: (filter: string) => void;
 }
@@ -18,6 +19,7 @@ const ProgramBox = ({
   programList,
   page,
   setPage,
+  totalPage,
   filter,
   setFilter,
 }: ProgramBoxProps) => {
@@ -28,6 +30,7 @@ const ProgramBox = ({
       setSelectedFilter={setFilter}
       page={page}
       setPage={setPage}
+      totalPage={totalPage}
     >
       <ProgramTable noDataText={noDataText} programList={programList} />
     </ProgramBoxWrapper>

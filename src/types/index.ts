@@ -2,10 +2,13 @@
 export interface ProgramMainInfoType {
   id: number;
   hashTag: string[];
-  photoUrl: string;
+  photoUrl: string | null;
   programName: string;
   remainDay: string;
   like: number;
+  latitude: number | null;
+  longitude: number | null;
+  userLikeCheck: boolean;
 }
 
 export interface ProgramManagingType {
@@ -29,8 +32,8 @@ export interface ProgramDetailInfoType extends ProgramMainInfoType {
   location: string;
   recruitStartDate: string;
   recruitEndDate: string;
-  tripStartDate: string;
-  tripEndDate: string;
+  activeStartDate: string;
+  activeEndDate: string;
   contact: string;
   contactNumber: string;
   programLink: string;
@@ -177,6 +180,12 @@ export interface UserInfoType {
   registrationNum: string;
   department: string;
   birth: string;
+}
+
+/** 추천 항목 관련 타입 */
+export interface RecommendDataType {
+  title: string;
+  photoUrl: string;
 }
 
 // 수정시 데이터 미리 불러오는 함수 관련 타입

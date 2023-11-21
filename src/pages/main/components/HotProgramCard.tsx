@@ -40,7 +40,7 @@ const HotProgramCard: React.FC<ProgramMainInfoType> = ({
 export default HotProgramCard;
 
 interface ContainerProps {
-  imagesrc: string;
+  imagesrc: string | null;
 }
 
 const Container = styled.div<ContainerProps>`

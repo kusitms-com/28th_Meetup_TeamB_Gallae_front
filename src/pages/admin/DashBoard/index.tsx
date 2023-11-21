@@ -40,12 +40,13 @@ const DashBoard = () => {
             title="진행중인 공고"
             noDataText="아직 등록된 공고가 없습니다!"
             programList={
-              progressPrograms && progressPrograms.length > 0
-                ? progressPrograms
+              progressPrograms && progressPrograms.programs.length > 0
+                ? progressPrograms.programs
                 : []
             }
             page={progressPage}
             setPage={setProgressPage}
+            totalPage={progressPrograms ? progressPrograms.totalSize : 0}
             filter={selectedProgressFilter}
             setFilter={setSelectedProgessFilter}
           />
@@ -53,10 +54,13 @@ const DashBoard = () => {
             title="마감된 공고"
             noDataText="아직 마감된 공고가 없습니다!"
             programList={
-              finishPrograms && finishPrograms.length > 0 ? finishPrograms : []
+              finishPrograms && finishPrograms.programs.length > 0
+                ? finishPrograms.programs
+                : []
             }
             page={finishedPage}
             setPage={setFinishedPage}
+            totalPage={finishPrograms ? finishPrograms.totalSize : 0}
             filter={selectedFinishedFilter}
             setFilter={setSelectedFinishedFilter}
           />

@@ -12,7 +12,7 @@ export const GALLAE_TITLE = {
     '우리는 ‘갈래’입니다.',
   ],
   gallae: [
-    '청유문인 “여행 갈래?”와 감탄문인 “여행 갈래!”를 중의적인 표현으로,',
+    '청유문인 “여행 갈래?”와 감탄문인 “여행 갈래!”의 중의적인 표현으로,',
     '여행 프로그램들을 통해 던지는 저희의 제안이자 여행을 가고자 결심하는 여행객의 마음을 나타냅니다.',
     "동시에 평소 생각하지 못했던 여러 '갈래'의 여행길을 발견하게 되고, 색다른 경험의 시작점이 된다는 것을 의미합니다.",
   ],
@@ -60,7 +60,7 @@ export const GALLAE_INTRODUCTION: GallaeIntroduction = {
       '&nbsp;3. 지원 후기 : 게시판 형식으로 여행 프로그램에 대한 후기를 작성 및 열람 가능합니다.',
       '&nbsp;4. 자료실 : 실제로 여행 프로그램에 참여했던 사람들의 지원서, 보고서 예시자료를 열람할 수 있고, 본인이 직접 업로드도 가능. <지원 후기>와 마찬가지로 게시판 형태로 열람 가능합니다.',
       '&nbsp;5. 찜 기능 : 관심있는 여행 프로그램을 찜 기능을 통해 한 데 모아 간편하게 확인할 수 있습니다.',
-      '&nbsp;6. 할인된 숙박 예약 링크 제공: 기존가보다 할인된 가격으로 숙소 예약 가능 (<a href="https://www.naver.com" style="color: #3EA2FF; text-decoration: underline; text-underline-offset : 3px;">개인 민박/숙박업체 제휴 문의하기</a>)',
+      '&nbsp;6. 할인된 숙박 예약 링크 제공: 기존가보다 할인된 가격으로 숙소 예약 가능 (<a href="https://forms.gle/nfQ1PKpQydYYqjX37" style="color: #3EA2FF; text-decoration: underline; text-underline-offset : 3px;">개인 민박/숙박업체 제휴 문의하기</a>)',
     ],
   },
   upcoming: {

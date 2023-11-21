@@ -80,11 +80,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   align-self: center;
-
   gap: 16px;
 
+  font-family: SUIT-Regular;
+  font-style: normal;
+
   .icon {
-    font-size: 24px;
+    width: 25px;
+    height: 25px;
+    padding: 2.5px;
     cursor: pointer;
   }
 `;
@@ -98,10 +102,11 @@ const PageWrapper = styled.div<PageWrapperProps>`
   justify-content: center;
   align-items: center;
 
-  width: 24px;
-  padding: 0px 8px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
 
-  border-radius: 40px;
+  border-radius: 50%;
   background: ${({ selected }) =>
     selected ? 'var(--Main_1, #3ea2ff)' : 'none'};
 

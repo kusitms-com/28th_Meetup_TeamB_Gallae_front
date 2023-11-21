@@ -117,6 +117,6 @@ export const AdminDropdown: DropDown[] = [
   },
   {
     title: '회원정보',
-    link: '/admin/pofile',
+    link: '/admin/profile',
   },
 ];

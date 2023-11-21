@@ -3,8 +3,11 @@ import HoneyTipIcon from '@/assets/icons/honey_tip_icon.png';
 import RoundedButton from '@/components/Button/RoundedButton';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { B1Bold } from '@/style/fonts/StyledFonts';
+import { useNavigate } from 'react-router-dom';
 
 const HoneyTipButton = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <div className="img">
@@ -13,6 +16,7 @@ const HoneyTipButton = () => {
             $buttonColor="#282828"
             $buttonWidth="220px"
             $buttonHeight="62px"
+            onClick={() => navigate('/about/tips')}
           >
             <div className="button-container">
               <B1Bold $fontColor="white">지원 꿀팁 보기</B1Bold>
