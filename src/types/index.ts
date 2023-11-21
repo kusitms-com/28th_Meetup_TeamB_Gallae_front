@@ -143,9 +143,12 @@ export interface GallaeIntroduction {
 
 // 사용자 정보 관련 타입
 export interface UserInfoType {
+  [key: string]: string | number;
   id: number;
+  loginId: string;
   nickName: string;
   email: string;
   name: string;
+  imageUrl: string;
   phoneNumber: string;
 }

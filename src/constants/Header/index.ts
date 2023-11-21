@@ -81,6 +81,6 @@ export const UserDropdown: DropDown[] = [
   },
   {
     title: '회원정보',
-    link: '',
+    link: '/user/profile',
   },
 ];

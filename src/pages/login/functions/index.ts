@@ -43,10 +43,12 @@ export const onLoginSuccess = (
       accessToken,
       refreshToken,
       id,
+      loginId,
       nickName,
       email,
       name,
       phoneNumber,
+      imageUrl,
     } = res?.data?.result;
 
     const currentTime = new Date();
@@ -65,9 +67,11 @@ export const onLoginSuccess = (
     if (setUserInfo) {
       setUserInfo({
         id,
+        loginId,
         nickName,
         email,
         name,
+        imageUrl,
         phoneNumber,
       });
     }
