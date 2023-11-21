@@ -28,12 +28,14 @@ const RequiredInfo = ({
   };
 
   const handleDropdownClick = (field: string, item: string) => {
-    setProgramContent({ ...programContent, [field]: item });
+    if (field === 'programType')
+      return setProgramContent({
+        ...programContent,
+        [field]: item,
+        ['programDetailType']: '',
+      });
+    return setProgramContent({ ...programContent, [field]: item });
   };
-
-  /* const handeCategoryDropdownClick = (location: string) => {
-    setProgramContent({ ...programContent, location: location });
-  }; */
 
   return (
     <Container>

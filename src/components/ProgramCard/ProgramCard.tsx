@@ -9,9 +9,11 @@ const ProgramCard = ({
 }) => {
   return (
     <Container>
-      {programList.map(program => (
-        <ProgramCardItem key={program.id} program={program} />
-      ))}
+      {programList &&
+        programList.length > 0 &&
+        programList.map(program => (
+          <ProgramCardItem key={program.id} program={program} />
+        ))}
     </Container>
   );
 };
@@ -20,9 +22,9 @@ const Container = styled.div`
   width: inherit;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  //justify-content: space-between;
   flex-wrap: wrap;
-  /* gap: 64px 36px; */
+  gap: 64px 36px;
   padding-bottom: 36px;
 `;
 

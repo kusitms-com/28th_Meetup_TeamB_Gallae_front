@@ -14,7 +14,7 @@ const DetailInfo = ({ content, setContent }: DetailInfoFieldProps) => {
       <H3 $fontColor="var(--color_gray900)">상세 입력 내용</H3>
       <textarea
         placeholder={DETAIL_INFO_PLACEHOLDER}
-        value={content.description}
+        value={content.body}
         onChange={e => {
           setContent({ ...content, body: e.target.value });
         }}

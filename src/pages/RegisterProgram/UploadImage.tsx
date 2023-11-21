@@ -33,7 +33,9 @@ const UploadImage = ({
           </UploadBox>
           <B4
             $fontColor={
-              !isPossibleSubmit && photoFile === '' ? 'red' : 'transparent'
+              !isPossibleSubmit && (photoFile === '' || photoFile === null)
+                ? 'red'
+                : 'transparent'
             }
           >
             이미지를 첨부해주세요.
@@ -41,7 +43,6 @@ const UploadImage = ({
         </div>
       ) : (
         <UploadImageBox>
-          {/* TODO: src 수정하기 */}
           <img alt="uploaded-image" src={photoFile} height="480px" />
           <img
             className="icon-close"
