@@ -8,6 +8,15 @@ export interface ProgramMainInfoType {
   like: number;
 }
 
+export interface ProgramManagingType {
+  id: number;
+  title: string;
+  viewCount: number;
+  like: number;
+  recruitStartDate: string;
+  recruitEndDate: string;
+}
+
 export interface PostingType {
   category: string;
   title: string;

@@ -20,6 +20,7 @@ export const ProgramAPI = {
     const response = await Axios.get(`/programs/program?id=${programId}`);
     return response.data;
   },
+
   getSearchProgram: async (apiData: FilterType | null) => {
     const response = await Axios.get(`/programs/filters`, { params: apiData });
     return response.data.result.programs;
@@ -33,7 +34,9 @@ export const useGetProgramDetailInfo = (programId: number) => {
     {
       cacheTime: 500000,
       staleTime: 500005,
-      onSuccess: () => {},
+      onSuccess: data => {
+        console.log(data);
+      },
       onError: () => {},
     },
   );
