@@ -95,6 +95,7 @@ const Container = styled.div`
   gap: 88px;
 
   padding: 0 260px;
+  margin-bottom: 128px;
 `;
 
 const SearchBarWrapper = styled.div`

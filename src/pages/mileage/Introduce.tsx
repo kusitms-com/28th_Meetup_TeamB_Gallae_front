@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { H0 } from '@/style/fonts/StyledFonts';
+import Character from '@/assets/icons/icon-character.svg';
 
 const Introduce = () => {
   return (
@@ -8,7 +9,7 @@ const Introduce = () => {
         {'많이 활동할수록\n마일리지가 더 많이 쌓여가요!'}
       </H0>
       <ImageWrapper>
-        <img src="" alt="" />
+        <img src={Character} alt="character" />
       </ImageWrapper>
     </Container>
   );
@@ -28,7 +29,12 @@ const Container = styled.div`
 const ImageWrapper = styled.div`
   width: 144px;
   height: 144px;
+  border-radius: 50%;
   flex-shrink: 0;
+  background: #f1f8ff;
 
-  background: #f6f6f6;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

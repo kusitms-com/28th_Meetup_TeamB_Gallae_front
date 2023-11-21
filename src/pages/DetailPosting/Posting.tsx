@@ -9,7 +9,7 @@ import { B1Bold, B3, B3Bold, H2 } from '@/style/fonts/StyledFonts';
 import { PostingDetailType } from '@/types';
 import { useRecoilValue } from 'recoil';
 import { UserAtom } from '@/recoil/LoginAtom';
-import EditDelete from '../write/components/EditDelete';
+import EditDelete from './components/EditDelete';
 
 const Posting: React.FC<PostingDetailType> = ({
   id,

@@ -50,6 +50,7 @@ const Container = styled.div`
 
   width: 100%;
   padding: 32px 14px;
+  border-bottom: 0.5px solid var(--grey-400, #e3e7ed);
 
   .board_name {
     width: 64px;

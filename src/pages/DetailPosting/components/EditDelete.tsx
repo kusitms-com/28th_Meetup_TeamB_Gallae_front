@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import EditIcon from '@/assets/icons/icon-edit.svg';
 import DeleteIcon from '@/assets/icons/icon-delete.svg';
 import { useNavigate } from 'react-router-dom';
+import { deletePosting } from '@/apis/posting';
 
 const EditDelete: React.FC<{ writeType: string; id: number }> = ({
   writeType,
@@ -13,7 +14,14 @@ const EditDelete: React.FC<{ writeType: string; id: number }> = ({
   const handleEdit = () => {
     navigate(`/${writeType}/edit/${id}`);
   };
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    if (
+      window.confirm(
+        '정말 삭제하시겠습니까?\n삭제된 데이터는 복구되지 않습니다.',
+      )
+    )
+      deletePosting(writeType, id);
+  };
   return (
     <Container>
       <InnerContainer onClick={handleEdit}>
@@ -44,17 +52,11 @@ const InnerContainer = styled.div`
 
   cursor: pointer;
 
-  pre {
-    &:hover {
+  &:hover {
+    pre {
       color: #0e86f4;
-      scale: 1.3;
     }
-  }
-
-  img {
-    &:hover {
-      scale: 1.5;
-    }
+    scale: 1.3;
   }
 `;
 

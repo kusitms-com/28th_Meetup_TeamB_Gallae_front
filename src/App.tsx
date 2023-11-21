@@ -18,6 +18,7 @@ import Write from './pages/write';
 import Mileage from './pages/mileage';
 import Gallae from './pages/about/Gallae';
 import Maker from './pages/about/Maker';
+import AdminLayout from './components/Admin/AdminLayout';
 import Tips from './pages/about/Tips';
 
 const route = createBrowserRouter([
@@ -120,15 +121,11 @@ const route = createBrowserRouter([
       },
       {
         path: 'admin',
-        element: <Outlet />,
+        element: <AdminLayout />,
         children: [
-          { path: 'dashboard', element: <DashBoard /> },
           { path: 'register', element: <RegisterProgram /> },
+          { path: 'dashboard', element: <DashBoard /> },
         ],
-      },
-      {
-        path: 'mileage',
-        element: <Mileage />,
       },
       {
         path: 'about',

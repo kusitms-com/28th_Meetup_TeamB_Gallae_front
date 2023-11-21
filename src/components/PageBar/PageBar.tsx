@@ -48,24 +48,28 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
   );
 
   return (
-    <Container>
-      <AiOutlineDoubleLeft className="icon" />
-      <AiOutlineLeft className="icon" onClick={() => movePage('prev')} />
-      {renderPages().map(pageNumber => (
-        <PageWrapper
-          selected={page === pageNumber}
-          onClick={() => handleClick(pageNumber)}
-          key={pageNumber}
-        >
-          <B2Bold $fontColor={page === pageNumber ? '#FFF' : '#000'}>
-            {pageNumber}
-          </B2Bold>
-        </PageWrapper>
-      ))}
-      {isMorePages() && <B2Bold $fontColor="#000">...</B2Bold>}
-      <AiOutlineRight className="icon" onClick={() => movePage('next')} />
-      <AiOutlineDoubleRight className="icon" />
-    </Container>
+    <>
+      {maxPage > 0 && (
+        <Container>
+          <AiOutlineDoubleLeft className="icon" />
+          <AiOutlineLeft className="icon" onClick={() => movePage('prev')} />
+          {renderPages().map(pageNumber => (
+            <PageWrapper
+              selected={page === pageNumber}
+              onClick={() => handleClick(pageNumber)}
+              key={pageNumber}
+            >
+              <B2Bold $fontColor={page === pageNumber ? '#FFF' : '#000'}>
+                {pageNumber}
+              </B2Bold>
+            </PageWrapper>
+          ))}
+          {isMorePages() && <B2Bold $fontColor="#000">...</B2Bold>}
+          <AiOutlineRight className="icon" onClick={() => movePage('next')} />
+          <AiOutlineDoubleRight className="icon" />
+        </Container>
+      )}
+    </>
   );
 };
 

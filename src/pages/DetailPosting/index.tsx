@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PostingBox from './PostingBox';
 import OtherPostings from './OtherPostings';
+import { useEffect } from 'react';
 
 interface Props {
   title: string;
@@ -10,6 +11,10 @@ const DetailPosting: React.FC<Props> = ({ title }) => {
   const postingType: string = window.location.pathname.includes('review')
     ? 'reviews'
     : 'archives';
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <Container>

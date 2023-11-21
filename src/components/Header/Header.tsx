@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useRecoilState } from 'recoil';
+import { QueryCache } from 'react-query';
 
-import { HeaderData, UserDropdown } from '@/constants/Header';
+import { AdminDropdown, HeaderData, UserDropdown } from '@/constants/Header';
 import { B1, H3 } from '@/style/fonts/StyledFonts';
 import UserIcon from '@/assets/icons/user-icon.svg';
 import RoundedButton from '../Button/RoundedButton';
 import { UserAtom } from '@/recoil/LoginAtom';
 import Cookies from 'js-cookie';
 import Axios from '@/apis';
-import { QueryCache } from 'react-query';
+
+import Character from '@/assets/icons/icon-character.svg';
 
 const Header = () => {
   const [isLogined, setIsLogined] = useState<boolean>(false);
@@ -31,6 +33,11 @@ const Header = () => {
       name: '',
       nickName: '',
       imageUrl: '',
+      role: '',
+      profileImageUrl: '',
+      registrationNum: '',
+      department: '',
+      birth: '',
     });
     Axios.defaults.headers.common['Authorization'] = '';
     // 캐싱한 쿼리 모두 삭제
@@ -56,6 +63,13 @@ const Header = () => {
       <InnerContainer>
         {/* 헤더 좌측 */}
         <NavBarContainer>
+          <Logo
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            <img src={Character} alt="character" />
+          </Logo>
           {HeaderData.map(({ main, dropDowns }) => (
             <NavBar key={main}>
               <H3 $fontColor="#15191D">{main}</H3>
@@ -78,13 +92,22 @@ const Header = () => {
             <NavBar>
               <img src={UserIcon} alt="user" />
               <Dropdown>
-                {UserDropdown.map(({ title, link }, index) => (
-                  <li key={index} className={`${title}`}>
-                    <Link to={link} state={{ filter: title }}>
-                      <B1 $fontColor="#15191D">{title}</B1>
-                    </Link>
-                  </li>
-                ))}
+                {userInfo.role === 'USER' &&
+                  UserDropdown.map(({ title, link }, index) => (
+                    <li key={index} className={`${title}`}>
+                      <Link to={link} state={{ filter: title }}>
+                        <B1 $fontColor="#15191D">{title}</B1>
+                      </Link>
+                    </li>
+                  ))}
+                {userInfo.role === 'MANAGER' &&
+                  AdminDropdown.map(({ title, link }, index) => (
+                    <li key={index} className={`${title}`}>
+                      <Link to={link} state={{ filter: title }}>
+                        <B1 $fontColor="#15191D">{title}</B1>
+                      </Link>
+                    </li>
+                  ))}
                 <Seperator />
                 <li onClick={handleLogout}>
                   <B1 $fontColor="#15191D">{'로그아웃'}</B1>
@@ -209,4 +232,22 @@ const Seperator = styled.div`
   width: 180px;
   height: 0.5px;
   background: #e3e7ed;
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+  margin-right: 15px;
+
+  border-radius: 50%;
+  background: #f1f8ff;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
 `;

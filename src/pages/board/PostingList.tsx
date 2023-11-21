@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Posting from './components/Posting';
 import { PostingType } from '@/types';
 import { useNavigate } from 'react-router-dom';
+import Empty from '@/components/Empty/Empty';
 
 interface Props {
   postingList: PostingType[];
@@ -28,7 +29,11 @@ const PostingList: React.FC<Props> = ({ postingList }) => {
       </TopBarContainer>
 
       <PostingContainer>
-        {postingList?.map(data => <Posting {...data} key={data.id} />)}
+        {postingList.length > 0 ? (
+          postingList?.map(data => <Posting {...data} key={data.id} />)
+        ) : (
+          <Empty noDataText="등록된 게시물이 없습니다." height="600px" />
+        )}
       </PostingContainer>
 
       <WritingButton

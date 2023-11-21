@@ -15,3 +15,21 @@ export const fetchMostLikedPosting =
         size,
       },
     });
+
+export const deletePosting = async (writeType: string, id: number) => {
+  try {
+    const res = await Axios.delete(
+      `/${writeType}s/del${writeType === 'review' ? 'Review' : 'Archive'}`,
+      {
+        params: {
+          [`${writeType}Id`]: id,
+        },
+      },
+    );
+    if (res.data?.code === 200) {
+      window.location.href = `/${writeType}`;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+};

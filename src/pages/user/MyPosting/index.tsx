@@ -34,7 +34,7 @@ const MyPosting = () => {
       <PageBar
         page={page}
         setPage={setPage}
-        maxPage={myPostingData?.totalpages}
+        maxPage={myPostingData?.totalPages}
       />
     </Container>
   );

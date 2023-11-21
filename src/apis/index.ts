@@ -51,16 +51,6 @@ Axios.interceptors.request.use(
 // 응답 전 accessToken이 만료되어 발생한 에러라면 갈아끼우고 다시 요청
 Axios.interceptors.response.use(
   (response: AxiosResponse) => {
-    if (response?.data?.code === 1001) {
-      // 포인트가 부족한 상황
-      if (window.confirm('포인트가 부족합니다')) {
-        const currentPath = window.location.pathname;
-        window.location.href = `${currentPath.substring(
-          0,
-          currentPath.lastIndexOf('/'),
-        )}`;
-      }
-    }
     return response;
   },
   async error => {
@@ -82,6 +72,15 @@ Axios.interceptors.response.use(
         if (window.confirm('로그인이 필요한 서비스입니다.')) {
           window.location.href = '/login';
         }
+      }
+    } else if (error.response?.data?.code === 1001) {
+      // 포인트가 부족한 상황
+      if (window.confirm('포인트가 부족합니다')) {
+        const currentPath = window.location.pathname;
+        window.location.href = `${currentPath.substring(
+          0,
+          currentPath.lastIndexOf('/'),
+        )}`;
       }
     }
     return error;

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
 import SocialLogin from './SocialLogin';
@@ -20,7 +20,7 @@ const Login = () => {
     password: '',
   });
   const [isError, setIsError] = useState<boolean>(false);
-  const setUserInfo = useSetRecoilState(UserAtom);
+  const [userInfo, setUserInfo] = useRecoilState(UserAtom);
 
   const navigate = useNavigate();
 
@@ -40,6 +40,13 @@ const Login = () => {
   const handleChangePW = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(prev => ({ ...prev, password: e.target.value }));
   };
+
+  useEffect(() => {
+    if (userInfo.loginId) {
+      // 이미 로그인한 사용자가 들어가면 못 들어가게 방지
+      navigate('/');
+    }
+  }, []);
 
   return (
     <Container>

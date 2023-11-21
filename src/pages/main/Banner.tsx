@@ -2,14 +2,19 @@ import { B2 } from '@/style/fonts/StyledFonts';
 import styled from 'styled-components';
 import BannerText from '@/assets/main/banner_text.svg';
 import BannerImage from '@/assets/main/banner_image.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Banner = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/about/gallae');
+  };
   return (
     <Container>
       <InnerContainer>
         <LeftBox>
           <img src={BannerText} alt="갈래?" />
-          <Button>
+          <Button onClick={handleClick}>
             <B2 $fontColor="#fff">자세히보기</B2>
           </Button>
         </LeftBox>

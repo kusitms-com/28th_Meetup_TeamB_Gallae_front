@@ -20,7 +20,7 @@ const termList: string[] = ['전체', '일주일', '한 달', '3개월', '6개�
 const Mileage = () => {
   const [page, setPage] = useState<number>(1); // 페이지네이션
   const [filter, setFilter] = useState<string>('전체');
-  const [period, setPeriod] = useState<string>(''); // 조회 기간
+  const [period, setPeriod] = useState<string>('전체'); // 조회 기간
 
   const { isLoading, data } = useQuery(
     ['myPoint', page, filter, period],

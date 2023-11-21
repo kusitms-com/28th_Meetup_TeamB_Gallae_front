@@ -52,8 +52,6 @@ const MapPage = () => {
     ? data?.data?.result?.programs
     : [];
 
-  console.log(markerData);
-
   return (
     <Container>
       {isModalOpen && (
