@@ -26,10 +26,15 @@ const MapPage = () => {
   const [selected, setSelected] = useState<number>(-1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState('');
-  const { isLoading, data } = useQuery(['marker'], fetchMapMarker(), {
-    cacheTime: 500005,
-    staleTime: 500000,
-  });
+
+  const { isLoading, data, refetch } = useQuery(
+    ['marker', selected],
+    fetchMapMarker(),
+    {
+      cacheTime: 500005,
+      staleTime: 500000,
+    },
+  );
   const navigate = useNavigate();
 
   const cardRef = useRef(null);
@@ -56,6 +61,7 @@ const MapPage = () => {
     <Container>
       {isModalOpen && (
         <MapCard
+          refetch={refetch}
           cardRef={cardRef}
           {...markerData[selected]}
           period={`${markerData[selected].recruitStartDate}-${markerData[selected].recruitEndDate}`}
