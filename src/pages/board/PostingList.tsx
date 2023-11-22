@@ -41,7 +41,7 @@ const PostingList: React.FC<Props> = ({ postingList, linkType }) => {
 
       <WritingButton
         onClick={() => {
-          navigate('write');
+          navigate(`/${linkType}/write`);
         }}
       >
         <B3Bold $fontColor="#fff">글쓰기</B3Bold>

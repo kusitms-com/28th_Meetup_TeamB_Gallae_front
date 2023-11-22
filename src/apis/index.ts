@@ -48,7 +48,7 @@ Axios.interceptors.request.use(
         localStorage.setItem('expireToken', newExpireTime.toString());
 
         Cookies.remove('refreshToken');
-        Cookies.set('refreshToken', newRefreshToken, { expires: 1 });
+        Cookies.set('refreshToken', newRefreshToken, { expires: 0.24 });
       }
     }
     return config;

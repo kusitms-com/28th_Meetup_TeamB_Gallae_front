@@ -5,12 +5,14 @@ interface DropDown {
 
 interface HeaderDataProps {
   main: string;
+  mainLink: string;
   dropDowns: DropDown[];
 }
 
 export const HeaderData: HeaderDataProps[] = [
   {
     main: '갈래 소개',
+    mainLink: '/about/gallae',
     dropDowns: [
       {
         title: "'갈래' 소개",
@@ -28,6 +30,7 @@ export const HeaderData: HeaderDataProps[] = [
   },
   {
     main: '프로그램',
+    mainLink: '/search?programType=전체',
     dropDowns: [
       {
         title: '전체',
@@ -49,6 +52,7 @@ export const HeaderData: HeaderDataProps[] = [
   },
   {
     main: '활동후기',
+    mainLink: '/review',
     dropDowns: [
       {
         title: '전체',
@@ -70,6 +74,7 @@ export const HeaderData: HeaderDataProps[] = [
   },
   {
     main: '자료실',
+    mainLink: '/archive',
     dropDowns: [
       {
         title: '전체',

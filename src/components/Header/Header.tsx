@@ -35,7 +35,7 @@ const Header = () => {
       imageUrl: '',
       role: '',
       profileImageUrl: '',
-      registrationNum: '',
+      registNum: '',
       department: '',
       birth: '',
     });
@@ -70,8 +70,13 @@ const Header = () => {
           >
             <img src={Logo} alt="character" />
           </LogoWrapper>
-          {HeaderData.map(({ main, dropDowns }) => (
-            <NavBar key={main}>
+          {HeaderData.map(({ main, mainLink, dropDowns }) => (
+            <NavBar
+              key={main}
+              onClick={() => {
+                navigate(`${mainLink}`);
+              }}
+            >
               <H3 $fontColor="#15191D">{main}</H3>
               <Dropdown>
                 {dropDowns.map(({ title, link }, index) => (

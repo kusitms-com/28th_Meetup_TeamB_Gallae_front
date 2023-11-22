@@ -59,7 +59,7 @@ const Mileage = () => {
           </DropDownWrapper>
         </FilterContainer>
         <HistoryList histories={myPoint?.points} />
-        <PageBar page={page} setPage={setPage} maxPage={myPoint.totalPage} />
+        <PageBar page={page} setPage={setPage} maxPage={myPoint?.totalPage} />
       </HistoryContainer>
       {/* 마일리지 관련 팁 */}
       <TipContainer>

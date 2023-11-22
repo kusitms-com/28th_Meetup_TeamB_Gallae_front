@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { B1Bold, B3 } from '../../../style/fonts/StyledFonts';
+import { B1Bold } from '../../../style/fonts/StyledFonts';
 import LikeButton from '@/components/Button/LikeButton';
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
@@ -11,7 +11,7 @@ interface Props {
   id: number;
   photoUrl: string;
   programName: string;
-  period: string;
+  remainDay: string;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSelected: React.Dispatch<React.SetStateAction<number>>;
   cardRef: React.RefObject<HTMLDivElement>;
@@ -23,7 +23,7 @@ const MapCard: React.FC<Props> = ({
   id,
   photoUrl,
   programName,
-  period,
+  remainDay,
   setIsModalOpen,
   setSelected,
   cardRef,
@@ -52,8 +52,8 @@ const MapCard: React.FC<Props> = ({
       </ImageWrapper>
       <BottomContainer>
         <TextContainer>
+          <B1Bold $fontColor="#FF7D2C">{remainDay}</B1Bold>
           <B1Bold $fontColor="#15191D">{programName}</B1Bold>
-          <B3 $fontColor="#8E9398">{period}</B3>
         </TextContainer>
         <LikeButton
           isLike={isLike}

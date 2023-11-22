@@ -17,18 +17,30 @@ export const postSignup = async (
   try {
     switch (isGeneralUser) {
       case true:
-        const res = await Axios.post('/users/register/user', postData, {
+        const res_user = await Axios.post('/users/register/user', postData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
-        if (
-          res?.data?.code === 200 &&
-          window.confirm('회원가입이 완료되었습니다!')
-        )
+        if (res_user?.data?.code === 200) {
+          window.alert('회원가입이 완료되었습니다!');
           navigate('/login');
+        }
         break;
       case false:
+        const res_admin = await Axios.post(
+          '/users/register/manager',
+          postData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
+        );
+        if (res_admin?.data?.code === 200) {
+          window.alert('회원가입이 완료되었습니다!');
+          navigate('/login');
+        }
         break;
     }
   } catch (e) {
