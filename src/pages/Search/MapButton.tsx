@@ -34,6 +34,7 @@ const Container = styled.div`
 const ButtonTextContainer = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   img {
     margin-left: 8px;

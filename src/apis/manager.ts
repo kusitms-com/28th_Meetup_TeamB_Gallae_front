@@ -111,7 +111,7 @@ export const useGetProgressPrograms = ({
 }) => {
   return useQuery(
     ['getProgressPrograms', filter, page],
-    () => ManagerAPI.getProgressPrograms({ filter, page }),
+    () => ManagerAPI.getProgressPrograms({ filter, page: page - 1 }),
     {
       cacheTime: 500000,
       staleTime: 500005,
@@ -130,7 +130,7 @@ export const useGetFinishPrograms = ({
 }) => {
   return useQuery(
     ['getFinishPrograms', filter, page],
-    () => ManagerAPI.getFinishPrograms({ filter, page }),
+    () => ManagerAPI.getFinishPrograms({ filter, page: page - 1 }),
     {
       cacheTime: 500000,
       staleTime: 500005,

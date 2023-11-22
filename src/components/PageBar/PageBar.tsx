@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+
 import {
-  AiOutlineDoubleLeft,
-  AiOutlineDoubleRight,
-  AiOutlineLeft,
-  AiOutlineRight,
-} from 'react-icons/ai';
+  HiOutlineChevronDoubleLeft,
+  HiOutlineChevronDoubleRight,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+} from 'react-icons/hi';
 import { B2Bold } from '@/style/fonts/StyledFonts';
 import { useCallback } from 'react';
 
@@ -51,8 +52,11 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
     <>
       {maxPage > 0 && (
         <Container>
-          <AiOutlineDoubleLeft className="icon" />
-          <AiOutlineLeft className="icon" onClick={() => movePage('prev')} />
+          <HiOutlineChevronDoubleLeft className="icon" />
+          <HiOutlineChevronLeft
+            className="icon"
+            onClick={() => movePage('prev')}
+          />
           {renderPages().map(pageNumber => (
             <PageWrapper
               selected={page === pageNumber}
@@ -65,8 +69,11 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
             </PageWrapper>
           ))}
           {isMorePages() && <B2Bold $fontColor="#000">...</B2Bold>}
-          <AiOutlineRight className="icon" onClick={() => movePage('next')} />
-          <AiOutlineDoubleRight className="icon" />
+          <HiOutlineChevronRight
+            className="icon"
+            onClick={() => movePage('next')}
+          />
+          <HiOutlineChevronDoubleRight className="icon" />
         </Container>
       )}
     </>

@@ -66,7 +66,7 @@ const Container = styled.div`
     width: 323px;
     height: 400px;
     border-radius: 20px;
-    //object-fit: cover;
+    object-fit: cover;
   }
 `;
 

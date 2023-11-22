@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import { B3 } from '@/style/fonts/StyledFonts';
 
 interface Props {
@@ -25,12 +25,12 @@ const PostingNav: React.FC<Props> = ({ prevId, nextId }) => {
   return (
     <Container>
       <Button buttoncolor="#E3E7ED" onClick={() => handleNavigate(prevId)}>
-        <AiOutlineLeft />
+        <HiOutlineChevronLeft color="#53575C" />
         <B3 $fontColor="#53575C">이전글</B3>
       </Button>
       <Button buttoncolor="#E3E7ED" onClick={() => handleNavigate(nextId)}>
         <B3 $fontColor="#53575C">다음글</B3>
-        <AiOutlineRight />
+        <HiOutlineChevronRight color="#53575C" />
       </Button>
       <Button
         buttoncolor="#FF7D2C"

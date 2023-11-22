@@ -58,10 +58,13 @@ const Title = styled.div`
 const Description = styled.div`
   position: relative;
   color: var(--grey-900, #15191d);
-  font-family: SUIT-ExtraBold;
   font-size: 28px;
   font-style: normal;
   line-height: 150%; /* 42px */
+
+  span {
+    font-family: SUIT-ExtraBold;
+  }
 
   .description {
     width: max-content;

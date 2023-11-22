@@ -1,7 +1,7 @@
 import { B1 } from '@/style/fonts/StyledFonts';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { IoIosArrowDown } from 'react-icons/io';
+import { HiOutlineChevronDown } from 'react-icons/hi2';
 
 interface Props {
   placeholder: string;
@@ -36,7 +36,7 @@ const DropDown: React.FC<Props> = ({
         <B1 $fontColor={selected ? '#17181a' : '#AEB3B8'}>
           {selected ? selected : placeholder}
         </B1>
-        {!isOpen && <IoIosArrowDown style={{ fontSize: '20px' }} />}
+        {!isOpen && <HiOutlineChevronDown size="20px" />}
       </FlexBox>
       {isOpen && (
         <DropDownContainer

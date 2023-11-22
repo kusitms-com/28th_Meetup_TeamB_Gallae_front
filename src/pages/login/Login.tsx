@@ -146,10 +146,9 @@ const Input = styled.input`
   text-indent: 28px;
 
   /* Body 03 */
-  font-family: 'SUIT';
+  font-family: 'SUIT-Medium';
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
   line-height: 140%; /* 22.4px */
 
   color: '#15191D';
