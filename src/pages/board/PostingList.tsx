@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import Posting from './components/Posting';
 import { PostingType } from '@/types';
 import { useNavigate } from 'react-router-dom';
+import Empty from '@/components/Empty/Empty';
 
 interface Props {
-  filter: string;
   postingList: PostingType[];
+  linkType: string;
 }
 
-const PostingList: React.FC<Props> = ({ filter, postingList }) => {
+const PostingList: React.FC<Props> = ({ postingList, linkType }) => {
   const navigate = useNavigate();
   return (
     <Container>
@@ -29,18 +30,18 @@ const PostingList: React.FC<Props> = ({ filter, postingList }) => {
       </TopBarContainer>
 
       <PostingContainer>
-        {postingList
-          .filter(data => {
-            if (filter === '전체' || data.type === filter) return data;
-          })
-          .map(data => (
-            <Posting {...data} key={data.id} />
-          ))}
+        {postingList.length > 0 ? (
+          postingList?.map(data => (
+            <Posting {...data} key={data.id} linkType={linkType} />
+          ))
+        ) : (
+          <Empty noDataText="등록된 게시물이 없습니다." height="600px" />
+        )}
       </PostingContainer>
 
       <WritingButton
         onClick={() => {
-          navigate('/write');
+          navigate('write');
         }}
       >
         <B3Bold $fontColor="#fff">글쓰기</B3Bold>

@@ -7,8 +7,8 @@ const HistoryItem: React.FC<MileageHistoryType> = ({
   date, // 날짜
   time, // 시간
   type, // 분류
-  detail, // 활동 내역
-  usage, // 사용 내역
+  activityDetails, // 활동 내역
+  pointScore, // 사용 내역
 }) => {
   return (
     <Container>
@@ -24,13 +24,13 @@ const HistoryItem: React.FC<MileageHistoryType> = ({
         {type}
       </B2>
       <Detail>
-        <B2 $fontColor="#15191D">{detail}</B2>
+        <B2 $fontColor="#15191D">{activityDetails}</B2>
       </Detail>
       <B2Bold
-        $fontColor={usage > 0 ? '#15191D' : '#F6505A'}
+        $fontColor={pointScore > 0 ? '#15191D' : '#F6505A'}
         style={{ width: '56px' }}
       >
-        {usage}P
+        {pointScore}P
       </B2Bold>
     </Container>
   );

@@ -15,7 +15,7 @@ const ProgramSearchBar = ({
   return (
     <Container>
       <SearchBar
-        placeHolder="어디로 떠나고 싶으신건가요?"
+        placeHolder="어디로 떠나볼까요?"
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         handleSubmit={handleSubmit}

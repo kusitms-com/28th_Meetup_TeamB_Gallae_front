@@ -2,6 +2,7 @@ import { B2 } from '@/style/fonts/StyledFonts';
 import styled from 'styled-components';
 import HistoryItem, { DateTimeContainer } from './HistoryItem';
 import { MileageHistoryType } from '@/types';
+import Empty from '@/components/Empty/Empty';
 
 const HistoryList: React.FC<{ histories: MileageHistoryType[] }> = ({
   histories,
@@ -27,8 +28,11 @@ const HistoryList: React.FC<{ histories: MileageHistoryType[] }> = ({
           적립 내역
         </B2>
       </TitleContainer>
-      {histories &&
-        histories.map(history => <HistoryItem {...history} key={history.id} />)}
+      {histories.length > 0 ? (
+        histories.map(history => <HistoryItem {...history} key={history.id} />)
+      ) : (
+        <Empty noDataText="내역이 없습니다" height="600px" />
+      )}
     </Container>
   );
 };

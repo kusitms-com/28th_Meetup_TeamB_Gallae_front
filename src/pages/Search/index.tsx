@@ -8,28 +8,63 @@ import { FilterInputType } from '@/types';
 import { DEFAULT_FILTER_LIST } from '@/constants/Search';
 import ProgramSearchBar from './ProgramSearchBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useGetSearchProgram } from '@/apis/program';
+
+interface Test {
+  [key: string]: string | number | undefined;
+  programName?: string;
+  orderCriteria?: string;
+  location?: string;
+  programType?: string;
+  detailType?: string;
+  recruitStartDate?: string;
+  recruitEndDate?: string;
+  activeStartDate?: string;
+  activeEndDate?: string;
+  size?: number;
+}
 
 const Search = () => {
   const [searchParams] = useSearchParams();
   const [searchInput, setSearchInput] = useState<string>('');
   const [filterInput, setFilterInput] =
     useState<FilterInputType>(DEFAULT_FILTER_LIST);
+  const [apiData, setApiData] = useState<Test | null>(null);
   const navigate = useNavigate();
+  const { data: searchData, refetch: getSearchRefetch } =
+    useGetSearchProgram(apiData);
 
   useEffect(() => {
-    const keyword = searchParams.get('keyword');
-    if (keyword) setSearchInput(keyword);
-
+    let newApiData: Test = { size: 100 };
     let newFilterInput = filterInput;
-    for (const key in newFilterInput) {
-      newFilterInput[key] = searchParams.get(key);
+
+    const keyword = searchParams.get('keyword');
+    if (keyword) {
+      setSearchInput(keyword);
+      newApiData['programName'] = keyword;
     }
+
+    for (const key in newFilterInput) {
+      const data = searchParams.get(key);
+      newFilterInput[key] = data;
+
+      if (data && data !== '전체') {
+        newApiData[key] = data;
+      }
+    }
+
+    if (!newApiData['orderCriteria']) newApiData['orderCriteria'] = '최신순';
 
     setFilterInput({ ...newFilterInput });
 
-    // TODO : Search API로 GET ()
-    // 검색어는 keyword로 필터는 newFilterInput으로
-  }, []);
+    setApiData(newApiData);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (apiData) {
+      getSearchRefetch();
+    }
+  }, [apiData]);
 
   const handleSubmit = () => {
     let searchPath = '';
@@ -37,7 +72,6 @@ const Search = () => {
       if (filterInput[key]) searchPath += `&${key}=${filterInput[key]}`;
     }
     navigate(`/search?keyword=${searchInput}${searchPath}`);
-    // TODO: 데이터 다시 GET
   };
 
   return (
@@ -56,8 +90,8 @@ const Search = () => {
         <SearchResult
           keyword={searchParams.get('keyword')}
           searchParams={searchParams}
-          programCount={0}
-          programList={[]}
+          programCount={searchData ? searchData.length : 0}
+          programList={searchData}
         />
         <MapButton />
       </Container>

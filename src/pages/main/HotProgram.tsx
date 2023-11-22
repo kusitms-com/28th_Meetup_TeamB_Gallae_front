@@ -13,7 +13,7 @@ const HotProgram = () => {
     staleTime: 500005,
   });
 
-  const hotPrograms: ProgramMainInfoType[] = data?.data?.result;
+  const hotPrograms: ProgramMainInfoType[] = data?.data?.result?.programs;
 
   return (
     <Container>
@@ -31,8 +31,8 @@ const HotProgram = () => {
       </TextContainer>
       <ProgramCardContainer>
         {hotPrograms &&
-          hotPrograms.map(program => (
-            <HotProgramCard key={program.id} {...program} />
+          hotPrograms.map((program, index) => (
+            <HotProgramCard key={`${program.id}-${index}`} {...program} />
           ))}
       </ProgramCardContainer>
     </Container>
@@ -48,8 +48,8 @@ const Container = styled.div`
 
   position: relative;
 
-  width: 100%;
-  padding: 0 360px 260px;
+  width: 1440px;
+  margin: 0 auto 260px;
 `;
 
 const TextContainer = styled.div`

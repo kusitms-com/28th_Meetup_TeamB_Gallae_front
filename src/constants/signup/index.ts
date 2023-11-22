@@ -22,7 +22,7 @@ export const GeneralUserData = [
     {
       title: '닉네임',
       placeholder: '닉네임을 입력해주세요.',
-      keyName: 'nickname',
+      keyName: 'nickName',
       isEssential: true,
       alertMessage: '닉네임은 2자 이상, 20자 이하로 생성이 가능합니다.',
       checkIsAlert: (val: string): boolean =>
@@ -33,7 +33,7 @@ export const GeneralUserData = [
     {
       title: '아이디',
       placeholder: '사용할 아이디를 입력해주세요.',
-      keyName: 'id',
+      keyName: 'loginId',
       isEssential: true,
       alertMessage: 'id는 2자 이상, 20자 이하로 생성이 가능합니다.',
       checkIsAlert: (val: string): boolean =>
@@ -42,7 +42,7 @@ export const GeneralUserData = [
     {
       title: '비밀번호',
       placeholder: '사용할 비밀번호를 입력해주세요.',
-      keyName: 'password',
+      keyName: 'loginPw',
       isEssential: true,
       alertMessage: '비밀번호는 6글자 이상으로 설정해주세요.',
       checkIsAlert: (val: string): boolean => !(val.length >= 6),
@@ -68,7 +68,7 @@ export const GeneralUserData = [
     {
       title: '전화번호',
       placeholder: '전화번호를 입력해주세요. Ex) 010-1234-5678',
-      keyName: 'phoneNumber',
+      keyName: 'phoneNum',
       isEssential: false,
       alertMessage: '형식에 맞게 입력해주세요 (010-1234-5678)',
       checkIsAlert: (val: string): boolean => !phoneRegex.test(val),
@@ -81,13 +81,13 @@ export const CorporationData = [
     {
       title: '기관명',
       placeholder: '기관명을 입력해주세요.',
-      keyName: 'name',
+      keyName: 'companyName',
       isEssential: true,
     },
     {
       title: '사업자등록번호',
       placeholder: '사업자등록번호를 입력해주세요. Ex) 192-01-17385',
-      keyName: 'registrationNumber',
+      keyName: 'registNum',
       isEssential: true,
       alertMessage: '형식에 맞게 입력해주세요 (192-01-17385)',
       checkIsAlert: (val: string): boolean =>
@@ -96,13 +96,13 @@ export const CorporationData = [
     {
       title: '담당부서명',
       placeholder: '담당부서명을 입력해주세요.',
-      keyName: 'deptName',
+      keyName: 'department',
       isEssential: true,
     },
     {
       title: '담당자명',
       placeholder: '담당자명을 입력해주세요.',
-      keyName: 'mgrName',
+      keyName: 'name',
       isEssential: true,
     },
   ],
@@ -110,7 +110,7 @@ export const CorporationData = [
     {
       title: '아이디',
       placeholder: '사용할 아이디를 입력해주세요.',
-      keyName: 'id',
+      keyName: 'loginId',
       isEssential: true,
       alertMessage: 'id는 2자 이상 20자 이하로 생성이 가능합니다.',
       checkIsAlert: (val: string): boolean =>
@@ -119,7 +119,7 @@ export const CorporationData = [
     {
       title: '비밀번호',
       placeholder: '사용할 비밀번호를 입력해주세요.',
-      keyName: 'password',
+      keyName: 'loginPw',
       isEssential: true,
       alertMessage: '비밀번호는 6글자 이상으로 설정해주세요.',
       checkIsAlert: (val: string): boolean => !(val.length >= 6),
@@ -145,7 +145,7 @@ export const CorporationData = [
     {
       title: '전화번호',
       placeholder: '전화번호를 입력해주세요. Ex) 010-1234-5678',
-      keyName: 'phoneNumber',
+      keyName: 'phoneNum',
       isEssential: false,
       alertMessage: '형식에 맞게 입력해주세요 (010-1234-5678)',
       checkIsAlert: (val: string): boolean => !phoneRegex.test(val),

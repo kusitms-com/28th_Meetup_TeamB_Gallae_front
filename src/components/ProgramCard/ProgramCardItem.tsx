@@ -1,21 +1,19 @@
 import styled from 'styled-components';
 import FavoriteIcon from '@/assets/icons/favorite_icon.svg';
-import FavoriteButtonIcon from '@/assets/icons/favorite_button_icon.svg';
-import UnfavoriteButtonIcon from '@/assets/icons/unfavorite_button_icon.svg';
 import { B1Bold, B3, B3Bold, H3 } from '@/style/fonts/StyledFonts';
 import { ProgramMainInfoType } from '@/types';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import TranslucentLikeButton from '../Button/TranslucentLikeButton';
+import DefaultProgramPreview from '../Default/DefaultProgramPreview';
+import { useEffect, useState } from 'react';
 
 const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
-  // 프로그램 좋아요 했는지 여부 (임시)
-  // TODO: favorite/undfavorite 버튼 클릭할 때마다 서버와 통신?
-  const [favorite, setFavorite] = useState<boolean>(true);
   const navigate = useNavigate();
+  const [isLike, setIsLike] = useState(false);
 
-  const handleFavorite = () => {
-    setFavorite(!favorite);
-  };
+  useEffect(() => {
+    setIsLike(program.userLikeCheck);
+  }, [program]);
 
   return (
     <Container
@@ -23,24 +21,24 @@ const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
         navigate(`/detailProgram/${program.programName}/${program.id}`)
       }
     >
-      {!favorite ? (
-        <img
-          className="favorite-button"
-          alt="favorite-button-icon"
-          src={FavoriteButtonIcon}
-          onClick={handleFavorite}
-        />
+      {program.photoUrl === null || program.photoUrl === '' ? (
+        <DefaultProgramPreview />
       ) : (
-        <img
-          className="favorite-button"
-          alt="unfavorite-button-icon"
-          src={UnfavoriteButtonIcon}
-          onClick={handleFavorite}
-        />
+        <img className="poster" alt="program-poster" src={program.photoUrl} />
       )}
-      <img className="poster" alt="program-poster" src={program.photoUrl} />
+      <LikeButtonWrapper>
+        <TranslucentLikeButton
+          id={program.id}
+          isLike={isLike}
+          setIsLike={setIsLike}
+        />
+      </LikeButtonWrapper>
       <ProgramInfoContainer>
-        <B1Bold $fontColor="var(--color_sub3)">{program.remainDay}</B1Bold>
+        <B1Bold $fontColor="var(--color_sub3)">
+          {program.remainDay === '마감'
+            ? program.remainDay
+            : `D-${program.remainDay}`}
+        </B1Bold>
         <H3 $fontColor="var(--color_gray900)">{program.programName}</H3>
         <div className="hashTag-container">
           {program.hashTag.map(tag => (
@@ -64,18 +62,11 @@ const Container = styled.div`
   position: relative;
   cursor: pointer;
 
-  .favorite-button {
-    position: absolute;
-    right: 17px;
-    top: 18px;
-    cursor: pointer;
-  }
-
   .poster {
     width: 323px;
     height: 400px;
     border-radius: 20px;
-    //object-fit: cover;
+    object-fit: cover;
   }
 `;
 
@@ -103,6 +94,12 @@ const ProgramInfoContainer = styled.div`
       height: 16px;
     }
   }
+`;
+
+const LikeButtonWrapper = styled.div`
+  position: absolute;
+  right: 17px;
+  top: 18px;
 `;
 
 export default ProgramCardItem;

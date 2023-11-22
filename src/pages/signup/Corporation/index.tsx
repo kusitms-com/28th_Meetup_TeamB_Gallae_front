@@ -11,6 +11,7 @@ const Corporation: React.FC<SignUpProps> = ({
   setInputData,
   profile,
   setProfile,
+  setIsDuplicated,
 }) => {
   return (
     <Container>
@@ -38,16 +39,17 @@ const Corporation: React.FC<SignUpProps> = ({
                   info?.checkIsAlert && inputData[info.keyName]
                     ? info?.checkIsAlert(
                         inputData[info.keyName] || '',
-                        inputData?.password || '',
+                        inputData?.loginPw || '',
                       )
                     : false
                 }
               />
-              {(info.keyName === 'id' || info.keyName === 'nickname') && (
+              {info.keyName === 'loginId' && (
                 <DupCheckButton
                   key={info.keyName}
                   keyName={info.keyName}
                   value={inputData[info.keyName] || ''}
+                  setIsDuplicated={setIsDuplicated}
                 />
               )}
             </FlexBox>

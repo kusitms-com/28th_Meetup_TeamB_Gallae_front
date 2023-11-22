@@ -102,7 +102,7 @@ const FilterButtonList = ({
       });
       setTimeout(() => {
         setIsOpenFilterItem(false);
-      }, 150);
+      }, 500);
     }
   };
 

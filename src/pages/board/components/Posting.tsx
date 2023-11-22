@@ -1,33 +1,46 @@
+import { useCallback } from 'react';
+
 import { B2Bold } from '@/style/fonts/StyledFonts';
 import { PostingType } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Posting: React.FC<PostingType> = ({
-  boardName,
+  category,
   title,
   id,
-  nickName,
-  registerDate,
+  writer,
+  createdDate,
+  linkType,
 }) => {
   const navigate = useNavigate();
 
   const handleClick = (): void => {
-    navigate(`${id}`);
+    const currentPath = window.location.pathname;
+    const isUserPosting = currentPath.includes('user');
+    if (isUserPosting) navigate(`/user/${linkType}/${id}`);
+    else navigate(`${id}`);
   };
+
+  const truncDate = useCallback(() => {
+    const newDate = new Date(createdDate);
+    return `${newDate.getFullYear()}-${
+      newDate.getMonth() + 1
+    }-${newDate.getDate()}`;
+  }, [createdDate]);
 
   return (
     <Container>
       <B2Bold $fontColor="#53575C" className="board_name">
-        {boardName}
+        {category}
       </B2Bold>
       <B2Bold $fontColor="#53575C" className="title" onClick={handleClick}>
         {title}
       </B2Bold>
       <B2Bold $fontColor="#53575C" className="writer">
-        {nickName}
+        {writer}
       </B2Bold>
-      <B2Bold $fontColor="#53575C">{registerDate}</B2Bold>
+      <B2Bold $fontColor="#53575C">{truncDate()}</B2Bold>
     </Container>
   );
 };
@@ -41,6 +54,7 @@ const Container = styled.div`
 
   width: 100%;
   padding: 32px 14px;
+  border-bottom: 0.5px solid var(--grey-400, #e3e7ed);
 
   .board_name {
     width: 64px;

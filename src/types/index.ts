@@ -2,27 +2,39 @@
 export interface ProgramMainInfoType {
   id: number;
   hashTag: string[];
-  photoUrl: string;
+  photoUrl: string | null;
   programName: string;
   remainDay: string;
   like: number;
+  latitude: number | null;
+  longitude: number | null;
+  userLikeCheck: boolean;
+}
+
+export interface ProgramManagingType {
+  id: number;
+  title: string;
+  viewCount: number;
+  like: number;
+  recruitStartDate: string;
+  recruitEndDate: string;
 }
 
 export interface PostingType {
-  boardName: string;
+  category: string;
   title: string;
   id: number;
-  nickName: string;
-  registerDate: string;
-  type: string;
+  writer: string;
+  createdDate: string;
+  linkType: string;
 }
 
 export interface ProgramDetailInfoType extends ProgramMainInfoType {
   location: string;
   recruitStartDate: string;
   recruitEndDate: string;
-  tripStartDate: string;
-  tripEndDate: string;
+  activeStartDate: string;
+  activeEndDate: string;
   contact: string;
   contactNumber: string;
   programLink: string;
@@ -39,14 +51,14 @@ export interface FilterListType {
 
 export interface FilterInputType {
   [key: string]: string | null;
-  sort: string | null;
+  orderCriteria: string | null;
   location: string | null;
-  program: string | null;
-  category: string | null;
+  programType: string | null;
+  detailType: string | null;
   recruitStartDate: string | null;
   recruitEndDate: string | null;
-  tripStartDate: string | null;
-  tripEndDate: string | null;
+  activeStartDate: string | null;
+  activeEndDate: string | null;
 }
 
 /** Search 페이지의 CustomCalendar 관련 type */
@@ -89,34 +101,46 @@ export interface InputType {
   [key: string]: string | null;
 }
 
+export interface DupCheckType {
+  loginId: boolean;
+  nickName: boolean;
+}
+
 export interface SignUpProps {
   inputData: InputType;
   setInputData: React.Dispatch<React.SetStateAction<InputType>>;
   profile: File | null;
   setProfile: React.Dispatch<React.SetStateAction<File | null>>;
+  setIsDuplicated: React.Dispatch<React.SetStateAction<DupCheckType>>;
 }
 
 /* 포스팅 상세 관련 타입 */
 export interface PostingDetailType {
-  type: string;
+  id: number;
+  category: string;
   title: string;
-  nickName: string;
-  content: string;
-  hashTags: string[];
-  registeredDate: string;
-  attatchment: string;
+  writer: string;
+  body: string;
+  hashtag: string;
+  createdDate: string;
+  fileName: string | null;
+  fileUrl: string | null;
   isLike: boolean;
   setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface PostingDataType {
-  type: string;
+  id: number;
+  category: string;
   title: string;
-  nickName: string;
-  content: string;
-  hashTags: string[];
-  registeredDate: string;
-  attatchment: string;
+  writer: string;
+  body: string;
+  hashtag: string;
+  createdDate: string;
+  fileName: string | null;
+  fileUrl: string | null;
+  previousId: number;
+  nextId: number;
 }
 
 export interface MileageHistoryType {
@@ -124,11 +148,64 @@ export interface MileageHistoryType {
   date: string;
   time: string;
   type: string;
-  detail: string;
-  usage: number;
+  activityDetails: string;
+  pointScore: number;
 }
 
 export interface TipDataType {
   title: string;
   content: string[];
+}
+
+/** 갈래 소개 관련 타입 */
+export interface GallaeIntroduction {
+  [key: string]: {
+    title: string;
+    subTitle: string;
+    content: string[];
+  };
+}
+
+// 사용자 정보 관련 타입
+export interface UserInfoType {
+  [key: string]: string | number;
+  id: number;
+  loginId: string;
+  nickName: string;
+  email: string;
+  name: string;
+  imageUrl: string;
+  phoneNumber: string;
+  role: string;
+  profileImageUrl: string;
+  registrationNum: string;
+  department: string;
+  birth: string;
+}
+
+/** 추천 항목 관련 타입 */
+export interface RecommendDataType {
+  title: string;
+  photoUrl: string;
+}
+
+/** 갈래말래 관련 type */
+export interface WishlistFilterType {
+  [key: string]: string;
+  region: string;
+  programType: string;
+  programStatus: string;
+}
+
+// 수정시 데이터 미리 불러오는 함수 관련 타입
+export interface setEditDataFunctionType {
+  (
+    writeType: string,
+    id: string,
+    setInputFile: React.Dispatch<React.SetStateAction<File | undefined>>,
+    setSelected: React.Dispatch<React.SetStateAction<string>>,
+    setContent: React.Dispatch<React.SetStateAction<string>>,
+    setTags: React.Dispatch<React.SetStateAction<string[] | undefined>>,
+    setTitle: React.Dispatch<React.SetStateAction<string>>,
+  ): void;
 }

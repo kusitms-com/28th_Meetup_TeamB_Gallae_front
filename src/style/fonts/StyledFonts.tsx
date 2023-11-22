@@ -39,7 +39,7 @@ export const B2 = styled.pre<PropTypes>`
 `;
 
 export const B2Bold = styled.pre<PropTypes>`
-  font-family: 'SUIT-Bold';
+  font-family: 'SUIT-SemiBold';
   font-size: 18px;
   line-height: 140%;
   color: ${({ $fontColor }) => $fontColor};

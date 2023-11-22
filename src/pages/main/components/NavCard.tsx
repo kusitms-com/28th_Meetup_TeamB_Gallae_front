@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ArrowIcon from '@/assets/icons/icon-arrow.svg';
 
 interface Props {
+  iconSrc: string;
   description: string;
   title: string;
   link: string;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const NavCard: React.FC<Props> = ({
+  iconSrc,
   description,
   title,
   link,
@@ -23,7 +25,9 @@ const NavCard: React.FC<Props> = ({
   return (
     <Container background={backgroundColor} onClick={handleClick}>
       <InnerContainer>
-        <IconWrapper></IconWrapper>
+        <IconWrapper>
+          <img src={iconSrc} alt="pin" />
+        </IconWrapper>
         <TextContainer>
           <B2 $fontColor="#fff">{description}</B2>
           <Title>
@@ -70,7 +74,11 @@ const IconWrapper = styled.div`
   height: 104px;
 
   border-radius: 20px;
-  background: #fff;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const TextContainer = styled.div`

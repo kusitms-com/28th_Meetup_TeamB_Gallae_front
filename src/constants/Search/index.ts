@@ -1,9 +1,10 @@
 import { FilterInputType, FilterListType } from '@/types';
+import { LOCATION_LIST } from '../Register';
 
 export const FILTER_LIST: FilterListType[] = [
   {
     title: '정렬',
-    enTitle: 'sort',
+    enTitle: 'orderCriteria',
     buttonSize: 'small',
     calendar: false,
     items: ['최신순', '인기순', '빠른 마감 순', '늦은 마감 순'],
@@ -13,18 +14,18 @@ export const FILTER_LIST: FilterListType[] = [
     enTitle: 'location',
     buttonSize: 'small',
     calendar: false,
-    items: ['전국', '수도권', '충청도', '전라도', '강원도', '경상도', '제주도'],
+    items: LOCATION_LIST,
   },
   {
     title: '여행 프로그램',
-    enTitle: 'program',
+    enTitle: 'programType',
     buttonSize: 'large',
     calendar: false,
-    items: ['전체', '여행지원사업', '여행 공모전', '여행 대외활동'],
+    items: ['전체', '여행 지원사업', '여행 공모전', '여행 대외활동'],
   },
   {
     title: '세부 카테고리',
-    enTitle: 'category',
+    enTitle: 'detailType',
     buttonSize: 'medium',
     calendar: false,
     items: [],
@@ -38,7 +39,7 @@ export const FILTER_LIST: FilterListType[] = [
   },
   {
     title: '여행 기간',
-    enTitle: 'tripDate',
+    enTitle: 'activeDate',
     buttonSize: 'medium',
     calendar: true,
     items: [],
@@ -46,20 +47,20 @@ export const FILTER_LIST: FilterListType[] = [
 ];
 
 export const DEFAULT_FILTER_LIST: FilterInputType = {
-  sort: null,
+  orderCriteria: null,
   location: null,
-  program: null,
-  category: null,
+  programType: null,
+  detailType: null,
   recruitStartDate: null,
   recruitEndDate: null,
-  tripStartDate: null,
-  tripEndDate: null,
+  activeStartDate: null,
+  activeEndDate: null,
 };
 
 export const DETAILED_CATEGORY_LIST = [
   { program: '전체', items: ['전체'] },
   {
-    program: '여행지원사업',
+    program: '여행 지원사업',
     items: ['전체', '지자체 한달살이', '팸투어', '기타'],
   },
   {

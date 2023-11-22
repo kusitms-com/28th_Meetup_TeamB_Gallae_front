@@ -13,16 +13,37 @@ export const HeaderData: HeaderDataProps[] = [
     main: '갈래 소개',
     dropDowns: [
       {
-        title: '전체',
-        link: '전체',
+        title: "'갈래' 소개",
+        link: '/about/gallae',
       },
       {
-        title: '전체',
-        link: '전체',
+        title: "'갈래'와 함께하는 사람들",
+        link: '/about/maker',
       },
       {
+        title: '꿀팁',
+        link: '/about/tips',
+      },
+    ],
+  },
+  {
+    main: '프로그램',
+    dropDowns: [
+      {
         title: '전체',
-        link: '전체',
+        link: '/search?programType=전체',
+      },
+      {
+        title: '여행 지원사업',
+        link: '/search?programType=여행 지원사업',
+      },
+      {
+        title: '여행 공모전',
+        link: '/search?programType=여행 공모전',
+      },
+      {
+        title: '여행 대외활동',
+        link: '/search?programType=여행 대외활동',
       },
     ],
   },
@@ -62,10 +83,6 @@ export const HeaderData: HeaderDataProps[] = [
         title: '보고서 예시자료',
         link: '/archive',
       },
-      {
-        title: '꿀팁',
-        link: '/archive',
-      },
     ],
   },
 ];
@@ -73,18 +90,33 @@ export const HeaderData: HeaderDataProps[] = [
 export const UserDropdown: DropDown[] = [
   {
     title: '갈래 말래',
-    link: '',
+    link: '/user/wishlist',
   },
   {
     title: '내가 쓴 글',
     link: '/user/posting',
   },
   {
-    title: '내 포인트',
-    link: '',
+    title: '내 마일리지',
+    link: '/user/mileage',
   },
   {
     title: '회원정보',
-    link: '',
+    link: '/user/profile',
+  },
+];
+
+export const AdminDropdown: DropDown[] = [
+  {
+    title: '공고 관리',
+    link: '/admin/dashboard',
+  },
+  {
+    title: '공고 등록',
+    link: '/admin/register',
+  },
+  {
+    title: '회원정보',
+    link: '/admin/profile',
   },
 ];

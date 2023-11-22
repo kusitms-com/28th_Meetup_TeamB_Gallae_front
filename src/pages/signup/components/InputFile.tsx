@@ -23,7 +23,6 @@ const InputFile: React.FC<Props> = ({
       target: { files },
     } = e;
     if (!files || !files[0]) return;
-    console.log(files);
     setProfile(files[0]);
   };
 

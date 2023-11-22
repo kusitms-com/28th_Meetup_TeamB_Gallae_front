@@ -42,10 +42,12 @@ const InputFile: React.FC<Props> = ({
             {inputFile ? inputFile.name : placeholder}
           </B1>
         </FlexBox>
-        <AiOutlineClose
-          style={{ fontSize: '30px', zIndex: '2', padding: '5px' }}
-          onClick={handleDelete}
-        />
+        {inputFile && (
+          <AiOutlineClose
+            style={{ fontSize: '30px', zIndex: '2', padding: '5px' }}
+            onClick={handleDelete}
+          />
+        )}
       </InnerContainer>
       <FileInput ref={inputRef} onChange={handleChange} type="file" />
     </Container>

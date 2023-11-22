@@ -1,9 +1,13 @@
-import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Naver from '@/assets/icons/icon-naver.svg';
-import Kakao from '@/assets/icons/icon-kakao.svg';
-import Google from '@/assets/icons/icon-google.svg';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
+import { B2Bold, B3, H1 } from '@/style/fonts/StyledFonts';
+import SocialLogin from './SocialLogin';
+import LoginNavLink from './LoginNavLink';
+import { userLogin } from './functions';
+import { UserAtom } from '@/recoil/LoginAtom';
 
 interface UserInputType {
   id: string;
@@ -11,20 +15,22 @@ interface UserInputType {
 }
 
 const Login = () => {
-  const REST_API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY; //REST API KEY
-  const REDIRECT_URI = `${window.location.origin}/kakao/login`; //REDIRECT URI
-
-  // oauth 요청 URL
-  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
   const [userInput, setUserInput] = useState<UserInputType>({
     id: '',
     password: '',
   });
+  const [isError, setIsError] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useRecoilState(UserAtom);
 
-  const handleKakaoLogin = () => {
-    // 카카오 로그인 주소
-    window.location.href = kakaoURL;
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // 로그인 함수 호출
+    userLogin(userInput, setUserInput, setIsError, navigate, setUserInfo);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.code === 'Enter') handleLogin();
   };
 
   const handleChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +40,13 @@ const Login = () => {
   const handleChangePW = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(prev => ({ ...prev, password: e.target.value }));
   };
+
+  useEffect(() => {
+    if (userInfo.loginId) {
+      // 이미 로그인한 사용자가 들어가면 못 들어가게 방지
+      navigate('/');
+    }
+  }, []);
 
   return (
     <Container>
@@ -54,29 +67,27 @@ const Login = () => {
         {/* Password */}
         <Input
           placeholder="비밀번호"
+          type="password"
           value={userInput.password}
           onChange={handleChangePW}
+          onKeyDown={handleKeyDown}
         />
+        {isError && (
+          <ErrorMessage>
+            <B3 $fontColor="#F6505A">
+              아이디 또는 비밀번호가 일치하지 않습니다.
+            </B3>
+          </ErrorMessage>
+        )}
       </LoginContainer>
-
-      <Button>
+      <Button onClick={handleLogin}>
         <B2Bold $fontColor="#fff">로그인</B2Bold>
       </Button>
 
-      <SocialLoginContainer>
-        {/* 네이버 로그인 */}
-        <SocialLoginButton>
-          <img src={Naver} alt="naver" />
-        </SocialLoginButton>
-        {/* 카카오 로그인 */}
-        <SocialLoginButton onClick={handleKakaoLogin}>
-          <img src={Kakao} alt="kakao" />
-        </SocialLoginButton>
-        {/* 구글 로그인 */}
-        <SocialLoginButton>
-          <img src={Google} alt="google" />
-        </SocialLoginButton>
-      </SocialLoginContainer>
+      {/* 소셜 로그인 */}
+      <SocialLogin />
+      {/* 네비게이션 */}
+      <LoginNavLink />
     </Container>
   );
 };
@@ -110,8 +121,16 @@ const LoginContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
+  position: relative;
+
   width: 100%;
   gap: 20px;
+`;
+
+const ErrorMessage = styled.div`
+  position: absolute;
+  bottom: -30px;
+  left: 28px;
 `;
 
 const Input = styled.input`
@@ -127,10 +146,9 @@ const Input = styled.input`
   text-indent: 28px;
 
   /* Body 03 */
-  font-family: 'SUIT';
+  font-family: 'SUIT-Medium';
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
   line-height: 140%; /* 22.4px */
 
   color: '#15191D';
@@ -147,26 +165,4 @@ const Button = styled.button`
 
   border-radius: 10px;
   background: var(--Sub-3, #ff7d2c);
-`;
-
-const SocialLoginContainer = styled.div`
-  display: flex;
-  align-items: flex-start;
-
-  gap: 16px;
-`;
-
-const SocialLoginButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 56px;
-  height: 56px;
-  flex-shrink: 0;
-
-  background: #f6f6f6;
-  border-radius: 50%;
-
-  cursor: pointer;
 `;

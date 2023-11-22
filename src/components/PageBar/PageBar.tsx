@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+
 import {
-  AiOutlineDoubleLeft,
-  AiOutlineDoubleRight,
-  AiOutlineLeft,
-  AiOutlineRight,
-} from 'react-icons/ai';
+  HiOutlineChevronDoubleLeft,
+  HiOutlineChevronDoubleRight,
+  HiOutlineChevronLeft,
+  HiOutlineChevronRight,
+} from 'react-icons/hi';
 import { B2Bold } from '@/style/fonts/StyledFonts';
 import { useCallback } from 'react';
 
@@ -48,24 +49,34 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
   );
 
   return (
-    <Container>
-      <AiOutlineDoubleLeft className="icon" />
-      <AiOutlineLeft className="icon" onClick={() => movePage('prev')} />
-      {renderPages().map(pageNumber => (
-        <PageWrapper
-          selected={page === pageNumber}
-          onClick={() => handleClick(pageNumber)}
-          key={pageNumber}
-        >
-          <B2Bold $fontColor={page === pageNumber ? '#FFF' : '#000'}>
-            {pageNumber}
-          </B2Bold>
-        </PageWrapper>
-      ))}
-      {isMorePages() && <B2Bold $fontColor="#000">...</B2Bold>}
-      <AiOutlineRight className="icon" onClick={() => movePage('next')} />
-      <AiOutlineDoubleRight className="icon" />
-    </Container>
+    <>
+      {maxPage > 0 && (
+        <Container>
+          <HiOutlineChevronDoubleLeft className="icon" />
+          <HiOutlineChevronLeft
+            className="icon"
+            onClick={() => movePage('prev')}
+          />
+          {renderPages().map(pageNumber => (
+            <PageWrapper
+              selected={page === pageNumber}
+              onClick={() => handleClick(pageNumber)}
+              key={pageNumber}
+            >
+              <B2Bold $fontColor={page === pageNumber ? '#FFF' : '#000'}>
+                {pageNumber}
+              </B2Bold>
+            </PageWrapper>
+          ))}
+          {isMorePages() && <B2Bold $fontColor="#000">...</B2Bold>}
+          <HiOutlineChevronRight
+            className="icon"
+            onClick={() => movePage('next')}
+          />
+          <HiOutlineChevronDoubleRight className="icon" />
+        </Container>
+      )}
+    </>
   );
 };
 
@@ -76,11 +87,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   align-self: center;
-
   gap: 16px;
 
+  font-family: SUIT-Regular;
+  font-style: normal;
+
   .icon {
-    font-size: 24px;
+    width: 25px;
+    height: 25px;
+    padding: 2.5px;
     cursor: pointer;
   }
 `;
@@ -94,10 +109,11 @@ const PageWrapper = styled.div<PageWrapperProps>`
   justify-content: center;
   align-items: center;
 
-  width: 24px;
-  padding: 0px 8px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
 
-  border-radius: 40px;
+  border-radius: 50%;
   background: ${({ selected }) =>
     selected ? 'var(--Main_1, #3ea2ff)' : 'none'};
 

@@ -103,6 +103,7 @@ export const ALERT_MESSAGE = {
   cancel: '작성을 취소하시겠습니까?\n저장하지 않은 내용은 사라집니다.',
   register: '공고를 등록하시겠습니까?',
   draft: '임시 저장하시겠습니까?',
+  getDraft: '기존에 작성하던 공고를 불러오시겠습니까?',
 };
 
 const EXAMPLE_HEADER =
@@ -133,7 +134,7 @@ export const DETAIL_INFO_PLACEHOLDER =
 export const SUB_CATEGORY_LIST: {
   [key: string]: string[];
 } = {
-  여행지원사업: ['지자체 한달살이', '팸투어', '기타'],
+  '여행 지원사업': ['지자체 한달살이', '팸투어', '기타'],
   '여행 공모전': ['여행코스 기획전', '여행사진 공모전', '기타'],
   '여행 대외활동': ['기자단', '서포터즈', '기타'],
 };
