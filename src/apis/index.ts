@@ -24,6 +24,11 @@ Axios.interceptors.request.use(
         Axios.defaults.headers.common['Authorization'] === undefined
       ) {
         // 만료되었으면
+        if (
+          Axios.defaults.url === '/review' ||
+          Axios.defaults.url === '/archive'
+        )
+          return config;
         const res = await axios.get(`${ServerURL}/auth/refresh`, {
           params: {
             refreshToken,
