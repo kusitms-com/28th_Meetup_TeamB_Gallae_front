@@ -20,7 +20,7 @@ export const UserAtom = atom<UserInfoType>({
     phoneNumber: '',
     role: '',
     profileImageUrl: '',
-    registrationNum: '',
+    registNum: '',
     department: '',
     birth: '',
   },

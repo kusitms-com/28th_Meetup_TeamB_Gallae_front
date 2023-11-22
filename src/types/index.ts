@@ -178,7 +178,7 @@ export interface UserInfoType {
   phoneNumber: string;
   role: string;
   profileImageUrl: string;
-  registrationNum: string;
+  registNum: string;
   department: string;
   birth: string;
 }

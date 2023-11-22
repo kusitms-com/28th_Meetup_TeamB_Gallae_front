@@ -51,7 +51,7 @@ export const onLoginSuccess = (
       imageUrl,
       role,
       profileImageUrl,
-      registrationNum,
+      registNum,
       birth,
       department,
     } = res?.data?.result;
@@ -62,7 +62,7 @@ export const onLoginSuccess = (
     Axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
 
     // refreshToken 쿠키에 저장
-    Cookies.set('refreshToken', refreshToken, { expires: 1 });
+    Cookies.set('refreshToken', refreshToken, { expires: 0.24 });
 
     // localStroage에 토큰 만료시간 저장
     const expireTime = new Date(currentTime.getTime() + 1 * 60 * 60 * 1000);
@@ -80,7 +80,7 @@ export const onLoginSuccess = (
         phoneNumber,
         role,
         profileImageUrl,
-        registrationNum,
+        registNum,
         birth,
         department,
       });
