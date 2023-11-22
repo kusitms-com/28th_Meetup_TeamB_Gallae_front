@@ -52,7 +52,7 @@ const MapCard: React.FC<Props> = ({
       </ImageWrapper>
       <BottomContainer>
         <TextContainer>
-          <B1Bold $fontColor="#FF7D2C">{remainDay}</B1Bold>
+          <B1Bold $fontColor="#FF7D2C">{`D-${remainDay}`}</B1Bold>
           <B1Bold $fontColor="#15191D">{programName}</B1Bold>
         </TextContainer>
         <LikeButton
