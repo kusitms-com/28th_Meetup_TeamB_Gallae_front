@@ -11,7 +11,7 @@ interface FilterType {
 export const FavoriteAPI = {
   getMyFavorite: async (filterData: FilterType | null) => {
     const response = await Axios.get('favorite/mypage', { params: filterData });
-    return response.data;
+    return response.data.result;
   },
 };
 
@@ -21,9 +21,9 @@ export const useGetMyFavorite = (filterData: FilterType | null) => {
     () => FavoriteAPI.getMyFavorite(filterData),
     {
       enabled: false,
-      cacheTime: 500000,
-      staleTime: 500005,
-      onSuccess: () => {},
+      onSuccess: data => {
+        console.log(data);
+      },
       onError: () => {},
     },
   );
