@@ -27,7 +27,8 @@ const filterList: string[][] = [
 const Board: React.FC<BoardProps> = ({ title, description }) => {
   const [filter, setFilter] = useState<string>('전체'); // 전체가 디폴트
   const [page, setPage] = useState(1);
-  const [searchInput, setSearchInput] = useState<string>('');
+  const [searchInput, setSearchInput] = useState<string>(''); // 검색어 입력
+  const [search, setSearch] = useState<string>(''); // 검색어 저장
 
   const currentPath = window.location.pathname;
   const boardType: string = currentPath.includes('review')
@@ -37,13 +38,18 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
   const location = useLocation();
 
   const { isLoading, data } = useQuery(
-    [`${boardType}`, filter, page],
-    fetchBoardData(boardType, filter, page, 10),
+    [`${boardType}`, filter, page, search],
+    fetchBoardData(boardType, filter, search, page, 10),
     {
       cacheTime: 500005,
       staleTime: 500000,
     },
   );
+
+  useEffect(() => {
+    // 라우팅이 변경되면 검색 내용 초기화
+    setSearch('');
+  }, [boardType]);
 
   useEffect(() => {
     if (location?.state?.filter) {
@@ -77,7 +83,10 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
           placeHolder={'검색어를 입력해 주세요'}
           searchInput={searchInput}
           setSearchInput={setSearchInput}
-          handleSubmit={() => {}}
+          handleSubmit={() => {
+            setSearch(searchInput);
+            setSearchInput('');
+          }}
         />
       </SearchBarWrapper>
       <PostingList postingList={postingData} />
