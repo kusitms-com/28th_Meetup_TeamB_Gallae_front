@@ -4,9 +4,6 @@ import styled from 'styled-components';
 
 import { B1Bold, B3 } from '../../../style/fonts/StyledFonts';
 import LikeButton from '@/components/Button/LikeButton';
-
-import CloseIcon from '@/assets/icons/icon-close.svg';
-
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
 interface Props {
