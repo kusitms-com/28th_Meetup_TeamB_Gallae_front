@@ -30,7 +30,7 @@ const PostingList: React.FC<Props> = ({ postingList, linkType }) => {
       </TopBarContainer>
 
       <PostingContainer>
-        {postingList.length > 0 ? (
+        {postingList?.length > 0 ? (
           postingList?.map(data => (
             <Posting {...data} key={data.id} linkType={linkType} />
           ))
