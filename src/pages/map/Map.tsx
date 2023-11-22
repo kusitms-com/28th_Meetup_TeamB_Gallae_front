@@ -17,8 +17,7 @@ interface markerDataType {
   longitude: number;
   photoUrl: string;
   programName: string;
-  recruitStartDate: string;
-  recruitEndDate: string;
+  remainDay: string;
   userLikeCheck: boolean;
 }
 
@@ -64,7 +63,7 @@ const MapPage = () => {
           refetch={refetch}
           cardRef={cardRef}
           {...markerData[selected]}
-          period={`${markerData[selected].recruitStartDate}-${markerData[selected].recruitEndDate}`}
+          remainDay={markerData[selected].remainDay}
           setIsModalOpen={setIsModalOpen}
           setSelected={setSelected}
           isLiked={markerData[selected].userLikeCheck}
