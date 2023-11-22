@@ -14,6 +14,10 @@ import Axios from '@/apis';
 
 import Logo from '@/assets/icons/icon-logo.svg';
 
+import { HeaderData, UserDropdown } from '@/constants/Header';
+import { B1, H3 } from '@/style/fonts/StyledFonts';
+import UserIcon from '@/assets/icons/user-icon.svg';
+
 const Header = () => {
   const [isLogined, setIsLogined] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useRecoilState(UserAtom);

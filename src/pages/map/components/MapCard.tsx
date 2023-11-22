@@ -7,6 +7,8 @@ import LikeButton from '@/components/Button/LikeButton';
 
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
+import CloseIcon from '@/assets/icons/icon-close.svg';
+
 interface Props {
   refetch: () => void;
   id: number;
