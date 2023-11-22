@@ -30,7 +30,10 @@ const MyPosting = () => {
     <Container>
       <Title>{'내가 쓴 글'}</Title>
       <Filter filter={filter} setFilter={setFilter} filterList={filterList} />
-      <PostingList postingList={myPostingData?.userPosts} />
+      <PostingList
+        postingList={myPostingData?.userPosts}
+        linkType={filter === '지원 후기' ? 'review' : 'archive'}
+      />
       <PageBar
         page={page}
         setPage={setPage}

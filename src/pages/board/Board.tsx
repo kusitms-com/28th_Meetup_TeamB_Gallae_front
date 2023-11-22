@@ -89,7 +89,10 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
           }}
         />
       </SearchBarWrapper>
-      <PostingList postingList={postingData} />
+      <PostingList
+        postingList={postingData}
+        linkType={boardType === 'reviews' ? 'review' : 'archive'}
+      />
       <PageBar page={page} setPage={setPage} maxPage={maxPage} />
     </Container>
   );

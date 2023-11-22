@@ -20,7 +20,9 @@ const DetailPosting: React.FC<Props> = ({ title }) => {
     <Container>
       <Title>{title}</Title>
       <PostingBox postingType={postingType} />
-      <OtherPostings postingType={postingType} />
+      {!window.location.pathname.includes('user') && (
+        <OtherPostings postingType={postingType} />
+      )}
     </Container>
   );
 };
