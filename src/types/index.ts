@@ -26,6 +26,7 @@ export interface PostingType {
   id: number;
   writer: string;
   createdDate: string;
+  linkType: string;
 }
 
 export interface ProgramDetailInfoType extends ProgramMainInfoType {

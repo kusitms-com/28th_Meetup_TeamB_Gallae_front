@@ -7,9 +7,10 @@ import Empty from '@/components/Empty/Empty';
 
 interface Props {
   postingList: PostingType[];
+  linkType: string;
 }
 
-const PostingList: React.FC<Props> = ({ postingList }) => {
+const PostingList: React.FC<Props> = ({ postingList, linkType }) => {
   const navigate = useNavigate();
   return (
     <Container>
@@ -30,7 +31,9 @@ const PostingList: React.FC<Props> = ({ postingList }) => {
 
       <PostingContainer>
         {postingList.length > 0 ? (
-          postingList?.map(data => <Posting {...data} key={data.id} />)
+          postingList?.map(data => (
+            <Posting {...data} key={data.id} linkType={linkType} />
+          ))
         ) : (
           <Empty noDataText="등록된 게시물이 없습니다." height="600px" />
         )}

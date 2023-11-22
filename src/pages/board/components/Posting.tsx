@@ -11,11 +11,15 @@ const Posting: React.FC<PostingType> = ({
   id,
   writer,
   createdDate,
+  linkType,
 }) => {
   const navigate = useNavigate();
 
   const handleClick = (): void => {
-    navigate(`${id}`);
+    const currentPath = window.location.pathname;
+    const isUserPosting = currentPath.includes('user');
+    if (isUserPosting) navigate(`/user/${linkType}/${id}`);
+    else navigate(`${id}`);
   };
 
   const truncDate = useCallback(() => {
