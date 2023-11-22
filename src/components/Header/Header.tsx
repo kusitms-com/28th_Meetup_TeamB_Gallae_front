@@ -35,7 +35,7 @@ const Header = () => {
       imageUrl: '',
       role: '',
       profileImageUrl: '',
-      registrationNum: '',
+      registNum: '',
       department: '',
       birth: '',
     });

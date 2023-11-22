@@ -51,7 +51,7 @@ export const onLoginSuccess = (
       imageUrl,
       role,
       profileImageUrl,
-      registrationNum,
+      registNum,
       birth,
       department,
     } = res?.data?.result;
@@ -80,7 +80,7 @@ export const onLoginSuccess = (
         phoneNumber,
         role,
         profileImageUrl,
-        registrationNum,
+        registNum,
         birth,
         department,
       });
