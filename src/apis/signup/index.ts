@@ -22,11 +22,10 @@ export const postSignup = async (
             'Content-Type': 'multipart/form-data',
           },
         });
-        if (
-          res?.data?.code === 200 &&
-          window.confirm('회원가입이 완료되었습니다!')
-        )
+        if (res?.data?.code === 200) {
+          window.alert('회원가입이 완료되었습니다!');
           navigate('/login');
+        }
         break;
       case false:
         break;
