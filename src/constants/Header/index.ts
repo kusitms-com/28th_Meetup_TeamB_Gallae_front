@@ -90,7 +90,7 @@ export const HeaderData: HeaderDataProps[] = [
 export const UserDropdown: DropDown[] = [
   {
     title: '갈래 말래',
-    link: '',
+    link: '/user/wishlist',
   },
   {
     title: '내가 쓴 글',

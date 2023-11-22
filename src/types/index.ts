@@ -188,6 +188,14 @@ export interface RecommendDataType {
   photoUrl: string;
 }
 
+/** 갈래말래 관련 type */
+export interface WishlistFilterType {
+  [key: string]: string;
+  region: string;
+  programType: string;
+  programStatus: string;
+}
+
 // 수정시 데이터 미리 불러오는 함수 관련 타입
 export interface setEditDataFunctionType {
   (

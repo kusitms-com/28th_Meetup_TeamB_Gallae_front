@@ -12,6 +12,7 @@ import RegisterProgram from './pages/RegisterProgram';
 import SignUp from './pages/signup';
 import DetailPosting from './pages/DetailPosting';
 import MyPosting from './pages/user/MyPosting';
+import WishList from './pages/user/WishList';
 import DashBoard from './pages/admin/DashBoard';
 import UserProfile from './pages/user/Profile';
 import Write from './pages/write';
@@ -114,6 +115,7 @@ const route = createBrowserRouter([
             path: 'posting',
             element: <MyPosting />,
           },
+          { path: 'wishlist', element: <WishList /> },
           {
             path: 'mileage',
             element: <Mileage />,

@@ -5,14 +5,15 @@ import { ProgramMainInfoType } from '@/types';
 import { useNavigate } from 'react-router-dom';
 import TranslucentLikeButton from '../Button/TranslucentLikeButton';
 import DefaultProgramPreview from '../Default/DefaultProgramPreview';
+import { useEffect, useState } from 'react';
 
 const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
   const navigate = useNavigate();
+  const [isLike, setIsLike] = useState(false);
 
-  const handleFavorite = () => {
-    console.log('클릭');
-    // TODO: 좋아요 및 좋아요 취소 API 연결
-  };
+  useEffect(() => {
+    setIsLike(program.userLikeCheck);
+  }, [program]);
 
   return (
     <Container
@@ -27,8 +28,9 @@ const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
       )}
       <LikeButtonWrapper>
         <TranslucentLikeButton
-          isLike={program.userLikeCheck}
-          setIsLike={handleFavorite}
+          id={program.id}
+          isLike={isLike}
+          setIsLike={setIsLike}
         />
       </LikeButtonWrapper>
       <ProgramInfoContainer>
