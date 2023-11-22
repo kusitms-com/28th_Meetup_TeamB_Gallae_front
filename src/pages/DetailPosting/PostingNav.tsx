@@ -8,30 +8,47 @@ import { B3 } from '@/style/fonts/StyledFonts';
 interface Props {
   prevId: number; // 이전 글의 id
   nextId: number; // 다음 글의 id
+  id: number; // 현재 글의 id
 }
 
-const PostingNav: React.FC<Props> = ({ prevId, nextId }) => {
+const PostingNav: React.FC<Props> = ({ prevId, nextId, id }) => {
   const navigate = useNavigate();
   const currentPath = window.location.pathname;
   const route = currentPath.split('/')[1];
+  const isUserPosting = window.location.pathname.includes('user');
 
   const handleNavigate = (id: number): void => {
     navigate(`/${route}/${id}`);
   };
   const navToList = (): void => {
-    navigate(`/${route}`);
+    if (isUserPosting) navigate('/user/posting');
+    else navigate(`/${route}`);
   };
 
   return (
     <Container>
-      <Button buttoncolor="#E3E7ED" onClick={() => handleNavigate(prevId)}>
-        <HiOutlineChevronLeft color="#53575C" />
-        <B3 $fontColor="#53575C">이전글</B3>
-      </Button>
-      <Button buttoncolor="#E3E7ED" onClick={() => handleNavigate(nextId)}>
-        <B3 $fontColor="#53575C">다음글</B3>
-        <HiOutlineChevronRight color="#53575C" />
-      </Button>
+      {!isUserPosting && (
+        <>
+          {id !== prevId && (
+            <Button
+              buttoncolor="#E3E7ED"
+              onClick={() => handleNavigate(prevId)}
+            >
+              <HiOutlineChevronLeft color="#53575C" />
+              <B3 $fontColor="#53575C">이전글</B3>
+            </Button>
+          )}
+          {id !== nextId && (
+            <Button
+              buttoncolor="#E3E7ED"
+              onClick={() => handleNavigate(nextId)}
+            >
+              <B3 $fontColor="#53575C">다음글</B3>
+              <HiOutlineChevronRight color="#53575C" />
+            </Button>
+          )}
+        </>
+      )}
       <Button
         buttoncolor="#FF7D2C"
         style={{ marginLeft: '16px' }}

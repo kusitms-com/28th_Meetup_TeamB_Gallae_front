@@ -43,6 +43,7 @@ const PostingBox: React.FC<{ postingType: string }> = ({ postingType }) => {
       <PostingNav
         prevId={postingData?.previousId || postingId}
         nextId={postingData?.nextId || postingId}
+        id={parseInt(id as string, 10)}
       />
     </Container>
   );
