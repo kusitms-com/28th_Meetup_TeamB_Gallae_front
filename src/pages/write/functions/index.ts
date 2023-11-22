@@ -8,7 +8,6 @@ export const imageHandler = async (quillRef: React.RefObject<ReactQuill>) => {
 
   input.addEventListener('change', async () => {
     const file = input.files?.[0];
-    console.log(file);
 
     try {
       const editor = quillRef?.current?.getEditor();
@@ -16,7 +15,7 @@ export const imageHandler = async (quillRef: React.RefObject<ReactQuill>) => {
       // 가져온 위치에 이미지를 삽입한다
       editor?.insertEmbed(range?.index as number, 'image', file);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   });
 };

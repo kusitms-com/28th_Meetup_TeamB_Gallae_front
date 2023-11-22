@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,6 +8,7 @@ import LikeButton from '@/components/Button/LikeButton';
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
 interface Props {
+  refetch: () => void;
   id: number;
   photoUrl: string;
   programName: string;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const MapCard: React.FC<Props> = ({
+  refetch,
   id,
   photoUrl,
   programName,
@@ -28,10 +30,15 @@ const MapCard: React.FC<Props> = ({
   cardRef,
   isLiked,
 }) => {
+  const [isLike, setIsLike] = useState<boolean>(isLiked);
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/detailProgram/${programName}/${id}`);
   };
+
+  useEffect(() => {
+    refetch();
+  }, [isLike]);
 
   const handleClose = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -39,11 +46,9 @@ const MapCard: React.FC<Props> = ({
     setSelected(-1);
   };
 
-  const [isLike, setIsLike] = useState<boolean>(isLiked);
-
   return (
-    <Container ref={cardRef} onClick={handleClick}>
-      <ImageWrapper>
+    <Container ref={cardRef}>
+      <ImageWrapper onClick={handleClick}>
         <img src={photoUrl} alt="thumbNail" />
       </ImageWrapper>
       <BottomContainer>
@@ -76,8 +81,6 @@ const Container = styled.div`
   height: 360px;
   flex-shrink: 0;
 
-  cursor: pointer;
-
   padding: 20px;
 
   border-radius: 30px;
@@ -100,6 +103,8 @@ const BottomContainer = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  cursor: pointer;
+
   img {
     width: 100%;
     height: 240px;

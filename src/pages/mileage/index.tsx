@@ -33,7 +33,6 @@ const Mileage = () => {
 
   if (isLoading) return <Loading />;
   const myPoint = data?.data?.result;
-  console.log(myPoint);
   return (
     <Container>
       {/* 페이지 소개 */}

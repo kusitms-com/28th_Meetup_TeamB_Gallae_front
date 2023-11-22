@@ -17,8 +17,7 @@ const LikeButton: React.FC<Props> = ({ id, isLike, setIsLike, type }) => {
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      postLike(type, id);
-      setIsLike(prev => !prev);
+      postLike(type, id, setIsLike);
     },
     [isLike],
   );

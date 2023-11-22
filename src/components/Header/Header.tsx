@@ -12,7 +12,7 @@ import { UserAtom } from '@/recoil/LoginAtom';
 import Cookies from 'js-cookie';
 import Axios from '@/apis';
 
-import Character from '@/assets/icons/icon-character.svg';
+import Logo from '@/assets/icons/icon-logo.svg';
 
 const Header = () => {
   const [isLogined, setIsLogined] = useState<boolean>(false);
@@ -63,13 +63,13 @@ const Header = () => {
       <InnerContainer>
         {/* 헤더 좌측 */}
         <NavBarContainer>
-          <Logo
+          <LogoWrapper
             onClick={() => {
               navigate('/');
             }}
           >
-            <img src={Character} alt="character" />
-          </Logo>
+            <img src={Logo} alt="character" />
+          </LogoWrapper>
           {HeaderData.map(({ main, dropDowns }) => (
             <NavBar key={main}>
               <H3 $fontColor="#15191D">{main}</H3>
@@ -138,7 +138,6 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   height: 80px;
-  padding: 0px 312px;
   flex-direction: column;
   gap: 8px;
   flex-shrink: 0;
@@ -154,8 +153,9 @@ const InnerContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 1440px;
   height: 100%;
+  margin: auto;
 
   img {
     width: 49px;
@@ -234,20 +234,19 @@ const Seperator = styled.div`
   background: #e3e7ed;
 `;
 
-const Logo = styled.div`
+const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   margin-right: 15px;
 
   border-radius: 50%;
-  background: #f1f8ff;
 
   img {
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    height: 100%;
   }
 `;

@@ -19,7 +19,10 @@ Axios.interceptors.request.use(
 
     if (expireTime && refreshToken) {
       // 이전에 로그인한 적이 있음
-      if (currentTime > expireTime.getTime()) {
+      if (
+        currentTime > expireTime.getTime() ||
+        Axios.defaults.headers.common['Authorization'] === undefined
+      ) {
         // 만료되었으면
         const res = await axios.get(`${ServerURL}/auth/refresh`, {
           params: {
