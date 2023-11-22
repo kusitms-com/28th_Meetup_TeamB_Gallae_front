@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactQuill, { Quill } from 'react-quill';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ import DropDown from '@/components/DropDown/DropDown';
 import InputTags from './components/InputTags';
 import RoundedButton from '@/components/Button/RoundedButton';
 import { B3 } from '@/style/fonts/StyledFonts';
-import { imageHandler, isOkToPost } from './functions';
+import { isOkToPost } from './functions';
 import { DropDownData } from '@/constants/write';
 import InputFile from './components/InputFile';
 import { postBoardData, setEditData } from '@/apis/write';
@@ -19,7 +19,6 @@ import { UserAtom } from '@/recoil/LoginAtom';
 Quill.register('modules/imageResize', ImageResize); // 이미지 사이즈 변경 모듈 등록
 
 const Write = () => {
-  const quillRef = useRef<ReactQuill>(null);
   const [selected, setSelected] = useState<string>(''); // 선택된 드롭다운
   const [title, setTitle] = useState<string>(''); // 제목
   const [content, setContent] = useState<string>(''); // 내용 <HTML>
@@ -92,12 +91,9 @@ const Write = () => {
           [{ header: [1, 2, 3, 4, false] }],
           ['bold', 'italic', 'underline', 'strike', 'blockquote'],
           [{ indent: '-1' }, { indent: '+1' }],
-          ['image'],
+          // ['image'],
           ['clean'],
         ],
-        handlers: {
-          image: () => imageHandler(quillRef),
-        },
       },
       imageResize: {
         parchment: Quill.import('parchment'),
@@ -129,7 +125,6 @@ const Write = () => {
             onChange={setContent}
             theme="snow"
             modules={modules}
-            ref={quillRef}
             placeholder="내용을 입력해주세요."
           />
           <InputTagsWrapper>

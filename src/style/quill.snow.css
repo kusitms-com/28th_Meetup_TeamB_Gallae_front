@@ -47,8 +47,7 @@
   cursor: text;
 }
 .ql-editor p {
-  
-  color: var(--grey-900, #15191D);
+  color: var(--grey-900, #15191d);
   /* Body 01 */
   font-family: SUIT;
   font-size: 20px;
@@ -83,24 +82,24 @@
 .ql-editor ul > li::before {
   content: '\2022';
 }
-.ql-editor ul[data-checked=true],
-.ql-editor ul[data-checked=false] {
+.ql-editor ul[data-checked='true'],
+.ql-editor ul[data-checked='false'] {
   pointer-events: none;
 }
-.ql-editor ul[data-checked=true] > li *,
-.ql-editor ul[data-checked=false] > li * {
+.ql-editor ul[data-checked='true'] > li *,
+.ql-editor ul[data-checked='false'] > li * {
   pointer-events: all;
 }
-.ql-editor ul[data-checked=true] > li::before,
-.ql-editor ul[data-checked=false] > li::before {
+.ql-editor ul[data-checked='true'] > li::before,
+.ql-editor ul[data-checked='false'] > li::before {
   color: #777;
   cursor: pointer;
   pointer-events: all;
 }
-.ql-editor ul[data-checked=true] > li::before {
+.ql-editor ul[data-checked='true'] > li::before {
   content: '\2611';
 }
-.ql-editor ul[data-checked=false] > li::before {
+.ql-editor ul[data-checked='false'] > li::before {
   content: '\2610';
 }
 .ql-editor li::before {
@@ -371,10 +370,16 @@
   color: #93f;
 }
 .ql-editor .ql-font-serif {
-  font-family: Georgia, Times New Roman, serif;
+  font-family:
+    Georgia,
+    Times New Roman,
+    serif;
 }
 .ql-editor .ql-font-monospace {
-  font-family: Monaco, Courier New, monospace;
+  font-family:
+    Monaco,
+    Courier New,
+    monospace;
 }
 .ql-editor .ql-size-small {
   font-size: 0.75em;
@@ -400,7 +405,7 @@
 }
 .ql-editor.ql-blank::before {
   content: attr(data-placeholder);
-  color: var(--grey-400, #AEB3B8);
+  color: var(--grey-400, #aeb3b8);
   /* Body 02 */
   font-family: SUIT;
   font-size: 18px;
@@ -413,16 +418,16 @@
   right: 15px;
 }
 /* Bold, Italic, Underline, Strike */
-.ql-editor strong{
-  font-weight:bold;
+.ql-editor strong {
+  font-weight: bold;
 }
-.ql-editor em{
+.ql-editor em {
   font-style: italic;
 }
-.ql-editor u{
+.ql-editor u {
   text-decoration: underline;
 }
-.ql-editor s{
+.ql-editor s {
   text-decoration: line-through;
 }
 .ql-snow.ql-toolbar:after,
@@ -451,8 +456,8 @@
 .ql-snow .ql-toolbar button:active:hover {
   outline: none;
 }
-.ql-snow.ql-toolbar input.ql-image[type=file],
-.ql-snow .ql-toolbar input.ql-image[type=file] {
+.ql-snow.ql-toolbar input.ql-image[type='file'],
+.ql-snow .ql-toolbar input.ql-image[type='file'] {
   display: none;
 }
 .ql-snow.ql-toolbar button:hover,
@@ -469,7 +474,7 @@
 .ql-snow .ql-toolbar .ql-picker-item:hover,
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
 .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-  color: #3EA2FF;
+  color: #3ea2ff;
 }
 .ql-snow.ql-toolbar button:hover .ql-fill,
 .ql-snow .ql-toolbar button:hover .ql-fill,
@@ -764,12 +769,24 @@
   top: 50%;
   width: 18px;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-label]:not([data-label=''])::before,
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-label]:not([data-label=''])::before,
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-label]:not([data-label=''])::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-label]:not([data-label=''])::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-label]:not([data-label=''])::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-label]:not([data-label=''])::before {
+.ql-snow
+  .ql-picker.ql-header
+  .ql-picker-label[data-label]:not([data-label=''])::before,
+.ql-snow
+  .ql-picker.ql-font
+  .ql-picker-label[data-label]:not([data-label=''])::before,
+.ql-snow
+  .ql-picker.ql-size
+  .ql-picker-label[data-label]:not([data-label=''])::before,
+.ql-snow
+  .ql-picker.ql-header
+  .ql-picker-item[data-label]:not([data-label=''])::before,
+.ql-snow
+  .ql-picker.ql-font
+  .ql-picker-item[data-label]:not([data-label=''])::before,
+.ql-snow
+  .ql-picker.ql-size
+  .ql-picker-item[data-label]:not([data-label=''])::before {
   content: attr(data-label);
 }
 .ql-snow .ql-picker.ql-header {
@@ -779,46 +796,46 @@
 .ql-snow .ql-picker.ql-header .ql-picker-item::before {
   content: 'Normal';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='1']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
   content: 'Heading 1';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='2']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
   content: 'Heading 2';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='3']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
   content: 'Heading 3';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='4']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']::before {
   content: 'Heading 4';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='5']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']::before {
   content: 'Heading 5';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-label[data-value='6']::before,
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']::before {
   content: 'Heading 6';
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='1']::before {
   font-size: 2em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='2']::before {
   font-size: 1.5em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='3']::before {
   font-size: 1.17em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='4']::before {
   font-size: 1em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='5']::before {
   font-size: 0.83em;
 }
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before {
+.ql-snow .ql-picker.ql-header .ql-picker-item[data-value='6']::before {
   font-size: 0.67em;
 }
 .ql-snow .ql-picker.ql-font {
@@ -828,19 +845,25 @@
 .ql-snow .ql-picker.ql-font .ql-picker-item::before {
   content: 'Sans Serif';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=serif]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=serif]::before {
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before {
   content: 'Serif';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=monospace]::before,
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before {
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='monospace']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']::before {
   content: 'Monospace';
 }
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=serif]::before {
-  font-family: Georgia, Times New Roman, serif;
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before {
+  font-family:
+    Georgia,
+    Times New Roman,
+    serif;
 }
-.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before {
-  font-family: Monaco, Courier New, monospace;
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='monospace']::before {
+  font-family:
+    Monaco,
+    Courier New,
+    monospace;
 }
 .ql-snow .ql-picker.ql-size {
   width: 98px;
@@ -849,25 +872,25 @@
 .ql-snow .ql-picker.ql-size .ql-picker-item::before {
   content: 'Normal';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='small']::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']::before {
   content: 'Small';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=large]::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=large]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='large']::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']::before {
   content: 'Large';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=huge]::before,
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=huge]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-label[data-value='huge']::before,
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']::before {
   content: 'Huge';
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='small']::before {
   font-size: 10px;
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=large]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='large']::before {
   font-size: 18px;
 }
-.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=huge]::before {
+.ql-snow .ql-picker.ql-size .ql-picker-item[data-value='huge']::before {
   font-size: 32px;
 }
 .ql-snow .ql-color-picker.ql-background .ql-picker-item {
@@ -880,13 +903,13 @@
   display: flex;
   align-items: center;
 
-  border: 1px solid #E3E7ED;
+  border: 1px solid #e3e7ed;
   box-sizing: border-box;
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   padding: 0 27px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  background: var(--background, #F6F6F6);
+  background: var(--background, #f6f6f6);
   height: 64px;
 }
 .ql-toolbar.ql-snow .ql-formats {
@@ -897,7 +920,7 @@
 }
 .ql-toolbar.ql-snow .ql-picker-options {
   border: 1px solid transparent;
-  box-shadow: rgba(0,0,0,0.2) 0 2px 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
 }
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label {
   border-color: #ccc;
@@ -921,11 +944,11 @@
   white-space: nowrap;
 }
 .ql-snow .ql-tooltip::before {
-  content: "Visit URL:";
+  content: 'Visit URL:';
   line-height: 26px;
   margin-right: 8px;
 }
-.ql-snow .ql-tooltip input[type=text] {
+.ql-snow .ql-tooltip input[type='text'] {
   display: none;
   border: 1px solid #ccc;
   font-size: 13px;
@@ -958,7 +981,7 @@
 .ql-snow .ql-tooltip.ql-editing a.ql-remove {
   display: none;
 }
-.ql-snow .ql-tooltip.ql-editing input[type=text] {
+.ql-snow .ql-tooltip.ql-editing input[type='text'] {
   display: inline-block;
 }
 .ql-snow .ql-tooltip.ql-editing a.ql-action::after {
@@ -966,19 +989,19 @@
   content: 'Save';
   padding-right: 0px;
 }
-.ql-snow .ql-tooltip[data-mode=link]::before {
-  content: "Enter link:";
+.ql-snow .ql-tooltip[data-mode='link']::before {
+  content: 'Enter link:';
 }
-.ql-snow .ql-tooltip[data-mode=formula]::before {
-  content: "Enter formula:";
+.ql-snow .ql-tooltip[data-mode='formula']::before {
+  content: 'Enter formula:';
 }
-.ql-snow .ql-tooltip[data-mode=video]::before {
-  content: "Enter video:";
+.ql-snow .ql-tooltip[data-mode='video']::before {
+  content: 'Enter video:';
 }
 .ql-snow a {
   color: #06c;
 }
 .ql-container.ql-snow {
-  border: 1px solid #E3E7ED;
+  border: 1px solid #e3e7ed;
   height: 556px;
 }
