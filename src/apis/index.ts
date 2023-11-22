@@ -23,6 +23,7 @@ Axios.interceptors.request.use(
         currentTime > expireTime.getTime() ||
         Axios.defaults.headers.common['Authorization'] === undefined
       ) {
+        if (config.url?.includes('sorted')) return config;
         // 만료되었으면
         const res = await axios.get(`${ServerURL}/auth/refresh`, {
           params: {
