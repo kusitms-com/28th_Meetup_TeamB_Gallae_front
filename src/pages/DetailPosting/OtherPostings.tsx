@@ -13,7 +13,7 @@ const OtherPostings: React.FC<{ postingType: string }> = ({ postingType }) => {
   // Todo: 서버에서 데이터 불러와야 함(5개씩 페이지네이션)
 
   const { isLoading, data } = useQuery(
-    ['mostLiked', page],
+    ['mostLiked', page, postingType],
     fetchMostLikedPosting(postingType, page, 5),
   );
 
