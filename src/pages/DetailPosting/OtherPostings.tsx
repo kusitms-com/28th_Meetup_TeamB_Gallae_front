@@ -27,7 +27,7 @@ const OtherPostings: React.FC<{ postingType: string }> = ({ postingType }) => {
 
   if (isLoading) return <Loading />;
   const postingData = data?.data?.result;
-  console.log(postingData);
+
   return (
     <Container>
       <H3 $fontColor="#15191D">이 게시판 글</H3>
