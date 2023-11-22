@@ -115,6 +115,14 @@ const route = createBrowserRouter([
             path: 'posting',
             element: <MyPosting />,
           },
+          {
+            path: 'review/:id',
+            element: <DetailPosting title="지원 후기" />,
+          },
+          {
+            path: 'archive/:id',
+            element: <DetailPosting title="자료실" />,
+          },
           { path: 'wishlist', element: <WishList /> },
           {
             path: 'mileage',
