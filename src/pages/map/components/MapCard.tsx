@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { B1Bold } from '../../../style/fonts/StyledFonts';
+import { B1Bold } from '@/style/fonts/StyledFonts';
 import LikeButton from '@/components/Button/LikeButton';
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
