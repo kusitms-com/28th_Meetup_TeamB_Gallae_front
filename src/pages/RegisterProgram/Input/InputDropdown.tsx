@@ -17,15 +17,17 @@ const InputDropdown = ({
     <Container>
       <span>{dropdownTitle}</span>
       <hr />
-      {dropdownItemList.map(item => (
-        <span
-          key={item}
-          className={`dropdown-item ${dropdownTitle === item && 'active'}`}
-          onClick={() => onDropdownClick(field, item)}
-        >
-          {item}
-        </span>
-      ))}
+      {dropdownItemList
+        .filter(value => value !== '전국')
+        .map(item => (
+          <span
+            key={item}
+            className={`dropdown-item ${dropdownTitle === item && 'active'}`}
+            onClick={() => onDropdownClick(field, item)}
+          >
+            {item}
+          </span>
+        ))}
     </Container>
   );
 };

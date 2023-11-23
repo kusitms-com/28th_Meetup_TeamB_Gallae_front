@@ -2,10 +2,10 @@ import { useQuery } from 'react-query';
 import Axios from '.';
 
 interface FilterType {
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | undefined | null;
   programName?: string;
   orderCriteria?: string;
-  location?: string;
+  location?: string | null;
   programType?: string;
   detailType?: string;
   recruitStartDate?: string;

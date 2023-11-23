@@ -11,10 +11,10 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetSearchProgram } from '@/apis/program';
 
 interface Test {
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | undefined | null;
   programName?: string;
   orderCriteria?: string;
-  location?: string;
+  location?: string | null;
   programType?: string;
   detailType?: string;
   recruitStartDate?: string;
@@ -54,6 +54,7 @@ const Search = () => {
     }
 
     if (!newApiData['orderCriteria']) newApiData['orderCriteria'] = '최신순';
+    if (newApiData['location'] === '전국') newApiData['location'] = null;
 
     setFilterInput({ ...newFilterInput });
 
