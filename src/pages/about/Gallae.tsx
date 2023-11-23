@@ -3,49 +3,53 @@ import { CommonInner } from '@/style/common';
 import { H0 } from '@/style/fonts/StyledFonts';
 import styled from 'styled-components';
 import Image from '@/assets/about/about.png';
+import Footer from '@/components/Footer/Footer';
 
 const Gallae = () => {
   return (
-    <CommonInner>
-      <Container>
-        <TitleContainer>
-          <div className="title">
-            {GALLAE_TITLE.title.map(text => (
-              <H0 key={text} $fontColor="black">
-                {text}
-              </H0>
-            ))}
-          </div>
-          <img alt="소개 이미지" src={Image} />
-          <div>
-            {GALLAE_TITLE.gallae.map(text => (
-              <div key={text} className="description">
-                {text}
-              </div>
-            ))}
-          </div>
-        </TitleContainer>
-        <ContentContainer>
-          {Object.keys(GALLAE_INTRODUCTION).map(key => (
-            <div
-              key={GALLAE_INTRODUCTION[key].title}
-              className="content-container"
-            >
-              <TitleTag>{GALLAE_INTRODUCTION[key].title}</TitleTag>
-              <SubTitle>{GALLAE_INTRODUCTION[key].subTitle}</SubTitle>
-              <div className="content">
-                {GALLAE_INTRODUCTION[key].content.map((item, index) => (
-                  <Content
-                    key={index}
-                    dangerouslySetInnerHTML={{ __html: item }}
-                  ></Content>
-                ))}
-              </div>
+    <>
+      <CommonInner>
+        <Container>
+          <TitleContainer>
+            <div className="title">
+              {GALLAE_TITLE.title.map(text => (
+                <H0 key={text} $fontColor="black">
+                  {text}
+                </H0>
+              ))}
             </div>
-          ))}
-        </ContentContainer>
-      </Container>
-    </CommonInner>
+            <img alt="소개 이미지" src={Image} />
+            <div>
+              {GALLAE_TITLE.gallae.map(text => (
+                <div key={text} className="description">
+                  {text}
+                </div>
+              ))}
+            </div>
+          </TitleContainer>
+          <ContentContainer>
+            {Object.keys(GALLAE_INTRODUCTION).map(key => (
+              <div
+                key={GALLAE_INTRODUCTION[key].title}
+                className="content-container"
+              >
+                <TitleTag>{GALLAE_INTRODUCTION[key].title}</TitleTag>
+                <SubTitle>{GALLAE_INTRODUCTION[key].subTitle}</SubTitle>
+                <div className="content">
+                  {GALLAE_INTRODUCTION[key].content.map((item, index) => (
+                    <Content
+                      key={index}
+                      dangerouslySetInnerHTML={{ __html: item }}
+                    ></Content>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </ContentContainer>
+        </Container>
+      </CommonInner>
+      <Footer />
+    </>
   );
 };
 

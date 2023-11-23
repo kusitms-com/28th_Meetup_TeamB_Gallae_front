@@ -9,6 +9,7 @@ import { DEFAULT_FILTER_LIST } from '@/constants/Search';
 import ProgramSearchBar from './ProgramSearchBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetSearchProgram } from '@/apis/program';
+import Footer from '@/components/Footer/Footer';
 
 interface Test {
   [key: string]: string | number | undefined | null;
@@ -80,27 +81,30 @@ const Search = () => {
   };
 
   return (
-    <CommonInner>
-      <Container>
-        <ProgramSearchBar
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          handleSubmit={handleSubmit}
-        />
-        <FilterBar
-          filterInput={filterInput}
-          setFilterInput={setFilterInput}
-          handleSubmit={handleSubmit}
-        />
-        <SearchResult
-          keyword={searchParams.get('keyword')}
-          searchParams={searchParams}
-          programCount={searchData ? searchData.length : 0}
-          programList={searchData}
-        />
-        <MapButton />
-      </Container>
-    </CommonInner>
+    <>
+      <CommonInner>
+        <Container>
+          <ProgramSearchBar
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            handleSubmit={handleSubmit}
+          />
+          <FilterBar
+            filterInput={filterInput}
+            setFilterInput={setFilterInput}
+            handleSubmit={handleSubmit}
+          />
+          <SearchResult
+            keyword={searchParams.get('keyword')}
+            searchParams={searchParams}
+            programCount={searchData ? searchData.length : 0}
+            programList={searchData}
+          />
+          <MapButton />
+        </Container>
+      </CommonInner>
+      <Footer />
+    </>
   );
 };
 

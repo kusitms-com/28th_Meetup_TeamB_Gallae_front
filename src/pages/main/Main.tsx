@@ -5,16 +5,20 @@ import PageNav from './PageNav';
 import Promotion from './Promotion';
 import HotProgram from './HotProgram';
 import Uploaded from './Uploaded';
+import Footer from '@/components/Footer/Footer';
 
 const Main = () => {
   return (
-    <Container>
-      <Banner />
-      <PageNav />
-      <Uploaded />
-      <Promotion />
-      <HotProgram />
-    </Container>
+    <>
+      <Container>
+        <Banner />
+        <PageNav />
+        <Uploaded />
+        <Promotion />
+        <HotProgram />
+      </Container>
+      <Footer />
+    </>
   );
 };
 
