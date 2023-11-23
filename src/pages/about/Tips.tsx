@@ -2,11 +2,13 @@ import { TIPS } from '@/constants/About';
 import { CommonInner } from '@/style/common';
 import { H2 } from '@/style/fonts/StyledFonts';
 import styled from 'styled-components';
+import HoneyTip from '@/assets/icons/icon-honey-tip.png';
 
 const Tips = () => {
   return (
     <Container>
       <CommonInner>
+        <img className="honey-tip" alt="" src={HoneyTip} />
         <H2 $fontColor="#15191d">
           👉 선정될 수 있는 지원서 작성 꿀팁을 알려드릴게요!
         </H2>
@@ -31,6 +33,10 @@ const Container = styled.div`
   body:not(&) {
     background-color: var(--color_background);
   }
+
+  .honey-tip {
+    margin-bottom: 40px;
+  }
 `;
 
 const TipContainer = styled.div`
@@ -50,6 +56,7 @@ const TipCard = styled.div`
   height: 332px;
 
   .description {
+    margin-top: 32px;
     color: var(--grey-700, #53575c);
     font-family: SUIT-Medium;
     font-size: 18px;

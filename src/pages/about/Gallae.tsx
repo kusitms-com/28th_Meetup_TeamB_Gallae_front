@@ -86,6 +86,10 @@ const ContentContainer = styled.div`
   flex-direction: column;
   gap: 120px;
 
+  body:not(&) {
+    background-color: white;
+  }
+
   .content-container {
     display: flex;
     flex-direction: column;

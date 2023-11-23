@@ -44,10 +44,12 @@ export interface ProgramDetailInfoType extends ProgramMainInfoType {
 export interface FilterListType {
   title: string;
   enTitle: string;
-  buttonSize: 'small' | 'medium' | 'large';
+  buttonSize: FilterButtonSize;
   calendar: boolean;
   items: string[];
 }
+
+export type FilterButtonSize = 'xs' | 's' | 'm' | 'l';
 
 export interface FilterInputType {
   [key: string]: string | null;

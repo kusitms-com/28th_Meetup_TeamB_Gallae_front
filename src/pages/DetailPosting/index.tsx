@@ -37,6 +37,10 @@ const Container = styled.div`
 
   width: 1440px;
   margin: 229px auto 0;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const Title = styled.pre`

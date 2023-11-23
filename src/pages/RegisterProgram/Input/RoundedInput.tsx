@@ -34,6 +34,7 @@ const Wrapper = styled.div`
     border-radius: 40px;
     border: 1px solid var(--color_gray200);
     padding: 20px 36px;
+    background-color: white;
 
     color: var(--color_gray900);
     font-family: SUIT-Medium;

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import CalendarIcon from '@/assets/icons/calendar_icon.svg';
 import { HiOutlineChevronDown } from 'react-icons/hi2';
 import { B3 } from '@/style/fonts/StyledFonts';
-import { FilterListType } from '@/types';
+import { FilterButtonSize, FilterListType } from '@/types';
 
 interface FilterButtonStyle {
-  $buttonSize: 'small' | 'medium' | 'large';
+  $buttonSize: FilterButtonSize;
 }
 
 interface FilterButtonItemProps {
@@ -48,9 +48,10 @@ const Container = styled.div<FilterButtonStyle>`
   border-radius: 40px;
   cursor: pointer;
 
-  width: ${({ $buttonSize }) => $buttonSize === 'small' && '162px'};
-  width: ${({ $buttonSize }) => $buttonSize === 'medium' && '200px'};
-  width: ${({ $buttonSize }) => $buttonSize === 'large' && '230px'};
+  width: ${({ $buttonSize }) => $buttonSize === 'xs' && '123px'};
+  width: ${({ $buttonSize }) => $buttonSize === 's' && '163px'};
+  width: ${({ $buttonSize }) => $buttonSize === 'm' && '183px'};
+  width: ${({ $buttonSize }) => $buttonSize === 'l' && '250px'};
 `;
 
 export default FilterButtonItem;

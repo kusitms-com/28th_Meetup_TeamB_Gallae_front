@@ -49,10 +49,14 @@ const ImageWrapper = styled.div`
   height: 180px;
   flex-shrink: 0;
 
-  img {
+  /* img {
     width: 100%;
     height: 100%;
-  }
+  } */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TextContainer = styled.div`

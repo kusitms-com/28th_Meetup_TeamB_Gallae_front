@@ -36,12 +36,6 @@ const EditProgram = () => {
 
       setProgramContent(insertData);
       setPhotoFile(programData.result.photo);
-
-      const ext = programData.result.photo.split('.').pop();
-      const filename = programData.result.photo.split('/').pop();
-      const metadata = { type: `image/${ext}` };
-      const newPhotoName = new File([filename], filename!, metadata);
-      setPhotoName(newPhotoName);
     }
   }, [programData]);
 
@@ -91,7 +85,7 @@ const EditProgram = () => {
     });
 
     result = result && programContent.programName.length <= 50;
-    result = result && photoName !== null;
+    result = result && photoFile !== '';
     setIsPossibleSubmit(result);
 
     const tagString = programContent['hashtag']
@@ -101,7 +95,8 @@ const EditProgram = () => {
     if (result) {
       if (window.confirm(ALERT_MESSAGE.register)) {
         programId && formData.append('id', String(programId));
-        photoName && formData.append('photo', photoName);
+        photoName !== null && formData.append('photo', photoName);
+        formData.append('photoCheck', photoName === null ? '0' : '1');
 
         Object.keys(programContent).map(key => {
           if (programContent[key] !== '' && key === 'hashtag') {
@@ -111,12 +106,22 @@ const EditProgram = () => {
             return formData.append(key, programContent[key]);
         });
 
-        ManagerAPI.postEditProgram(formData).then(data =>
-          navigate(`/detailProgram/${programContent['programName']}/${data}`),
-        );
+        ManagerAPI.postEditProgram(formData)
+          .then(data => {
+            if (data.code === 200) {
+              navigate(
+                `/detailProgram/${programContent['programName']}/${data.result}`,
+              );
+            } else {
+              window.alert('공고 수정에 실패했습니다.');
+            }
+          })
+          .catch(() => window.alert('공고 수정에 실패했습니다.'));
       }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      console.log(photoFile);
+      console.log(photoName);
     }
   };
 
@@ -151,4 +156,8 @@ export default EditProgram;
 const Container = styled.div`
   padding-top: 15px;
   padding-bottom: 268px;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;

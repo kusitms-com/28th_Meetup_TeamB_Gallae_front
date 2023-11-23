@@ -9,14 +9,20 @@ interface Props {
   id: number;
   isLike: boolean;
   setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
+  handleLikeCount: () => void;
 }
 
-const TranslucentLikeButton: React.FC<Props> = ({ id, isLike, setIsLike }) => {
+const TranslucentLikeButton: React.FC<Props> = ({
+  id,
+  isLike,
+  setIsLike,
+  handleLikeCount,
+}) => {
   // Todo: 인자로 id 전달받아서 서버에 찜 목록에 등록하는 API 연결
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.stopPropagation();
-      postLike('program', id, setIsLike);
+      postLike('program', id, setIsLike, handleLikeCount);
     },
     [isLike],
   );

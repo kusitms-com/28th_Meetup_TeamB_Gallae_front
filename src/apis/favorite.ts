@@ -21,9 +21,7 @@ export const useGetMyFavorite = (filterData: FilterType | null) => {
     () => FavoriteAPI.getMyFavorite(filterData),
     {
       enabled: false,
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );

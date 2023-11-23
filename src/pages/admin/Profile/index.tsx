@@ -52,6 +52,10 @@ const Container = styled.div`
   margin-top: 120px;
   margin-bottom: 180px;
 
+  body:not(&) {
+    background-color: white;
+  }
+
   .information-container {
     display: flex;
     flex-direction: column;
