@@ -52,7 +52,12 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
     <>
       {maxPage > 0 && (
         <Container>
-          <HiOutlineChevronDoubleLeft className="icon" />
+          <HiOutlineChevronDoubleLeft
+            className="icon"
+            onClick={() => {
+              setPage(1);
+            }}
+          />
           <HiOutlineChevronLeft
             className="icon"
             onClick={() => movePage('prev')}
@@ -73,7 +78,12 @@ const PageBar: React.FC<Props> = ({ page, setPage, maxPage }) => {
             className="icon"
             onClick={() => movePage('next')}
           />
-          <HiOutlineChevronDoubleRight className="icon" />
+          <HiOutlineChevronDoubleRight
+            className="icon"
+            onClick={() => {
+              setPage(maxPage);
+            }}
+          />
         </Container>
       )}
     </>

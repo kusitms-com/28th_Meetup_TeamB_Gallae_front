@@ -4,6 +4,7 @@ import Attatchment from './Attatchment';
 import Posting from './Posting';
 import { PostingDataType } from '@/types';
 import PostingNav from './PostingNav';
+
 const PostingBox: React.FC<{
   id: number;
   postingData: PostingDataType;
