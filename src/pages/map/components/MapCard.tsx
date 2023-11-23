@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { B1Bold } from '../../../style/fonts/StyledFonts';
+import { B1Bold } from '@/style/fonts/StyledFonts';
 import LikeButton from '@/components/Button/LikeButton';
 import CloseIcon from '@/assets/icons/icon-close.svg';
 
@@ -52,7 +52,7 @@ const MapCard: React.FC<Props> = ({
       </ImageWrapper>
       <BottomContainer>
         <TextContainer>
-          <B1Bold $fontColor="#FF7D2C">{remainDay}</B1Bold>
+          <B1Bold $fontColor="#FF7D2C">{`D-${remainDay}`}</B1Bold>
           <B1Bold $fontColor="#15191D">{programName}</B1Bold>
         </TextContainer>
         <LikeButton

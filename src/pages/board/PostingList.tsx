@@ -72,7 +72,7 @@ const TopBarContainer = styled.div`
   background: var(--background, #f6f6f6);
 
   .board_name {
-    width: 63px;
+    width: 143px;
   }
   .title {
     width: 580px;
@@ -83,7 +83,7 @@ const TopBarContainer = styled.div`
     text-align: center;
   }
   .register_date {
-    width: 91px;
+    width: 100px;
     text-align: center;
   }
 `;
