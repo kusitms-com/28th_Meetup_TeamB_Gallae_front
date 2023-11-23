@@ -1,6 +1,6 @@
 import { Map, MarkerClusterer } from 'react-kakao-maps-sdk';
 import CustomMarker from './components/CustomMarker';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import MapCard from './components/MapCard';
 import styled from 'styled-components';
 import SearchBar from '@/components/SearchBar/SearchBar';
@@ -8,8 +8,7 @@ import useOnClickOutside from '@/hooks/useOnClickOutside';
 import { useQuery } from 'react-query';
 import { fetchMapMarker } from '@/apis/map';
 import Loading from '@/components/Loading/Loading';
-import { handleClickSearchProgram } from '@/functions';
-import { useNavigate } from 'react-router-dom';
+import { handleClickSearchMap } from '@/functions';
 
 interface markerDataType {
   id: number;
@@ -24,19 +23,23 @@ interface markerDataType {
 const MapPage = () => {
   const [selected, setSelected] = useState<number>(-1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState<string>('');
+  const [searchFilter, setSearchFilter] = useState<string>('');
 
   const { isLoading, data, refetch } = useQuery(
-    ['marker', selected],
-    fetchMapMarker(),
+    ['marker', selected, searchFilter],
+    fetchMapMarker(searchFilter),
     {
       cacheTime: 500005,
       staleTime: 500000,
     },
   );
-  const navigate = useNavigate();
 
   const cardRef = useRef(null);
+
+  const handleClickSearch = useCallback(() => {
+    handleClickSearchMap(searchInput, setSearchInput, setSearchFilter);
+  }, [searchInput, searchFilter]);
 
   useOnClickOutside(cardRef, () => {
     setIsModalOpen(false);
@@ -74,16 +77,14 @@ const MapPage = () => {
           searchInput={searchInput}
           setSearchInput={setSearchInput}
           placeHolder="관심있는 여행지가 있으신가요?"
-          handleSubmit={() =>
-            handleClickSearchProgram(searchInput, setSearchInput, navigate)
-          }
+          handleSubmit={handleClickSearch}
         />
       </SearchBarWrapper>
 
       <Map
-        center={{ lat: 37.566566, lng: 126.979192 }}
+        center={{ lat: 36.58775, lng: 127.968238 }}
         style={{ width: '100%', height: '133.3333vh', zoom: '1.33333' }}
-        level={11}
+        level={12}
       >
         <MarkerClusterer>
           {markerData?.map(({ latitude: lat, longitude: lng, id }, idx) => (

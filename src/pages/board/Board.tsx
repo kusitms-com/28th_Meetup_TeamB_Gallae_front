@@ -108,7 +108,7 @@ const Container = styled.div`
 
   width: 1400px;
   margin: 0 auto 128px;
-
+  
   body:not(&) {
     background-color: white;
   }
