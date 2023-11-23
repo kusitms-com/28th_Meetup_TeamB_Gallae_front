@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useQuery } from 'react-query';
@@ -20,7 +20,7 @@ interface BoardProps {
 }
 
 const filterList: string[][] = [
-  ['전체', '여행 지원사업 후기', '여행 대외활동 후기', '여행 공모전 후기'],
+  ['전체', '여행 지원사업 후기', '여행 공모전 후기', '여행 대외활동 후기'],
   ['전체', '지원서 예시자료', '보고서 예시자료'],
 ];
 
@@ -46,10 +46,9 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
     },
   );
 
-  useEffect(() => {
-    // 라우팅이 변경되면 검색 내용 초기화
-    setSearch('');
-  }, [boardType]);
+  const handleSearch = useCallback(() => {
+    setSearch(searchInput);
+  }, [searchInput]);
 
   useEffect(() => {
     if (location?.state?.filter) {
@@ -58,8 +57,11 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
   }, [location]);
 
   useEffect(() => {
+    // 라우팅, 필터가 변경되면 검색 내용 초기화
+    setSearchInput('');
+    setSearch('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [filter]);
+  }, [filter, boardType]);
 
   if (isLoading) return <Loading />;
 
@@ -83,10 +85,7 @@ const Board: React.FC<BoardProps> = ({ title, description }) => {
           placeHolder={'검색어를 입력해 주세요'}
           searchInput={searchInput}
           setSearchInput={setSearchInput}
-          handleSubmit={() => {
-            setSearch(searchInput);
-            setSearchInput('');
-          }}
+          handleSubmit={handleSearch}
         />
       </SearchBarWrapper>
       <PostingList
@@ -108,7 +107,7 @@ const Container = styled.div`
 
   width: 1400px;
   margin: 0 auto 128px;
-  
+
   body:not(&) {
     background-color: white;
   }
