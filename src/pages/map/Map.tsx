@@ -82,7 +82,7 @@ const MapPage = () => {
       </SearchBarWrapper>
 
       <Map
-        center={{ lat: 36.58775, lng: 127.968238 }}
+        center={{ lat: 35.58775, lng: 127.968238 }}
         style={{ width: '100%', height: '133.3333vh', zoom: '1.33333' }}
         level={12}
       >
