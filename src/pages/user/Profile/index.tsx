@@ -31,7 +31,10 @@ const UserProfile = () => {
                 </B1Bold>
                 <div className="content">
                   <B1 $fontColor="var(--color_gray900)">{userInfo[key]}</B1>
-                  {key === 'email' && <AuthBadge />}
+                  {key === 'email' &&
+                    (userInfo[key] !== null || userInfo[key] !== '') && (
+                      <AuthBadge />
+                    )}
                 </div>
               </Information>
             ))}

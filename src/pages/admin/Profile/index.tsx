@@ -33,7 +33,10 @@ const AdminProfile = () => {
                   <B1 $fontColor="var(--color_gray900)">
                     {adminInfo[key] === null ? '' : adminInfo[key]}
                   </B1>
-                  {key === 'email' && <AuthBadge />}
+                  {key === 'email' &&
+                    (adminInfo[key] !== null || adminInfo[key] !== '') && (
+                      <AuthBadge />
+                    )}
                 </div>
               </Information>
             ))}
