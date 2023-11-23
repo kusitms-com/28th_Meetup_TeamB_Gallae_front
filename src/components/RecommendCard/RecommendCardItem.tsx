@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const RecommendCardItem = ({ result }: { result: RecommendDataType }) => {
   return (
-    <Container>
+    <Container href={result.link}>
       <img className="image" alt="image" src={result.photoUrl} />
       <CardInfoContainer>
         <H3 $fontColor="var(--color_gray900)">{result.title}</H3>
@@ -13,7 +13,7 @@ const RecommendCardItem = ({ result }: { result: RecommendDataType }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.a`
   width: 323px;
   height: max-content;
   position: relative;

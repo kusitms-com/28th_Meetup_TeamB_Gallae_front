@@ -189,6 +189,7 @@ export interface UserInfoType {
 export interface RecommendDataType {
   title: string;
   photoUrl: string;
+  link: string;
 }
 
 /** 갈래말래 관련 type */
