@@ -25,8 +25,8 @@ const Container = styled.div`
     font-size: 20px;
     line-height: 150%;
     color: var(--color_gray900);
-
-    word-wrap: break-word;
+    white-space: pre-wrap;
+    //word-wrap: break-word;
   }
 `;
 
