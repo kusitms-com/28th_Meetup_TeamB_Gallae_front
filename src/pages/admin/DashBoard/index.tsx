@@ -78,7 +78,6 @@ const Container = styled.div`
   padding: 0px 20px 80px 20px;
   top: 80px;
   position: relative;
-  background-color: var(--color_background);
 
   body:not(&) {
     background-color: var(--color_background);

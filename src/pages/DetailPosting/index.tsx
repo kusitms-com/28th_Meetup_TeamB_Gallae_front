@@ -1,29 +1,63 @@
 import styled from 'styled-components';
 import PostingBox from './PostingBox';
 import OtherPostings from './OtherPostings';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { PostingDataType } from '@/types';
+import { useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { fetchPostingDetail } from '@/apis/posting';
+import Loading from '@/components/Loading/Loading';
 
 interface Props {
   title: string;
 }
 
 const DetailPosting: React.FC<Props> = ({ title }) => {
+  const { id } = useParams();
+  const postingId = parseInt(id as string, 10);
+  const [isLike, setIsLike] = useState(false);
+
   const postingType: string = window.location.pathname.includes('review')
     ? 'reviews'
     : 'archives';
 
+  const { isLoading, data } = useQuery(
+    [postingType, 'detail', postingId],
+    fetchPostingDetail(postingType, postingId),
+  );
+
+  useEffect(() => {
+    const likeCheck = data?.data?.result?.likeCheck;
+    if (likeCheck) {
+      setIsLike(likeCheck);
+    }
+  }, [data?.data?.result?.likeCheck]);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+    
+  if (isLoading) return <Loading />;
+
+  const postingData: PostingDataType = data?.data?.result;
 
   return (
-    <Container>
-      <Title>{title}</Title>
-      <PostingBox postingType={postingType} />
-      {!window.location.pathname.includes('user') && (
-        <OtherPostings postingType={postingType} />
+    <>
+      {postingData && (
+        <Container>
+          <Title>{title}</Title>
+          <PostingBox
+            id={parseInt(id as string, 10)}
+            postingData={postingData}
+            isLike={isLike}
+            setIsLike={setIsLike}
+          />
+          {!window.location.pathname.includes('user') && (
+            <OtherPostings postingType={postingType} />
+          )}
+        </Container>
       )}
-    </Container>
+    </>
   );
 };
 
@@ -37,6 +71,10 @@ const Container = styled.div`
 
   width: 1440px;
   margin: 229px auto 0;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const Title = styled.pre`

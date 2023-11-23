@@ -63,7 +63,7 @@ export const ManagerAPI = {
         'Content-Type': 'multipart/form-data',
       },
     });
-    return response.data.result;
+    return response.data;
   },
 
   postEditProgram: async (formData: FormData) => {
@@ -72,7 +72,7 @@ export const ManagerAPI = {
         'Content-Type': 'multipart/form-data',
       },
     });
-    return response.data.result;
+    return response.data;
   },
 
   deleteTempProgram: async (id: number) => {
@@ -94,8 +94,6 @@ export const useFindTempProgram = (id: number | null) => {
     () => ManagerAPI.getFindTempProgram(),
     {
       enabled: id === null,
-      cacheTime: 500000,
-      staleTime: 500005,
       onSuccess: () => {},
       onError: () => {},
     },
@@ -147,9 +145,7 @@ export const useGetExistingProgram = (programId: number) => {
     {
       cacheTime: 500000,
       staleTime: 500005,
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );

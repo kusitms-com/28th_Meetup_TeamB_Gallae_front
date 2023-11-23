@@ -10,10 +10,28 @@ import { useEffect, useState } from 'react';
 const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
   const navigate = useNavigate();
   const [isLike, setIsLike] = useState(false);
+  const [likeCount, setLikeCount] = useState(program.like);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
     setIsLike(program.userLikeCheck);
   }, [program]);
+
+  const handleLikeCount = () => {
+    if (program.userLikeCheck && likeCount === program.like) {
+      setLikeCount(likeCount - 1);
+    } else if (program.userLikeCheck && likeCount < program.like) {
+      setLikeCount(likeCount + 1);
+    } else if (!program.userLikeCheck && likeCount === program.like) {
+      setLikeCount(likeCount + 1);
+    } else if (!program.userLikeCheck && likeCount > program.like) {
+      setLikeCount(likeCount - 1);
+    }
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   return (
     <Container
@@ -21,16 +39,22 @@ const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
         navigate(`/detailProgram/${program.programName}/${program.id}`)
       }
     >
-      {program.photoUrl === null || program.photoUrl === '' ? (
+      {program.photoUrl === null || program.photoUrl === '' || imageError ? (
         <DefaultProgramPreview />
       ) : (
-        <img className="poster" alt="program-poster" src={program.photoUrl} />
+        <img
+          className="poster"
+          alt="program-poster"
+          src={program.photoUrl}
+          onError={handleImageError}
+        />
       )}
       <LikeButtonWrapper>
         <TranslucentLikeButton
           id={program.id}
           isLike={isLike}
           setIsLike={setIsLike}
+          handleLikeCount={handleLikeCount}
         />
       </LikeButtonWrapper>
       <ProgramInfoContainer>
@@ -49,7 +73,7 @@ const ProgramCardItem = ({ program }: { program: ProgramMainInfoType }) => {
         </div>
         <div className="favorite-container">
           <img alt="favorite-icon" src={FavoriteIcon} />
-          <B3Bold $fontColor="var(--color_gray600)">{program.like}</B3Bold>
+          <B3Bold $fontColor="var(--color_gray600)">{likeCount}</B3Bold>
         </div>
       </ProgramInfoContainer>
     </Container>
@@ -71,11 +95,19 @@ const Container = styled.div`
 `;
 
 const ProgramInfoContainer = styled.div`
+  width: inherit;
   display: flex;
   flex-direction: column;
   align-items: start;
   padding-top: 16px;
   gap: 4px;
+
+  ${H3} {
+    width: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .hashTag-container {
     display: flex;

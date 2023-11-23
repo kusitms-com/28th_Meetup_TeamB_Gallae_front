@@ -96,6 +96,10 @@ const Container = styled.div`
   margin-top: 120px;
   margin-bottom: 180px;
 
+  body:not(&) {
+    background-color: white;
+  }
+
   .title-container {
     display: flex;
     flex-direction: column;

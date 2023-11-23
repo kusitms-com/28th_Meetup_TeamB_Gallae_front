@@ -108,6 +108,10 @@ const Container = styled.div`
   width: 1440px;
   margin: 229px auto 128px;
   zoom: 1.33333;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const Title = styled.div`

@@ -6,8 +6,8 @@ import { useQuery } from 'react-query';
 import Introduction from './Introduction';
 import Filter from './Filter';
 import PostingList from './PostingList';
-import ReviewImage from '@/assets/board/review-image.svg';
-import ArchiveImage from '@/assets/board/archive-image.svg';
+import ReviewImage from '@/assets/board/review-image.png';
+import ArchiveImage from '@/assets/board/archive-image.png';
 
 import PageBar from '@/components/PageBar/PageBar';
 import SearchBar from '@/components/SearchBar/SearchBar';
@@ -106,8 +106,12 @@ const Container = styled.div`
   align-items: center;
   gap: 88px;
 
-  padding: 0 260px;
-  margin-bottom: 128px;
+  width: 1400px;
+  margin: 0 auto 128px;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const SearchBarWrapper = styled.div`

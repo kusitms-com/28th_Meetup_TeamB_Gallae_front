@@ -17,6 +17,7 @@ export const DEFAULT_REQUIRED_CONTENT: ProgramRegisterInfoType = {
 };
 
 export const LOCATION_LIST = [
+  '전국',
   '서울',
   '인천',
   '대전',
@@ -80,7 +81,7 @@ export const INPUT_FIELD: ProgramRegisterFieldType = {
   contact: {
     title: '문의처',
     placeholder: '문의처명을 입력해주세요.',
-    alertMessage: '문의처명을 입력해주세요.',
+    alertMessage: '문의처을 입력해주세요.',
   },
   contactPhone: {
     title: '',

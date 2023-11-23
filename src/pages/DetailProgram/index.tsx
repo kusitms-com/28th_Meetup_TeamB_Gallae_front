@@ -32,14 +32,16 @@ const DetailProgram = () => {
     programId,
     writerVersion,
   });
-  const { data: recommendSpotList } = useGetRegionTour({
-    programId,
-    writerVersion,
-  });
-  const { data: recommendAccomList } = useGetRegionLodgment({
-    programId,
-    writerVersion,
-  });
+  const { data: recommendSpotList, isLoading: spotListLoading } =
+    useGetRegionTour({
+      programId,
+      writerVersion,
+    });
+  const { data: recommendAccomList, isLoading: accomListLoading } =
+    useGetRegionLodgment({
+      programId,
+      writerVersion,
+    });
   const userInfo = useRecoilValue(UserAtom);
   const navigate = useNavigate();
 
@@ -59,7 +61,7 @@ const DetailProgram = () => {
     if (window.confirm('공고를 삭제하시겠습니까?')) {
       ManagerAPI.deleteProgram(programInfoData.result.id).then(() => {
         window.alert('공고가 삭제되었습니다.');
-        navigate('/');
+        navigate(-1);
       });
     }
   };
@@ -94,12 +96,22 @@ const DetailProgram = () => {
           <div>
             <BackgroundLine />
             <CommonInner>
-              {recommendSpotList && recommendSpotList.length > 0 && (
-                <RecommendSpot resultList={recommendSpotList} />
-              )}
-              {recommendAccomList && recommendAccomList.length > 0 && (
-                <RecommendAccom resultList={recommendAccomList} />
-              )}
+              <RecommendSpot
+                resultList={
+                  recommendSpotList && recommendSpotList.length > 0
+                    ? recommendSpotList
+                    : []
+                }
+                isLoading={spotListLoading}
+              />
+              <RecommendAccom
+                resultList={
+                  recommendAccomList && recommendAccomList.length > 0
+                    ? recommendAccomList
+                    : []
+                }
+                isLoading={accomListLoading}
+              />
             </CommonInner>
             <HoneyTipButton />
           </div>
@@ -141,6 +153,10 @@ const Container = styled.div`
   padding-bottom: 190px;
   display: flex;
   flex-direction: column;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const InnerContainer = styled.div`
