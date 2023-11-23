@@ -111,8 +111,6 @@ export const useGetProgressPrograms = ({
     ['getProgressPrograms', filter, page],
     () => ManagerAPI.getProgressPrograms({ filter, page: page - 1 }),
     {
-      cacheTime: 500000,
-      staleTime: 500005,
       onSuccess: () => {},
       onError: () => {},
     },
@@ -130,8 +128,6 @@ export const useGetFinishPrograms = ({
     ['getFinishPrograms', filter, page],
     () => ManagerAPI.getFinishPrograms({ filter, page: page - 1 }),
     {
-      cacheTime: 500000,
-      staleTime: 500005,
       onSuccess: () => {},
       onError: () => {},
     },
@@ -143,8 +139,6 @@ export const useGetExistingProgram = (programId: number) => {
     ['getExistingProgram', programId],
     () => ManagerAPI.getExistingProgram(programId),
     {
-      cacheTime: 500000,
-      staleTime: 500005,
       onSuccess: () => {},
       onError: () => {},
     },
