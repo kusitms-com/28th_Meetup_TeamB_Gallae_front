@@ -82,6 +82,7 @@ Axios.interceptors.response.use(
         } else {
           window.history.go(-1);
         }
+        throw error;
       }
     } else if (error.response?.data?.code === 1001) {
       // 포인트가 부족한 상황
@@ -92,8 +93,8 @@ Axios.interceptors.response.use(
           currentPath.lastIndexOf('/'),
         )}`;
       }
+      return error;
     }
-    throw error;
   },
 );
 
