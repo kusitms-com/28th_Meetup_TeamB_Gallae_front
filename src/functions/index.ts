@@ -9,3 +9,14 @@ export const handleClickSearchProgram = (
   navigate(`/search?keyword=${searchInput}`);
   setSearchInput('');
 };
+
+export const handleClickSearchMap = (
+  searchInput: string,
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>,
+  setSearhFilter: React.Dispatch<React.SetStateAction<string>>,
+) => {
+  // 검색 후 페이지 이동
+  console.log(searchInput);
+  setSearhFilter(searchInput);
+  setSearchInput('');
+};
