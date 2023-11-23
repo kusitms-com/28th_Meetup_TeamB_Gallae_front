@@ -56,7 +56,9 @@ const MapPage = () => {
   if (isLoading) return <Loading />;
 
   const markerData: markerDataType[] = data?.data?.result
-    ? data?.data?.result?.programs
+    ? data?.data?.result?.programs.filter(
+        ({ remainDay }: { remainDay: string }) => remainDay !== '마감',
+      )
     : [];
 
   return (
