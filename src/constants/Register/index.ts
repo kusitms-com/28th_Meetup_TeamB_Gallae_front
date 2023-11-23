@@ -105,6 +105,7 @@ export const ALERT_MESSAGE = {
   register: '공고를 등록하시겠습니까?',
   draft: '임시 저장하시겠습니까?',
   getDraft: '기존에 작성하던 공고를 불러오시겠습니까?',
+  edit: '공고를 수정하시겠습니까?',
 };
 
 const EXAMPLE_HEADER =

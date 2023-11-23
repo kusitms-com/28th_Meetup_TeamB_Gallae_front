@@ -93,7 +93,7 @@ const EditProgram = () => {
       .replace(/ /g, '');
 
     if (result) {
-      if (window.confirm(ALERT_MESSAGE.register)) {
+      if (window.confirm(ALERT_MESSAGE.edit)) {
         programId && formData.append('id', String(programId));
         photoName !== null && formData.append('photo', photoName);
         formData.append('photoCheck', photoName === null ? '0' : '1');
