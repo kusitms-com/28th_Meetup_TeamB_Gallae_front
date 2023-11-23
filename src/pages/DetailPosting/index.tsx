@@ -1,10 +1,11 @@
-import styled from 'styled-components';
-import PostingBox from './PostingBox';
-import OtherPostings from './OtherPostings';
 import { useEffect, useState } from 'react';
-import { PostingDataType } from '@/types';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import styled from 'styled-components';
+
+import PostingBox from './PostingBox';
+import OtherPostings from './OtherPostings';
+import { PostingDataType } from '@/types';
 import { fetchPostingDetail } from '@/apis/posting';
 import Loading from '@/components/Loading/Loading';
 
@@ -36,7 +37,7 @@ const DetailPosting: React.FC<Props> = ({ title }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-    
+
   if (isLoading) return <Loading />;
 
   const postingData: PostingDataType = data?.data?.result;
