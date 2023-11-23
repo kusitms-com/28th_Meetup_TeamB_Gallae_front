@@ -106,8 +106,8 @@ const Container = styled.div`
   align-items: center;
   gap: 88px;
 
-  padding: 0 260px;
-  margin-bottom: 128px;
+  width: 1400px;
+  margin: 0 auto 128px;
 `;
 
 const SearchBarWrapper = styled.div`
