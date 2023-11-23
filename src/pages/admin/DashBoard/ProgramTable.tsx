@@ -50,7 +50,8 @@ const ProgramTable = ({ noDataText, programList }: ProgramTableProps) => {
                 <img
                   alt="icon-trash"
                   src={IconTrash}
-                  onClick={() => {
+                  onClick={e => {
+                    e.stopPropagation();
                     handleDelete(program.id);
                   }}
                 />
