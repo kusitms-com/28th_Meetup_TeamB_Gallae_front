@@ -2,24 +2,28 @@ import { CommonInner } from '@/style/common';
 import MakerImage from '@/assets/about/maker.png';
 import styled from 'styled-components';
 import { MAKER } from '@/constants/About';
+import Footer from '@/components/Footer/Footer';
 
 const Maker = () => {
   return (
-    <CommonInner>
-      <Container>
-        <TitleContainer>
-          <Title>{MAKER.title}</Title>
-          <Description>
-            <div className="description">
-              <span className="highlight">{MAKER.highlight}</span>
-              <span>{MAKER.content}</span>
-            </div>
-            <Line />
-          </Description>
-        </TitleContainer>
-        <img alt="갈래와 함께하는 사람들" src={MakerImage} />
-      </Container>
-    </CommonInner>
+    <>
+      <CommonInner>
+        <Container>
+          <TitleContainer>
+            <Title>{MAKER.title}</Title>
+            <Description>
+              <div className="description">
+                <span className="highlight">{MAKER.highlight}</span>
+                <span>{MAKER.content}</span>
+              </div>
+              <Line />
+            </Description>
+          </TitleContainer>
+          <img alt="갈래와 함께하는 사람들" src={MakerImage} />
+        </Container>
+      </CommonInner>
+      <Footer />
+    </>
   );
 };
 

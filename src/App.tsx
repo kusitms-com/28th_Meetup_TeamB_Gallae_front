@@ -53,14 +53,14 @@ const route = createBrowserRouter([
             index: true,
             element: (
               <Board
-                title="지원후기"
-                description="여행 지원사업/대외활동/공모전의 지원후기를 볼 수 있는 페이지입니다."
+                title="활동후기"
+                description="여행 지원사업/대외활동/공모전의 후기를 볼 수 있는 페이지입니다."
               />
             ),
           },
           {
             path: ':id',
-            element: <DetailPosting title="지원 후기" />,
+            element: <DetailPosting title="활동후기" />,
           },
           {
             path: 'write',
@@ -117,7 +117,7 @@ const route = createBrowserRouter([
           },
           {
             path: 'review/:id',
-            element: <DetailPosting title="지원 후기" />,
+            element: <DetailPosting title="활동후기" />,
           },
           {
             path: 'archive/:id',

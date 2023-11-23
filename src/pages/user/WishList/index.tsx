@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import ProgramCard from '@/components/ProgramCard/ProgramCard';
 import { useGetMyFavorite } from '@/apis/favorite';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import Footer from '@/components/Footer/Footer';
 
 interface FilterType {
   [key: string]: string | null;
@@ -66,24 +67,29 @@ const WishList = () => {
   };
 
   return (
-    <CommonInner>
-      <Container>
-        <div className="title-container">
-          <UserTitle>갈래 말래</UserTitle>
-          <div className="description">찜한 여행 프로그램을 확인해보세요!</div>
-        </div>
-        <FilterBar
-          filterInput={filterInput}
-          handleChangeFilterInput={handleChangeFilterInput}
-          handleSubmit={handleSubmit}
-        />
-        {wishlistData && wishlistData.length > 0 ? (
-          <ProgramCard programList={wishlistData} />
-        ) : (
-          <NoData>찜한 여행 프로그램이 없어요</NoData>
-        )}
-      </Container>
-    </CommonInner>
+    <>
+      <CommonInner>
+        <Container>
+          <div className="title-container">
+            <UserTitle>갈래 말래</UserTitle>
+            <div className="description">
+              찜한 여행 프로그램을 확인해보세요!
+            </div>
+          </div>
+          <FilterBar
+            filterInput={filterInput}
+            handleChangeFilterInput={handleChangeFilterInput}
+            handleSubmit={handleSubmit}
+          />
+          {wishlistData && wishlistData.length > 0 ? (
+            <ProgramCard programList={wishlistData} />
+          ) : (
+            <NoData>찜한 여행 프로그램이 없어요</NoData>
+          )}
+        </Container>
+      </CommonInner>
+      <Footer />
+    </>
   );
 };
 export default WishList;
