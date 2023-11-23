@@ -32,16 +32,14 @@ const DetailProgram = () => {
     programId,
     writerVersion,
   });
-  const { data: recommendSpotList, isLoading: spotListLoading } =
-    useGetRegionTour({
-      programId,
-      writerVersion,
-    });
-  const { data: recommendAccomList, isLoading: accomListLoading } =
-    useGetRegionLodgment({
-      programId,
-      writerVersion,
-    });
+  const { data: recommendSpotList } = useGetRegionTour({
+    programId,
+    writerVersion,
+  });
+  const { data: recommendAccomList } = useGetRegionLodgment({
+    programId,
+    writerVersion,
+  });
   const userInfo = useRecoilValue(UserAtom);
   const navigate = useNavigate();
 
@@ -96,22 +94,12 @@ const DetailProgram = () => {
           <div>
             <BackgroundLine />
             <CommonInner>
-              <RecommendSpot
-                resultList={
-                  recommendSpotList && recommendSpotList.length > 0
-                    ? recommendSpotList
-                    : []
-                }
-                isLoading={spotListLoading}
-              />
-              <RecommendAccom
-                resultList={
-                  recommendAccomList && recommendAccomList.length > 0
-                    ? recommendAccomList
-                    : []
-                }
-                isLoading={accomListLoading}
-              />
+              {recommendSpotList && recommendSpotList.length > 0 && (
+                <RecommendSpot resultList={recommendSpotList} />
+              )}
+              {recommendAccomList && recommendAccomList.length > 0 && (
+                <RecommendAccom resultList={recommendAccomList} />
+              )}
             </CommonInner>
             <HoneyTipButton />
           </div>
