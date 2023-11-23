@@ -57,7 +57,8 @@ const Search = () => {
       }
     }
 
-    if (!newApiData['orderCriteria']) newApiData['orderCriteria'] = '최신순';
+    if (!newApiData['orderCriteria'])
+      newApiData['orderCriteria'] = '늦은 마감 순';
     if (newApiData['location'] === '전국') newApiData['location'] = null;
 
     setFilterInput({ ...newFilterInput });
