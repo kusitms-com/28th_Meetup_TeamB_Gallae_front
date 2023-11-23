@@ -376,7 +376,7 @@
 <br><br>
 
 ## **🎨 디자인 무드보드**
-![Mood_board](./image/mood_board.png)
+![Mood_board](./image/mood-board.png)
 
 
 <br><br>
@@ -392,7 +392,7 @@
   <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"> <img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=recoil&logoColor=white"> <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/Styled Components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
 
 - ## Server
-  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Spring boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data Jpa-6DB33F?style=flat-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-square&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-square&logo=redis&logoColor=white"> ![JWT](https://img.shields.io/badge/JWT-black?style=for-square&logo=JSON%20web%20tokens) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-square&logo=nginx&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-square&logo=githubactions&logoColor=white) <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Spring boot-6DB33F?style=flat-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data Jpa-6DB33F?style=flat-square&logo=springboot&logoColor=white"> <img src="https://img.shields.io/badge/mysql-4479A1?style=for-square&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> ![JWT](https://img.shields.io/badge/JWT-black?style=for-square&logo=JSON%20web%20tokens) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-square&logo=nginx&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-square&logo=githubactions&logoColor=white) <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/>
 
 - ## Co-working Tool
   <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Slack-4A154B?style=flat-square&logo=slack&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=notion&logoColor=white"/>
@@ -450,10 +450,6 @@
 
 - 다양한 라이브러리와 설정을 자동으로 제공하므로 개발자가 애플리케이션을 더 빠르게 만들 수 있습니다.
 - 특정 환경이나 서버, 기술에 종속되지 않으며 유연한 애플리케이션을 개발할 수 있습니다.
-
-<img src="https://img.shields.io/badge/redis-%23DD0031.svg?style=for-square&logo=redis&logoColor=white">
-
-- key, value 형태로 데이터 저장 및 해당 데이터의 유효기간 설정을 통한 토큰 관리 용이하므로 유효시간이 필요로 되는 로직에서의 성능 이점을 확보하기 위해 사용했습니다.
 
 <img src="https://img.shields.io/badge/Spring Data Jpa-6DB33F?style=flat-square&logo=springboot&logoColor=white">
 
