@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import styled from 'styled-components';
 import SearchImage from '@/assets/icons/icon-search.svg';
 
@@ -18,6 +18,11 @@ const SearchBar: React.FC<Props> = ({
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
+
+  const handleFocus = useCallback(() => {
+    setSearchInput('');
+  }, []);
+
   return (
     <Container
       onSubmit={e => {
@@ -29,6 +34,7 @@ const SearchBar: React.FC<Props> = ({
         value={searchInput}
         placeholder={placeHolder}
         onChange={onChange}
+        onFocus={handleFocus}
       />
       <button type="submit">
         <img src={SearchImage} alt="search" />
