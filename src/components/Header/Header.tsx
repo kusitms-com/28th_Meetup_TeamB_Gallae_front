@@ -71,13 +71,15 @@ const Header = () => {
             <img src={Logo} alt="character" />
           </LogoWrapper>
           {HeaderData.map(({ main, mainLink, dropDowns }) => (
-            <NavBar
-              key={main}
-              onClick={() => {
-                navigate(`${mainLink}`);
-              }}
-            >
-              <H3 $fontColor="#15191D">{main}</H3>
+            <NavBar key={main}>
+              <H3
+                $fontColor="#15191D"
+                onClick={() =>
+                  navigate(mainLink, { state: { filter: '전체' } })
+                }
+              >
+                {main}
+              </H3>
               <Dropdown>
                 {dropDowns.map(({ title, link }, index) => (
                   <li key={index}>

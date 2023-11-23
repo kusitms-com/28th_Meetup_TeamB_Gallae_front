@@ -105,6 +105,10 @@ const Container = styled.div`
   gap: 40px;
 
   zoom: 1.33333;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const Title = styled.div`
@@ -129,8 +133,7 @@ const LoginContainer = styled.div`
 
 const ErrorMessage = styled.div`
   position: absolute;
-  bottom: -30px;
-  left: 28px;
+  bottom: -27px;
 `;
 
 const Input = styled.input`
@@ -162,6 +165,7 @@ const Button = styled.button`
   width: 440px;
   height: 60px;
   flex-shrink: 0;
+  margin-top: 28px;
 
   border-radius: 10px;
   background: var(--Sub-3, #ff7d2c);

@@ -100,6 +100,11 @@ const FilterButtonList = ({
         [fieldDate[0]]: moment(dateValue[0]).format('YYYY-MM-DD'),
         [fieldDate[1]]: moment(dateValue[1]).format('YYYY-MM-DD'),
       });
+      setCurrentFilterTitle(
+        `${moment(dateValue[0]).format('YYYY-MM-DD')} - ${moment(
+          dateValue[1],
+        ).format('YYYY-MM-DD')}`,
+      );
       setTimeout(() => {
         setIsOpenFilterItem(false);
       }, 500);

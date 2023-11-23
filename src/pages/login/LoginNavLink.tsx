@@ -23,10 +23,6 @@ const Container = styled.div`
   align-items: center;
   justify-items: center;
   gap: 21px;
-
-  pre {
-    width: 88px;
-  }
 `;
 
 const Divider = styled.div`

@@ -54,6 +54,10 @@ const Container = styled.div`
   width: 1440px;
   margin: 229px auto;
 
+  body:not(&) {
+    background-color: white;
+  }
+
   > div {
     &:nth-child(3) {
       margin-top: 48px;

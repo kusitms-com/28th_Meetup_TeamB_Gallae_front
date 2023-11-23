@@ -36,7 +36,7 @@ const DetailPosting: React.FC<Props> = ({ title }) => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-
+    
   if (isLoading) return <Loading />;
 
   const postingData: PostingDataType = data?.data?.result;
@@ -71,6 +71,10 @@ const Container = styled.div`
 
   width: 1440px;
   margin: 229px auto 0;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const Title = styled.pre`

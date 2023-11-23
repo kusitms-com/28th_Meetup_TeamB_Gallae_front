@@ -92,6 +92,9 @@ const TableLine = styled.tr`
 
   td {
     height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .icon {
