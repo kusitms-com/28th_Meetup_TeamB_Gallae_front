@@ -79,6 +79,8 @@ Axios.interceptors.response.use(
         // refreshToken이 없다는 건 로그인을 해야 한다는 것
         if (window.confirm('로그인이 필요한 서비스입니다.')) {
           window.location.href = '/login';
+        } else {
+          window.history.go(-1);
         }
       }
     } else if (error.response?.data?.code === 1001) {
@@ -91,7 +93,7 @@ Axios.interceptors.response.use(
         )}`;
       }
     }
-    return error;
+    throw error;
   },
 );
 

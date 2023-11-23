@@ -1,36 +1,15 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Attatchment from './Attatchment';
 import Posting from './Posting';
 import { PostingDataType } from '@/types';
 import PostingNav from './PostingNav';
-import { useQuery } from 'react-query';
-import { fetchPostingDetail } from '@/apis/posting';
-import Loading from '@/components/Loading/Loading';
-
-const PostingBox: React.FC<{ postingType: string }> = ({ postingType }) => {
-  const { id } = useParams();
-  const postingId = parseInt(id as string, 10);
-  const [isLike, setIsLike] = useState(false);
-
-  const { isLoading, data } = useQuery(
-    [postingType, 'detail', postingId],
-    fetchPostingDetail(postingType, postingId),
-  );
-
-  useEffect(() => {
-    const likeCheck = data?.data?.result?.likeCheck;
-    if (likeCheck) {
-      setIsLike(likeCheck);
-    }
-  }, [data?.data?.result?.likeCheck]);
-
-  if (isLoading) return <Loading />;
-
-  const postingData: PostingDataType = data?.data?.result;
-
+const PostingBox: React.FC<{
+  id: number;
+  postingData: PostingDataType;
+  isLike: boolean;
+  setIsLike: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ id: postingId, postingData, isLike, setIsLike }) => {
   return (
     <Container>
       <Posting {...postingData} isLike={isLike} setIsLike={setIsLike} />
@@ -43,7 +22,7 @@ const PostingBox: React.FC<{ postingType: string }> = ({ postingType }) => {
       <PostingNav
         prevId={postingData?.previousId || postingId}
         nextId={postingData?.nextId || postingId}
-        id={parseInt(id as string, 10)}
+        id={postingId}
       />
     </Container>
   );
