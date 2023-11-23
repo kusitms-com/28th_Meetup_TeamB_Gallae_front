@@ -104,6 +104,10 @@ const Container = styled.div`
   padding-bottom: 170px;
   position: relative;
   min-height: calc(var(--vh, 1vh) * 100 * 100 / 75 - 80px);
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 export default Search;

@@ -81,6 +81,10 @@ const Container = styled.div`
   width: 1440px;
   gap: 124px;
   margin: 229px auto 369px;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const HistoryContainer = styled.div`

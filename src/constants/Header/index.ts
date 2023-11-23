@@ -19,7 +19,7 @@ export const HeaderData: HeaderDataProps[] = [
         link: '/about/gallae',
       },
       {
-        title: "'갈래'와 함께하는 사람들",
+        title: "'갈래' 크루",
         link: '/about/maker',
       },
       {

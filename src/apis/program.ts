@@ -51,9 +51,7 @@ export const useGetProgramDetailInfo = (programId: number) => {
     ['getProgramDetailInfo', programId],
     () => ProgramAPI.getProgramDetailInfo(programId),
     {
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );
@@ -87,9 +85,7 @@ export const useGetSimilarRecommend = ({
       enabled: writerVersion === null ? false : !writerVersion,
       cacheTime: 500000,
       staleTime: 500005,
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );
@@ -109,9 +105,7 @@ export const useGetRegionTour = ({
       enabled: writerVersion === null ? false : !writerVersion,
       cacheTime: 500000,
       staleTime: 500005,
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );
@@ -129,9 +123,7 @@ export const useGetRegionLodgment = ({
     {
       enabled: writerVersion === null ? false : !writerVersion,
       staleTime: 500005,
-      onSuccess: data => {
-        console.log(data);
-      },
+      onSuccess: () => {},
       onError: () => {},
     },
   );
