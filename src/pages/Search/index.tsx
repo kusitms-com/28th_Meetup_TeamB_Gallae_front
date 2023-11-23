@@ -42,6 +42,9 @@ const Search = () => {
     if (keyword) {
       setSearchInput(keyword);
       newApiData['programName'] = keyword;
+    } else {
+      setSearchInput('');
+      newApiData['programName'] = '';
     }
 
     for (const key in newFilterInput) {
