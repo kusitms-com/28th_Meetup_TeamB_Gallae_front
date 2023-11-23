@@ -6,7 +6,6 @@ const Layout = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log('실행');
     window.scrollTo({ top: 0 });
   }, [location.pathname]);
 
