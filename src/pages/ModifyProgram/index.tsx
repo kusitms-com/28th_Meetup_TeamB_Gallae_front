@@ -71,7 +71,7 @@ const EditProgram = () => {
 
   const handleCancel = () => {
     if (window.confirm(ALERT_MESSAGE.cancel)) {
-      navigate('/');
+      navigate(-1);
     }
   };
 
@@ -120,8 +120,6 @@ const EditProgram = () => {
       }
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      console.log(photoFile);
-      console.log(photoName);
     }
   };
 

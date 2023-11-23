@@ -16,7 +16,6 @@ export const handleClickSearchMap = (
   setSearhFilter: React.Dispatch<React.SetStateAction<string>>,
 ) => {
   // 검색 후 페이지 이동
-  console.log(searchInput);
   setSearhFilter(searchInput);
   setSearchInput('');
 };

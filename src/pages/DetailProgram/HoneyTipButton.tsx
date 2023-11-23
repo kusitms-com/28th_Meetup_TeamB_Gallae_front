@@ -10,13 +10,12 @@ const HoneyTipButton = () => {
 
   return (
     <Container>
-      <div className="img">
+      <div className="img" onClick={() => navigate('/about/tips')}>
         <div className="button">
           <RoundedButton
             $buttonColor="#282828"
             $buttonWidth="220px"
             $buttonHeight="62px"
-            onClick={() => navigate('/about/tips')}
           >
             <div className="button-container">
               <B1Bold $fontColor="white">지원 꿀팁 보기</B1Bold>
@@ -43,6 +42,7 @@ const Container = styled.div`
     background-size: contain;
     width: 160px;
     height: 210px;
+    cursor: pointer;
   }
 
   .button {

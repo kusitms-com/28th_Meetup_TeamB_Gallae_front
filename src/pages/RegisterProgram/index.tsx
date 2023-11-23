@@ -80,7 +80,7 @@ const RegisterProgram = () => {
 
   const handleCancel = () => {
     if (window.confirm(ALERT_MESSAGE.cancel)) {
-      navigate('/');
+      navigate(-1);
     }
   };
 
