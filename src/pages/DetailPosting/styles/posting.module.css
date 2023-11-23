@@ -1,34 +1,34 @@
-.ql-body h1 {
+h1 {
   font-size: 2em;
 }
-.ql-body h2 {
+h2 {
   font-size: 1.5em;
 }
-.ql-body h3 {
+h3 {
   font-size: 1.17em;
 }
-.ql-body h4 {
+h4 {
   font-size: 1em;
 }
-.ql-body h5 {
+h5 {
   font-size: 0.83em;
 }
-.ql-body h6 {
+h6 {
   font-size: 0.67em;
 }
-.ql-body a {
+u {
   text-decoration: underline;
 }
-
-.ql-body strong {
+p {
+  font-size: 20px;
+}
+strong {
   font-weight: bold;
 }
-.ql-body em {
+em {
   font-style: italic;
 }
-.ql-body u {
-  text-decoration: underline;
-}
-.ql-body s {
+
+s {
   text-decoration: line-through;
 }
