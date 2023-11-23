@@ -6,7 +6,6 @@ const RecommendCardItem = ({ result }: { result: RecommendDataType }) => {
   return (
     <Container>
       <img className="image" alt="image" src={result.photoUrl} />
-
       <CardInfoContainer>
         <H3 $fontColor="var(--color_gray900)">{result.title}</H3>
       </CardInfoContainer>
@@ -24,7 +23,7 @@ const Container = styled.div`
     width: 323px;
     height: 323px;
     border-radius: 20px;
-    //object-fit: cover;
+    object-fit: cover;
   }
 `;
 
@@ -34,6 +33,14 @@ const CardInfoContainer = styled.div`
   align-items: start;
   padding-top: 16px;
   gap: 4px;
+  width: inherit;
+
+  ${H3} {
+    width: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export default RecommendCardItem;

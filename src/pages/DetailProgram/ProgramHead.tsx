@@ -4,6 +4,7 @@ import MainButton from '@/components/Button/MainButton';
 import { B1Bold, H1, H3 } from '@/style/fonts/StyledFonts';
 import DefaultProgram from '@/components/Default/DefaultProgram';
 import LikeButton from '@/components/Button/LikeButton';
+import { useState } from 'react';
 
 interface ProgramHeadProps {
   program: ProgramDetailInfoType;
@@ -17,12 +18,22 @@ const ProgramHead = ({
   setIsLike,
   writer,
 }: ProgramHeadProps) => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <Container>
-      {program.photoUrl === null || program.photoUrl === '' ? (
+      {program.photoUrl === null || program.photoUrl === '' || imageError ? (
         <DefaultProgram />
       ) : (
-        <img alt="program-poster" src={program.photoUrl} />
+        <img
+          alt="program-poster"
+          src={program.photoUrl}
+          onError={handleImageError}
+        />
       )}
       <DescriptionContainer>
         <InfoContainer>
@@ -83,7 +94,8 @@ const Container = styled.div`
   padding: 130px 0px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  //justify-content: space-between;
+  gap: 215px;
   align-items: center;
 
   img {

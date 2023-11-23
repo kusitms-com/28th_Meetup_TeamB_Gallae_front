@@ -29,6 +29,10 @@ const Container = styled.div`
   margin-top: 119px;
   margin-bottom: 150px;
 
+  body:not(&) {
+    background-color: white;
+  }
+
   display: flex;
   flex-direction: column;
   align-items: center;

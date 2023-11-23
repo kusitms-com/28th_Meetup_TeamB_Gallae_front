@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import HoneyTipIcon from '@/assets/icons/honey_tip_icon.png';
+import HoneyTipIcon from '@/assets/icons/icon-honey-tip.png';
 import RoundedButton from '@/components/Button/RoundedButton';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { B1Bold } from '@/style/fonts/StyledFonts';

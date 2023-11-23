@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-const DefaultProgram = () => {
+const DefaultProgram = ({ detail }: { detail?: boolean }) => {
   return (
     <Container>
-      <div className="text">
-        <span>이미지가 없어요!</span>
-        <span>클릭하여 상세내용을 확인해보세요!</span>
-      </div>
+      {detail && (
+        <div className="text">
+          <span>이미지가 없어요!</span>
+          <span>클릭하여 상세내용을 확인해보세요!</span>
+        </div>
+      )}
     </Container>
   );
 };

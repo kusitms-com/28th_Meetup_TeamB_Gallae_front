@@ -177,6 +177,10 @@ const Container = styled.div`
 
   width: 1440px;
   margin: auto;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
 
 const MainContainer = styled.div`

@@ -27,4 +27,8 @@ const Container = styled.div`
 
   width: 100%;
   gap: 120px;
+
+  body:not(&) {
+    background-color: white;
+  }
 `;
