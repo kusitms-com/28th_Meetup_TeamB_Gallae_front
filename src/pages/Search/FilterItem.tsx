@@ -26,7 +26,15 @@ const FilterItem = ({
           className="filter-item"
           onClick={() => {
             setCurrentFilterTitle(item);
-            setFilterInput({ ...filterInput, [filterItem.enTitle]: item });
+            if (filterItem.enTitle === 'programType') {
+              setFilterInput({
+                ...filterInput,
+                [filterItem.enTitle]: item,
+                ['detailType']: '세부 카테고리',
+              });
+            } else {
+              setFilterInput({ ...filterInput, [filterItem.enTitle]: item });
+            }
             setIsOpenFilterItem(false);
           }}
         >

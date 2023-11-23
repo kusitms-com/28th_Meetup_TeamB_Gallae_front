@@ -73,7 +73,8 @@ const Search = () => {
   const handleSubmit = () => {
     let searchPath = '';
     for (const key in filterInput) {
-      if (filterInput[key]) searchPath += `&${key}=${filterInput[key]}`;
+      if (filterInput[key] && filterInput[key] !== '세부 카테고리')
+        searchPath += `&${key}=${filterInput[key]}`;
     }
     navigate(`/search?keyword=${searchInput}${searchPath}`);
   };
