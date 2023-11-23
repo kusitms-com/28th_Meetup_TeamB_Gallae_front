@@ -79,10 +79,6 @@ const Write = () => {
     );
   }, [selected, title, content, tags, inputFile]);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
   const modules = useMemo(() => {
     // Quill 에디터 모듈
     return {
