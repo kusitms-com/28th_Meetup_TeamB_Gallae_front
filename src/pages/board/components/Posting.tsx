@@ -40,7 +40,9 @@ const Posting: React.FC<PostingType> = ({
       <B2Bold $fontColor="#53575C" className="writer">
         {writer}
       </B2Bold>
-      <B2Bold $fontColor="#53575C">{truncDate()}</B2Bold>
+      <B2Bold $fontColor="#53575C" className="registerDate">
+        {truncDate()}
+      </B2Bold>
     </Container>
   );
 };
@@ -57,7 +59,7 @@ const Container = styled.div`
   border-bottom: 0.5px solid var(--grey-400, #e3e7ed);
 
   .board_name {
-    width: 64px;
+    width: 143px;
   }
   .title {
     width: 580px;
@@ -75,5 +77,8 @@ const Container = styled.div`
   .writer {
     width: 140px;
     text-align: center;
+  }
+  .registerDate {
+    width: 100px;
   }
 `;
