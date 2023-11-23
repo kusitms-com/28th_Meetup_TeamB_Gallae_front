@@ -34,14 +34,10 @@ const DetailPosting: React.FC<Props> = ({ title }) => {
   }, [data?.data?.result?.likeCheck]);
 
   useEffect(() => {
-    console.log('render');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   if (isLoading) return <Loading />;
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   const postingData: PostingDataType = data?.data?.result;
 
